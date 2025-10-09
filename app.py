@@ -566,6 +566,10 @@ def check_model_status():
     logger.info("All models verified and ready for inference")
     return True
 
+# Initialize models when module is imported (ensuring they're available regardless of how app is started)
+logger.info("INITIALIZING MODELS ON MODULE IMPORT...")
+init_models()
+
 if __name__ == '__main__':
     logger.info("STARTING SPEAK2SIGN API SERVER")
     logger.info("=" * 60)
@@ -575,10 +579,7 @@ if __name__ == '__main__':
     logger.info("=" * 60)
 
     try:
-        # Initialize models (guard prevents double initialization)
-        init_models()
-
-        # Verify models are loaded
+        # Verify models are loaded (they should be initialized on import)
         check_model_status()
 
         # Create app instance
