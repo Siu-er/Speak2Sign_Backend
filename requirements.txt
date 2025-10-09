@@ -1,0 +1,13 @@
+Flask~=3.1.2
+Flask-CORS~=6.0.1
+Flask-SocketIO~=5.3.6
+python-socketio~=5.9.0
+transformers>=4.21.0
+torch>=1.13.0
+numpy>=1.21.0
+soundfile>=0.12.1
+librosa>=0.9.0
+spacy~=3.8.7
+wordfreq~=3.1.1
+webrtcvad~=2.0.10
+pydub~=0.25.1

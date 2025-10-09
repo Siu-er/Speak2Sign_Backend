@@ -1,0 +1,284 @@
+{
+  "token_patterns": [
+    {
+      "name": "FUTURE_GOING_TO",
+      "pattern": [{"LEMMA":"go"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"FUTURE","emit_head_verb":true}
+    },
+    {
+      "name": "FUTURE_BE_GOING_TO",
+      "pattern": [{"LEMMA":"be"},{"LEMMA":"go"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"FUTURE","emit_head_verb":true}
+    },
+    {
+      "name": "FUTURE_GONNA",
+      "pattern": [{"LOWER":"gonna"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"FUTURE","emit_head_verb":true}
+    },
+
+    {
+      "name": "MUST_HAVE_TO",
+      "pattern": [{"LEMMA":"have"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"MUST","emit_head_verb":true}
+    },
+    {
+      "name": "MUST_NEED_TO",
+      "pattern": [{"LEMMA":"need"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"MUST","emit_head_verb":true}
+    },
+    {
+      "name": "MUST_GOT_TO",
+      "pattern": [{"LEMMA":"get"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"MUST","emit_head_verb":true}
+    },
+    {
+      "name": "MUST_HAVE_GOT_TO",
+      "pattern": [{"LEMMA":"have"},{"LEMMA":"get"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"MUST","emit_head_verb":true}
+    },
+
+    {
+      "name": "CAN_ABLE_TO",
+      "pattern": [{"LEMMA":"be"},{"LEMMA":"able"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"CAN","emit_head_verb":true}
+    },
+    {
+      "name": "SHOULD_SUPPOSED_TO",
+      "pattern": [{"LEMMA":"be"},{"LEMMA":"suppose"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"SHOULD","emit_head_verb":true}
+    },
+    {
+      "name": "SOON_ABOUT_TO",
+      "pattern": [{"LEMMA":"be"},{"LOWER":"about"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"SOON","emit_head_verb":true}
+    },
+
+    {
+      "name": "PLAN_TO",
+      "pattern": [{"LEMMA":"plan"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"PLAN","emit_head_verb":true}
+    },
+    {
+      "name": "TRY_TO",
+      "pattern": [{"LEMMA":"try"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"TRY","emit_head_verb":true}
+    },
+    {
+      "name": "START_TO",
+      "pattern": [{"LEMMA":"start"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"START","emit_head_verb":true}
+    },
+    {
+      "name": "BEGIN_TO",
+      "pattern": [{"LEMMA":"begin"},{"LOWER":"to"},{"TAG":"VB"}],
+      "action": {"type":"emit_gloss","gloss":"START","emit_head_verb":true}
+    },
+    {
+      "name": "STOP_VBG",
+      "pattern": [{"LEMMA":"stop"},{"TAG":"VBG"}],
+      "action": {"type":"emit_gloss","gloss":"STOP","emit_head_verb":true}
+    },
+    {
+      "name": "KEEP_VBG",
+      "pattern": [{"LEMMA":"keep"},{"TAG":"VBG"}],
+      "action": {"type":"emit_gloss","gloss":"CONTINUE","emit_head_verb":true}
+    },
+
+    {
+      "name": "CALL_MAKE_A_CALL",
+      "pattern": [{"LEMMA":"make"},{"LOWER":"a"},{"LEMMA":"call"}],
+      "action": {"type":"emit_gloss","gloss":"CALL","emit_head_verb":false}
+    },
+    {
+      "name": "PHOTO_TAKE_A_PHOTO",
+      "pattern": [{"LEMMA":"take"},{"LOWER":"a"},{"LEMMA":"photo"}],
+      "action": {"type":"emit_gloss","gloss":"PHOTO-TAKE","emit_head_verb":false}
+    },
+    {
+      "name": "MAKE_DECISION",
+      "pattern": [{"LEMMA":"make"},{"LOWER":"a"},{"LEMMA":"decision"}],
+      "action": {"type":"emit_gloss","gloss":"DECIDE","emit_head_verb":false}
+    },
+    {
+      "name": "MAKE_APPOINTMENT",
+      "pattern": [{"LEMMA":"make"},{"LOWER":"an"},{"LEMMA":"appointment"}],
+      "action": {"type":"emit_gloss","gloss":"APPOINTMENT","emit_head_verb":false}
+    },
+    {
+      "name": "TAKE_BREAK",
+      "pattern": [{"LEMMA":"take"},{"LOWER":"a"},{"LEMMA":"break"}],
+      "action": {"type":"emit_gloss","gloss":"BREAK","emit_head_verb":false}
+    },
+    {
+      "name": "PAY_ATTENTION",
+      "pattern": [{"LEMMA":"pay"},{"LEMMA":"attention"}],
+      "action": {"type":"emit_gloss","gloss":"ATTENTION","emit_head_verb":false}
+    },
+
+    {
+      "name": "LOOK_FOR",
+      "pattern": [{"LEMMA":"look"},{"LOWER":"for"}],
+      "action": {"type":"emit_gloss","gloss":"SEARCH","emit_head_verb":false}
+    },
+    {
+      "name": "FIND_OUT",
+      "pattern": [{"LEMMA":"find"},{"LOWER":"out"}],
+      "action": {"type":"emit_gloss","gloss":"FIND-OUT","emit_head_verb":false}
+    },
+    {
+      "name": "FIGURE_OUT",
+      "pattern": [{"LEMMA":"figure"},{"LOWER":"out"}],
+      "action": {"type":"emit_gloss","gloss":"FIGURE-OUT","emit_head_verb":false}
+    },
+    {
+      "name": "GIVE_UP",
+      "pattern": [{"LEMMA":"give"},{"LOWER":"up"}],
+      "action": {"type":"emit_gloss","gloss":"GIVE-UP","emit_head_verb":false}
+    },
+    {
+      "name": "TURN_ON",
+      "pattern": [{"LEMMA":"turn"},{"LOWER":"on"}],
+      "action": {"type":"emit_gloss","gloss":"TURN-ON","emit_head_verb":false}
+    },
+    {
+      "name": "TURN_OFF",
+      "pattern": [{"LEMMA":"turn"},{"LOWER":"off"}],
+      "action": {"type":"emit_gloss","gloss":"TURN-OFF","emit_head_verb":false}
+    },
+    {
+      "name": "PICK_UP",
+      "pattern": [{"LEMMA":"pick"},{"LOWER":"up"}],
+      "action": {"type":"emit_gloss","gloss":"PICK-UP","emit_head_verb":false}
+    },
+    {
+      "name": "SET_UP",
+      "pattern": [{"LEMMA":"set"},{"LOWER":"up"}],
+      "action": {"type":"emit_gloss","gloss":"SET-UP","emit_head_verb":false}
+    },
+    {
+      "name": "TAKE_OFF",
+      "pattern": [{"LEMMA":"take"},{"LOWER":"off"}],
+      "action": {"type":"emit_gloss","gloss":"TAKE-OFF","emit_head_verb":false}
+    },
+    {
+      "name": "TAKE_CARE",
+      "pattern": [{"LEMMA":"take"},{"LEMMA":"care"}],
+      "action": {"type":"emit_gloss","gloss":"TAKE-CARE","emit_head_verb":false}
+    },
+
+    {
+      "name": "EACH_OTHER",
+      "pattern": [{"LOWER":"each"},{"LOWER":"other"}],
+      "action": {"type":"emit_gloss","gloss":"EACH-OTHER","emit_head_verb":false}
+    },
+    {
+      "name": "BY_MYSELF",
+      "pattern": [{"LOWER":"by"},{"LOWER":"myself"}],
+      "action": {"type":"emit_gloss","gloss":"ALONE-ME","emit_head_verb":false}
+    },
+    {
+      "name": "BY_YOURSELF",
+      "pattern": [{"LOWER":"by"},{"LOWER":"yourself"}],
+      "action": {"type":"emit_gloss","gloss":"ALONE-YOU","emit_head_verb":false}
+    },
+    {
+      "name": "BY_HIMSELF",
+      "pattern": [{"LOWER":"by"},{"LOWER":"himself"}],
+      "action": {"type":"emit_gloss","gloss":"ALONE-HE","emit_head_verb":false}
+    },
+    {
+      "name": "BY_HERSELF",
+      "pattern": [{"LOWER":"by"},{"LOWER":"herself"}],
+      "action": {"type":"emit_gloss","gloss":"ALONE-SHE","emit_head_verb":false}
+    },
+    {
+      "name": "BY_THEMSELVES",
+      "pattern": [{"LOWER":"by"},{"LOWER":"themselves"}],
+      "action": {"type":"emit_gloss","gloss":"ALONE-THEY","emit_head_verb":false}
+    },
+
+    {
+      "name": "RIGHT_NOW",
+      "pattern": [{"LOWER":"right"},{"LOWER":"now"}],
+      "action": {"type":"emit_gloss","gloss":"NOW","emit_head_verb":false}
+    },
+    {
+      "name": "RIGHT_AWAY",
+      "pattern": [{"LOWER":"right"},{"LOWER":"away"}],
+      "action": {"type":"emit_gloss","gloss":"IMMEDIATELY","emit_head_verb":false}
+    },
+    {
+      "name": "IN_FRONT_OF",
+      "pattern": [{"LOWER":"in"},{"LOWER":"front"},{"LOWER":"of"}],
+      "action": {"type":"emit_gloss","gloss":"IN-FRONT-OF","emit_head_verb":false}
+    },
+    {
+      "name": "OUT_OF",
+      "pattern": [{"LOWER":"out"},{"LOWER":"of"}],
+      "action": {"type":"emit_gloss","gloss":"OUT-OF","emit_head_verb":false}
+    },
+    {
+      "name": "ACCORDING_TO",
+      "pattern": [{"LOWER":"according"},{"LOWER":"to"}],
+      "action": {"type":"emit_gloss","gloss":"ACCORDING-TO","emit_head_verb":false}
+    },
+    {
+      "name": "AT_LEAST",
+      "pattern": [{"LOWER":"at"},{"LOWER":"least"}],
+      "action": {"type":"emit_gloss","gloss":"AT-LEAST","emit_head_verb":false}
+    },
+    {
+      "name": "AT_MOST",
+      "pattern": [{"LOWER":"at"},{"LOWER":"most"}],
+      "action": {"type":"emit_gloss","gloss":"AT-MOST","emit_head_verb":false}
+    },
+
+    {
+      "name": "A_COUPLE_OF",
+      "pattern": [{"LOWER":"a"},{"LEMMA":"couple"},{"LOWER":"of"}],
+      "action": {"type":"emit_gloss","gloss":"COUPLE","emit_head_verb":false}
+    },
+    {
+      "name": "A_FEW",
+      "pattern": [{"LOWER":"a"},{"LEMMA":"few"}],
+      "action": {"type":"emit_gloss","gloss":"FEW","emit_head_verb":false}
+    },
+    {
+      "name": "A_LITTLE",
+      "pattern": [{"LOWER":"a"},{"LEMMA":"little"}],
+      "action": {"type":"emit_gloss","gloss":"LITTLE","emit_head_verb":false}
+    },
+    {
+      "name": "KIND_OF",
+      "pattern": [{"LEMMA":"kind"},{"LOWER":"of"}],
+      "action": {"type":"emit_gloss","gloss":"KIND-OF","emit_head_verb":false}
+    },
+    {
+      "name": "SORT_OF",
+      "pattern": [{"LEMMA":"sort"},{"LOWER":"of"}],
+      "action": {"type":"emit_gloss","gloss":"SORT-OF","emit_head_verb":false}
+    },
+
+    {
+      "name": "LONG_TIME",
+      "pattern": [{"LEMMA":"long"},{"LEMMA":"time"}],
+      "action": {"type":"emit_gloss","gloss":"LONG-TIME","emit_head_verb":false}
+    },
+
+    {
+      "name": "POST_INTENS_A_LOT",
+      "pattern": [{"LOWER":"a"},{"LOWER":"lot"}],
+      "action": {"type":"post_intens","amount":1}
+    },
+    {
+      "name": "POST_INTENS_SO_MUCH",
+      "pattern": [{"LOWER":"so"},{"LOWER":"much"}],
+      "action": {"type":"post_intens","amount":1}
+    },
+    {
+      "name": "POST_INTENS_VERY_MUCH",
+      "pattern": [{"LOWER":"very"},{"LOWER":"much"}],
+      "action": {"type":"post_intens","amount":1}
+    }
+  ]
+}
