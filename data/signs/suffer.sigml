@@ -1,0 +1,18 @@
+<sigml>
+
+	<hns_sign gloss="suffer">
+		<hamnosys_nonmanual>
+			<hnm_mouthgesture tag="L07"/>
+			<hnm_eyebrows movement="fu"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfinger2/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamchest/>
+			<hamtwisting/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

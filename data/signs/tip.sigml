@@ -1,0 +1,17 @@
+<sigml>
+
+	<hns_sign gloss="tip">
+		<hamnosys_nonmanual>
+			<hnm_mouthpicture picture="tIp"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfinger2/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamforehead/>
+			<hamtapping/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

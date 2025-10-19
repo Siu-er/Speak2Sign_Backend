@@ -1,0 +1,17 @@
+<sigml>
+
+	<hns_sign gloss="problem">
+		<hamnosys_nonmanual>
+			<hnm_mouthpicture picture="prAb"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfinger2/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamchest/>
+			<hamknocking/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

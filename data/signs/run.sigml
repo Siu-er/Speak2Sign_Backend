@@ -1,0 +1,18 @@
+<sigml>
+
+	<hns_sign gloss="run">
+		<hamnosys_nonmanual>
+			<hnm_mouthpicture picture="r2n"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfinger2/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamchest/>
+			<hamalternating/>
+			<hammoveo/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

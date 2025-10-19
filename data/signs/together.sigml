@@ -1,0 +1,17 @@
+<sigml>
+
+	<hns_sign gloss="together">
+		<hamnosys_nonmanual>
+			<hnm_mouthpicture picture="tuG"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfist/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
+			<hampalmu/>
+			<hamchest/>
+			<hamclose/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

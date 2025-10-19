@@ -1,0 +1,16 @@
+<sigml>
+
+	<hns_sign gloss="keep">
+		<hamnosys_nonmanual>
+			<hnm_mouthpicture picture="kip"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfist/>
+			<hamextfingero/>
+			<hampalmu/>
+			<hamchest/>
+			<hamclose/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

@@ -1,0 +1,17 @@
+<sigml>
+
+	<hns_sign gloss="week">
+		<hamnosys_nonmanual>
+			<hnm_mouthpicture picture="wik"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfinger2/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamchest/>
+			<hamsliding/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

@@ -1,0 +1,17 @@
+<sigml>
+
+	<hns_sign gloss="tech">
+		<hamnosys_nonmanual>
+			<hnm_mouthpicture picture="tEk"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfinger25/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamchest/>
+			<hamtapping/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

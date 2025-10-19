@@ -1,0 +1,17 @@
+<sigml>
+
+	<hns_sign gloss="project">
+		<hamnosys_nonmanual>
+			<hnm_mouthpicture picture="prA"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamflathand/>
+			<hamextfingeru/>
+			<hampalmd/>
+			<hamchest/>
+			<hammoveur/>
+			<hamsmallmod/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

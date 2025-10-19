@@ -1,0 +1,17 @@
+<sigml>
+
+	<hns_sign gloss="night">
+		<hamnosys_nonmanual>
+			<hnm_mouthpicture picture="naIt"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamflathand/>
+			<hamextfingerd/>
+			<hampalmd/>
+			<hamhead/>
+			<hamarcmod/>
+			<hammoved/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

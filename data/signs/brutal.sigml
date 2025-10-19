@@ -1,0 +1,18 @@
+<sigml>
+
+	<hns_sign gloss="brutal">
+		<hamnosys_nonmanual>
+			<hnm_mouthgesture tag="L07"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfist/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamchest/>
+			<hamstraightmod/>
+			<hammovedo/>
+			<hamrepeatfromstart/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

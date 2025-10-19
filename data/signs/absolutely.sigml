@@ -1,0 +1,19 @@
+<sigml>
+
+	<hns_sign gloss="absolutely">
+		<hamnosys_nonmanual>
+			<hnm_mouthgesture tag="L05"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfist/>
+			<hamthumboutmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamchest/>
+			<hamstraightmod/>
+			<hammovedo/>
+			<hamrepeatfromstart/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

@@ -1,0 +1,16 @@
+<sigml>
+
+	<hns_sign gloss="work">
+		<hamnosys_nonmanual>
+			<hnm_mouthpicture picture="w3rk"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfist/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamchest/>
+			<hamhammering/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>

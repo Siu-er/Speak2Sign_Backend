@@ -1,0 +1,16 @@
+<sigml>
+
+	<hns_sign gloss="half">
+		<hamnosys_nonmanual>
+			<hnm_mouthpicture picture="hAf"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamflathand/>
+			<hamextfingeru/>
+			<hampalml/>
+			<hamchest/>
+			<hamslicing/>
+		</hamnosys_manual>
+	</hns_sign>
+
+</sigml>
