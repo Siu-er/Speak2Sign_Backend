@@ -11,3 +11,4 @@ spacy~=3.8.7
 wordfreq~=3.1.1
 webrtcvad~=2.0.10
 pydub~=0.25.1
+tensorflow>=2.16.0

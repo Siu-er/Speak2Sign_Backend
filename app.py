@@ -11,6 +11,7 @@ import time
 from asl_glosser import ASLGlosser, GlossResult
 from sigml_generator import SiGMLGenerator
 from audio_utils import load_audio_from_bytes
+from asl_sign_recognizer import ASLSignRecognizer
 
 app = Flask(__name__)
 CORS(app)
@@ -29,6 +30,7 @@ whisper_processor = None
 whisper_model = None
 asl_glosser = None
 sigml_generator = None
+asl_sign_recognizer = None
 models_initialized = False
 
 # Default Whisper model - optimized for speed (base is ~6x faster than large)
@@ -36,7 +38,7 @@ WHISPER_MODEL_NAME = "openai/whisper-base"
 
 def init_models():
     """Initialize all models at server startup"""
-    global whisper_processor, whisper_model, asl_glosser, sigml_generator, models_initialized
+    global whisper_processor, whisper_model, asl_glosser, sigml_generator, asl_sign_recognizer, models_initialized
 
     # Check if already initialized
     if models_initialized:
@@ -84,7 +86,14 @@ def init_models():
         sigml_time = time.time() - start_time
         logger.info(f"SiGML Generator loaded successfully in {sigml_time:.2f}s")
 
-        total_time = whisper_time + glosser_time + sigml_time
+        # Load ASL Sign Recognizer
+        logger.info("Loading ASL Sign Recognizer...")
+        start_time = time.time()
+        asl_sign_recognizer = ASLSignRecognizer(os.path.join("data", "models"))
+        recognizer_time = time.time() - start_time
+        logger.info(f"ASL Sign Recognizer loaded successfully in {recognizer_time:.2f}s")
+
+        total_time = whisper_time + glosser_time + sigml_time + recognizer_time
         logger.info("=" * 60)
         logger.info("ALL MODELS LOADED SUCCESSFULLY!")
         logger.info(f"Total loading time: {total_time:.2f}s")
@@ -142,6 +151,7 @@ def root():
             'gloss_to_sigml': '/gloss-to-sigml',
             'full_pipeline': '/full-pipeline',
             'text_pipeline': '/text-pipeline',
+            'sign_to_text': '/sign-to-text',
         },
         'status': 'running'
     })
@@ -155,7 +165,8 @@ def health_check():
             'whisper_processor': whisper_processor is not None,
             'whisper_model': whisper_model is not None,
             'asl_glosser': asl_glosser is not None,
-            'sigml_generator': sigml_generator is not None
+            'sigml_generator': sigml_generator is not None,
+            'asl_sign_recognizer': asl_sign_recognizer is not None
         }
 
         all_models_loaded = all(models_status.values())
@@ -543,6 +554,83 @@ def text_pipeline():
         return jsonify({'error': f'Text pipeline processing failed: {str(e)}'}), 500
 
 
+@app.route('/sign-to-text', methods=['POST'])
+def sign_to_text():
+    """Recognize ASL sign from MediaPipe landmark sequence.
+
+    Request body:
+        landmarks: array of shape [num_frames][543][3] - MediaPipe Holistic landmarks
+                   Ordering: face(468) + left_hand(21) + pose(33) + right_hand(21)
+        return_all_probs: bool, optional. If true, response includes the full
+                          250-class softmax for client-side EMA smoothing.
+
+    Returns:
+        sign: predicted sign label
+        confidence: prediction confidence (0-1)
+        top_5: list of top 5 predictions with labels, class_index, and confidences
+        all_probs: optional, full 250-element softmax vector
+    """
+    try:
+        if asl_sign_recognizer is None:
+            return jsonify({'error': 'ASL sign recognizer not initialized'}), 503
+
+        data = request.get_json()
+        if not data or 'landmarks' not in data:
+            return jsonify({'error': 'Missing landmarks in request body'}), 400
+
+        landmarks = data['landmarks']
+        if not isinstance(landmarks, list) or len(landmarks) == 0:
+            return jsonify({'error': 'Landmarks must be a non-empty array'}), 400
+
+        return_all_probs = bool(data.get('return_all_probs', False))
+
+        import numpy as np
+        # Replace JSON null (from JS NaN) with float('nan') before numpy conversion.
+        # This preserves NaN semantics that the model's internal preprocessing needs.
+        def nulls_to_nan(obj):
+            if isinstance(obj, list):
+                return [nulls_to_nan(v) for v in obj]
+            return float('nan') if obj is None else obj
+        landmarks = nulls_to_nan(landmarks)
+        landmarks_array = np.array(landmarks, dtype=np.float32)
+
+        if landmarks_array.ndim != 3 or landmarks_array.shape[1] != 543 or landmarks_array.shape[2] != 3:
+            return jsonify({
+                'error': f'Invalid landmarks shape: expected (N, 543, 3), got {landmarks_array.shape}'
+            }), 400
+
+        result = asl_sign_recognizer.predict(
+            landmarks_array, return_all_probs=return_all_probs
+        )
+
+        response = {
+            'sign': result['sign'],
+            'confidence': result['confidence'],
+            'top_5': result['top_5'],
+            'num_frames': landmarks_array.shape[0],
+            'success': True,
+        }
+        if return_all_probs:
+            response['all_probs'] = result['all_probs']
+        return jsonify(response)
+
+    except Exception as e:
+        logger.error(f"Sign recognition error: {e}")
+        return jsonify({'error': f'Sign recognition failed: {str(e)}'}), 500
+
+
+@app.route('/sign-labels', methods=['GET'])
+def sign_labels():
+    """Return the full list of sign labels indexed by class index."""
+    if asl_sign_recognizer is None:
+        return jsonify({'error': 'ASL sign recognizer not initialized'}), 503
+    return jsonify({
+        'labels': asl_sign_recognizer.get_label_map(),
+        'num_classes': asl_sign_recognizer.num_signs,
+        'success': True,
+    })
+
+
 def create_app():
     """Application factory pattern"""
     return app
@@ -553,7 +641,8 @@ def check_model_status():
         'whisper_processor': whisper_processor is not None,
         'whisper_model': whisper_model is not None,
         'asl_glosser': asl_glosser is not None,
-        'sigml_generator': sigml_generator is not None
+        'sigml_generator': sigml_generator is not None,
+        'asl_sign_recognizer': asl_sign_recognizer is not None
     }
 
     all_loaded = all(models_status.values())
