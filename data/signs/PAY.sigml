@@ -1,0 +1,11 @@
+<sigml>
+	<hns_sign gloss="pay">
+		<hamnosys_manual>
+			<hampinchall/>
+			<hamextfingero/>
+			<hampalmu/>
+			<hamchest/>
+			<hammoveo/>
+		</hamnosys_manual>
+	</hns_sign>
+</sigml>

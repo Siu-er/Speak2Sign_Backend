@@ -1,0 +1,13 @@
+<sigml>
+	<hns_sign gloss="sister">
+		<hamnosys_manual>
+			<hamfinger2/>
+			<hamthumboutmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamcheek/>
+			<hammoved/>
+			<hamtouch/>
+		</hamnosys_manual>
+	</hns_sign>
+</sigml>

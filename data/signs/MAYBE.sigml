@@ -1,0 +1,14 @@
+<sigml>
+	<hns_sign gloss="maybe">
+		<hamnosys_manual>
+			<hamsymmlr/>
+			<hamflathand/>
+			<hamextfingero/>
+			<hampalmu/>
+			<hamchest/>
+			<hammoveu/>
+			<hammoved/>
+			<hamrepeatfromstart/>
+		</hamnosys_manual>
+	</hns_sign>
+</sigml>

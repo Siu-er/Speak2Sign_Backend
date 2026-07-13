@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sigml SYSTEM "http://www.visicast.cmp.uea.ac.uk/sigml/sigml.dtd">
+<sigml>
+
+<hamgestural_sign gloss="Tuesday1">
+  <sign_manual both_hands="true" lr_symm="true">
+    <split_handconfig>
+      <handconfig handshape="finger2" thumbpos="across"/>
+      <handconfig handshape="flat"/>
+    </split_handconfig>
+    <split_handconfig>
+      <handconfig extfidir="l" palmor="l"/>
+      <handconfig extfidir="o" palmor="r"/>
+    </split_handconfig>
+    <location_bodyarm location="shoulders"/>
+    <rpt_motion repetition="fromstart">
+      <tgt_motion>
+        <directedmotion direction="r"/>
+        <handconstellation contact="touch"/>
+      </tgt_motion>
+    </rpt_motion>
+  </sign_manual>
+</hamgestural_sign>
+
+</sigml>

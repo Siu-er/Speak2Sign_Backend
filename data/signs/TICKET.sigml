@@ -1,0 +1,12 @@
+<sigml>
+	<hns_sign gloss="ticket">
+		<hamnosys_manual>
+			<hampinch12/>
+			<hamfingerbendmod/>
+			<hamextfingero/>
+			<hampalml/>
+			<hamchest/>
+			<hamtapping/>
+		</hamnosys_manual>
+	</hns_sign>
+</sigml>

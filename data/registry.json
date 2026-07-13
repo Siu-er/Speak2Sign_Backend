@@ -1,0 +1,3220 @@
+{
+  "version": 1,
+  "target_language": "ASL",
+  "counts": {
+    "recognizer_classes": 250,
+    "synthesis_assets": 306,
+    "lexicon_words": 333,
+    "target_entries": 204
+  },
+  "entries": [
+    {
+      "gloss": "HELLO",
+      "tier": 1,
+      "category": "greeting",
+      "english": [
+        "hello",
+        "hi",
+        "hey"
+      ],
+      "recognizer_class": "hello",
+      "asset": "HELLO",
+      "lexicon_words": [
+        "hello",
+        "hey",
+        "hi"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BYE",
+      "tier": 1,
+      "category": "greeting",
+      "english": [
+        "bye",
+        "goodbye"
+      ],
+      "recognizer_class": "bye",
+      "asset": "BYE",
+      "lexicon_words": [
+        "bye",
+        "goodbye"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "PLEASE",
+      "tier": 1,
+      "category": "politeness",
+      "english": [
+        "please"
+      ],
+      "recognizer_class": "please",
+      "asset": "PLEASE",
+      "lexicon_words": [
+        "please"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "THANK-YOU",
+      "tier": 1,
+      "category": "politeness",
+      "english": [
+        "thanks",
+        "thank"
+      ],
+      "recognizer_class": null,
+      "asset": "THANK-YOU",
+      "lexicon_words": [
+        "thank",
+        "thanks"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SORRY",
+      "tier": 1,
+      "category": "politeness",
+      "english": [
+        "sorry"
+      ],
+      "recognizer_class": null,
+      "asset": "SORRY",
+      "lexicon_words": [
+        "sorry"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "OK",
+      "tier": 1,
+      "category": "politeness",
+      "english": [
+        "ok",
+        "okay"
+      ],
+      "recognizer_class": null,
+      "asset": null,
+      "lexicon_words": [
+        "ok",
+        "okay"
+      ],
+      "recog_status": "missing",
+      "synth_status": "fingerspell"
+    },
+    {
+      "gloss": "WELCOME",
+      "tier": 1,
+      "category": "politeness",
+      "english": [
+        "welcome"
+      ],
+      "recognizer_class": null,
+      "asset": "WELCOME",
+      "lexicon_words": [
+        "welcome"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "EXCUSE",
+      "tier": 1,
+      "category": "politeness",
+      "english": [
+        "excuse"
+      ],
+      "recognizer_class": null,
+      "asset": "EXCUSE",
+      "lexicon_words": [
+        "excuse"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "YES",
+      "tier": 1,
+      "category": "response",
+      "english": [
+        "yes",
+        "yeah"
+      ],
+      "recognizer_class": "yes",
+      "asset": "YES",
+      "lexicon_words": [
+        "yeah",
+        "yes"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "NO",
+      "tier": 1,
+      "category": "response",
+      "english": [
+        "no",
+        "nope"
+      ],
+      "recognizer_class": "no",
+      "asset": "NO",
+      "lexicon_words": [
+        "no",
+        "nope"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "MAYBE",
+      "tier": 1,
+      "category": "response",
+      "english": [
+        "maybe"
+      ],
+      "recognizer_class": null,
+      "asset": "MAYBE",
+      "lexicon_words": [
+        "maybe",
+        "maybe_adv"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "NOT",
+      "tier": 1,
+      "category": "response",
+      "english": [
+        "not"
+      ],
+      "recognizer_class": "not",
+      "asset": "NOT",
+      "lexicon_words": [
+        "not"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "ME",
+      "tier": 1,
+      "category": "pronoun",
+      "english": [
+        "i",
+        "me",
+        "my",
+        "mine"
+      ],
+      "recognizer_class": null,
+      "asset": "ME",
+      "lexicon_words": [
+        "i",
+        "me",
+        "mine",
+        "my"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "YOU",
+      "tier": 1,
+      "category": "pronoun",
+      "english": [
+        "you",
+        "your",
+        "yours"
+      ],
+      "recognizer_class": null,
+      "asset": "YOU",
+      "lexicon_words": [
+        "you",
+        "your",
+        "yours"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WE",
+      "tier": 1,
+      "category": "pronoun",
+      "english": [
+        "we",
+        "us",
+        "our",
+        "ours"
+      ],
+      "recognizer_class": null,
+      "asset": "WE",
+      "lexicon_words": [
+        "our",
+        "ours",
+        "us",
+        "we"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "HE",
+      "tier": 1,
+      "category": "pronoun",
+      "english": [
+        "he",
+        "him",
+        "his"
+      ],
+      "recognizer_class": null,
+      "asset": "HE",
+      "lexicon_words": [
+        "he",
+        "him",
+        "his"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SHE",
+      "tier": 1,
+      "category": "pronoun",
+      "english": [
+        "she",
+        "her",
+        "hers"
+      ],
+      "recognizer_class": null,
+      "asset": "SHE",
+      "lexicon_words": [
+        "her",
+        "hers",
+        "she"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "THEY",
+      "tier": 1,
+      "category": "pronoun",
+      "english": [
+        "they",
+        "them",
+        "their"
+      ],
+      "recognizer_class": null,
+      "asset": "THEY",
+      "lexicon_words": [
+        "their",
+        "theirs",
+        "them",
+        "they"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "IT",
+      "tier": 1,
+      "category": "pronoun",
+      "english": [
+        "it",
+        "its"
+      ],
+      "recognizer_class": null,
+      "asset": "IT",
+      "lexicon_words": [
+        "it",
+        "its"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WHO",
+      "tier": 1,
+      "category": "question",
+      "english": [
+        "who"
+      ],
+      "recognizer_class": "who",
+      "asset": "WHO",
+      "lexicon_words": [
+        "who"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WHAT",
+      "tier": 1,
+      "category": "question",
+      "english": [
+        "what"
+      ],
+      "recognizer_class": null,
+      "asset": "WHAT",
+      "lexicon_words": [
+        "what"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WHERE",
+      "tier": 1,
+      "category": "question",
+      "english": [
+        "where"
+      ],
+      "recognizer_class": "where",
+      "asset": "WHERE",
+      "lexicon_words": [
+        "where"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WHEN",
+      "tier": 1,
+      "category": "question",
+      "english": [
+        "when"
+      ],
+      "recognizer_class": null,
+      "asset": "WHEN",
+      "lexicon_words": [
+        "when"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WHY",
+      "tier": 1,
+      "category": "question",
+      "english": [
+        "why"
+      ],
+      "recognizer_class": "why",
+      "asset": "WHY",
+      "lexicon_words": [
+        "why"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "HOW",
+      "tier": 1,
+      "category": "question",
+      "english": [
+        "how"
+      ],
+      "recognizer_class": null,
+      "asset": "HOW",
+      "lexicon_words": [
+        "how"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WHICH",
+      "tier": 1,
+      "category": "question",
+      "english": [
+        "which"
+      ],
+      "recognizer_class": null,
+      "asset": "WHICH",
+      "lexicon_words": [
+        "which"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "NOW",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "now"
+      ],
+      "recognizer_class": "now",
+      "asset": "NOW",
+      "lexicon_words": [
+        "now"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "TODAY",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "today"
+      ],
+      "recognizer_class": null,
+      "asset": "TODAY",
+      "lexicon_words": [
+        "today"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "TOMORROW",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "tomorrow"
+      ],
+      "recognizer_class": "tomorrow",
+      "asset": "TOMORROW",
+      "lexicon_words": [
+        "tomorrow"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "YESTERDAY",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "yesterday"
+      ],
+      "recognizer_class": "yesterday",
+      "asset": "YESTERDAY",
+      "lexicon_words": [
+        "yesterday"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "LATER",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "later"
+      ],
+      "recognizer_class": "later",
+      "asset": "LATER",
+      "lexicon_words": [
+        "later"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SOON",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "soon"
+      ],
+      "recognizer_class": null,
+      "asset": "SOON",
+      "lexicon_words": [
+        "soon"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "MORNING",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "morning"
+      ],
+      "recognizer_class": "morning",
+      "asset": "MORNING",
+      "lexicon_words": [
+        "morning"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "AFTERNOON",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "afternoon"
+      ],
+      "recognizer_class": null,
+      "asset": "AFTERNOON",
+      "lexicon_words": [
+        "afternoon"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "EVENING",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "evening"
+      ],
+      "recognizer_class": null,
+      "asset": "EVENING",
+      "lexicon_words": [
+        "evening"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "NIGHT",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "night",
+        "tonight"
+      ],
+      "recognizer_class": "night",
+      "asset": "NIGHT",
+      "lexicon_words": [
+        "night",
+        "tonight"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WEEK",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "week"
+      ],
+      "recognizer_class": null,
+      "asset": "WEEK",
+      "lexicon_words": [
+        "week"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WEEKEND",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "weekend"
+      ],
+      "recognizer_class": null,
+      "asset": null,
+      "lexicon_words": [
+        "weekend"
+      ],
+      "recog_status": "missing",
+      "synth_status": "fingerspell"
+    },
+    {
+      "gloss": "TIME",
+      "tier": 1,
+      "category": "time",
+      "english": [
+        "time"
+      ],
+      "recognizer_class": "time",
+      "asset": "TIME",
+      "lexicon_words": [
+        "time"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "MONDAY",
+      "tier": 2,
+      "category": "time",
+      "english": [
+        "monday"
+      ],
+      "recognizer_class": null,
+      "asset": null,
+      "lexicon_words": [
+        "monday"
+      ],
+      "recog_status": "missing",
+      "synth_status": "fingerspell"
+    },
+    {
+      "gloss": "TUESDAY",
+      "tier": 2,
+      "category": "time",
+      "english": [
+        "tuesday"
+      ],
+      "recognizer_class": null,
+      "asset": "TUESDAY",
+      "lexicon_words": [
+        "tuesday"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WEDNESDAY",
+      "tier": 2,
+      "category": "time",
+      "english": [
+        "wednesday"
+      ],
+      "recognizer_class": null,
+      "asset": null,
+      "lexicon_words": [
+        "wednesday"
+      ],
+      "recog_status": "missing",
+      "synth_status": "fingerspell"
+    },
+    {
+      "gloss": "THURSDAY",
+      "tier": 2,
+      "category": "time",
+      "english": [
+        "thursday"
+      ],
+      "recognizer_class": null,
+      "asset": null,
+      "lexicon_words": [
+        "thursday"
+      ],
+      "recog_status": "missing",
+      "synth_status": "fingerspell"
+    },
+    {
+      "gloss": "FRIDAY",
+      "tier": 2,
+      "category": "time",
+      "english": [
+        "friday"
+      ],
+      "recognizer_class": null,
+      "asset": null,
+      "lexicon_words": [
+        "friday"
+      ],
+      "recog_status": "missing",
+      "synth_status": "fingerspell"
+    },
+    {
+      "gloss": "SATURDAY",
+      "tier": 2,
+      "category": "time",
+      "english": [
+        "saturday"
+      ],
+      "recognizer_class": null,
+      "asset": null,
+      "lexicon_words": [
+        "saturday"
+      ],
+      "recog_status": "missing",
+      "synth_status": "fingerspell"
+    },
+    {
+      "gloss": "SUNDAY",
+      "tier": 2,
+      "category": "time",
+      "english": [
+        "sunday"
+      ],
+      "recognizer_class": null,
+      "asset": null,
+      "lexicon_words": [
+        "sunday"
+      ],
+      "recog_status": "missing",
+      "synth_status": "fingerspell"
+    },
+    {
+      "gloss": "MOTHER",
+      "tier": 1,
+      "category": "family",
+      "english": [
+        "mom",
+        "mother"
+      ],
+      "recognizer_class": "mom",
+      "asset": "MOTHER",
+      "lexicon_words": [
+        "mom",
+        "mother"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "FATHER",
+      "tier": 1,
+      "category": "family",
+      "english": [
+        "dad",
+        "father"
+      ],
+      "recognizer_class": "dad",
+      "asset": "FATHER",
+      "lexicon_words": [
+        "dad",
+        "father"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "PARENT",
+      "tier": 2,
+      "category": "family",
+      "english": [
+        "parent"
+      ],
+      "recognizer_class": null,
+      "asset": "PARENT",
+      "lexicon_words": [
+        "parent"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BROTHER",
+      "tier": 1,
+      "category": "family",
+      "english": [
+        "brother"
+      ],
+      "recognizer_class": "brother",
+      "asset": "BROTHER",
+      "lexicon_words": [
+        "brother"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SISTER",
+      "tier": 1,
+      "category": "family",
+      "english": [
+        "sister"
+      ],
+      "recognizer_class": null,
+      "asset": "SISTER",
+      "lexicon_words": [
+        "sister"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "GRANDMOTHER",
+      "tier": 2,
+      "category": "family",
+      "english": [
+        "grandma",
+        "grandmother"
+      ],
+      "recognizer_class": "grandma",
+      "asset": "GRANDMOTHER",
+      "lexicon_words": [
+        "grandma",
+        "grandmother"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "GRANDFATHER",
+      "tier": 2,
+      "category": "family",
+      "english": [
+        "grandpa",
+        "grandfather"
+      ],
+      "recognizer_class": "grandpa",
+      "asset": "GRANDFATHER",
+      "lexicon_words": [
+        "grandfather",
+        "grandpa"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "CHILD",
+      "tier": 1,
+      "category": "family",
+      "english": [
+        "child",
+        "kid"
+      ],
+      "recognizer_class": "child",
+      "asset": "CHILD",
+      "lexicon_words": [
+        "child",
+        "kid"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "FRIEND",
+      "tier": 1,
+      "category": "people",
+      "english": [
+        "friend"
+      ],
+      "recognizer_class": null,
+      "asset": "FRIEND",
+      "lexicon_words": [
+        "friend"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "FAMILY",
+      "tier": 1,
+      "category": "people",
+      "english": [
+        "family"
+      ],
+      "recognizer_class": null,
+      "asset": "FAMILY",
+      "lexicon_words": [
+        "family"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "MAN",
+      "tier": 1,
+      "category": "people",
+      "english": [
+        "man"
+      ],
+      "recognizer_class": "man",
+      "asset": "MAN",
+      "lexicon_words": [
+        "man"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WOMAN",
+      "tier": 1,
+      "category": "people",
+      "english": [
+        "woman",
+        "lady"
+      ],
+      "recognizer_class": null,
+      "asset": "WOMAN",
+      "lexicon_words": [
+        "lady",
+        "woman"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BOY",
+      "tier": 1,
+      "category": "people",
+      "english": [
+        "boy"
+      ],
+      "recognizer_class": "boy",
+      "asset": "BOY",
+      "lexicon_words": [
+        "boy"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "GIRL",
+      "tier": 1,
+      "category": "people",
+      "english": [
+        "girl"
+      ],
+      "recognizer_class": "girl",
+      "asset": "GIRL",
+      "lexicon_words": [
+        "girl"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "PERSON",
+      "tier": 1,
+      "category": "people",
+      "english": [
+        "person"
+      ],
+      "recognizer_class": "person",
+      "asset": "PERSON",
+      "lexicon_words": [
+        "person"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "PEOPLE",
+      "tier": 1,
+      "category": "people",
+      "english": [
+        "people"
+      ],
+      "recognizer_class": null,
+      "asset": "PEOPLE",
+      "lexicon_words": [
+        "people"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "NAME",
+      "tier": 1,
+      "category": "people",
+      "english": [
+        "name"
+      ],
+      "recognizer_class": null,
+      "asset": "NAME",
+      "lexicon_words": [
+        "name"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "DEAF",
+      "tier": 1,
+      "category": "people",
+      "english": [
+        "deaf"
+      ],
+      "recognizer_class": null,
+      "asset": "DEAF",
+      "lexicon_words": [
+        "deaf"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "HEARING",
+      "tier": 2,
+      "category": "people",
+      "english": [
+        "hearing"
+      ],
+      "recognizer_class": null,
+      "asset": "HEARING",
+      "lexicon_words": [
+        "hearing"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "EAT",
+      "tier": 1,
+      "category": "food",
+      "english": [
+        "eat",
+        "dine",
+        "food"
+      ],
+      "recognizer_class": "food",
+      "asset": "EAT",
+      "lexicon_words": [
+        "dine",
+        "eat",
+        "food"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "DRINK",
+      "tier": 1,
+      "category": "food",
+      "english": [
+        "drink"
+      ],
+      "recognizer_class": "drink",
+      "asset": "DRINK",
+      "lexicon_words": [
+        "drink"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WATER",
+      "tier": 1,
+      "category": "food",
+      "english": [
+        "water"
+      ],
+      "recognizer_class": "water",
+      "asset": "WATER",
+      "lexicon_words": [
+        "water"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "COFFEE",
+      "tier": 1,
+      "category": "food",
+      "english": [
+        "coffee"
+      ],
+      "recognizer_class": null,
+      "asset": "COFFEE",
+      "lexicon_words": [
+        "coffee"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "TEA",
+      "tier": 2,
+      "category": "food",
+      "english": [
+        "tea"
+      ],
+      "recognizer_class": null,
+      "asset": "TEA",
+      "lexicon_words": [
+        "tea"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "MILK",
+      "tier": 2,
+      "category": "food",
+      "english": [
+        "milk"
+      ],
+      "recognizer_class": "milk",
+      "asset": "MILK",
+      "lexicon_words": [
+        "milk"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BREAD",
+      "tier": 2,
+      "category": "food",
+      "english": [
+        "bread"
+      ],
+      "recognizer_class": null,
+      "asset": "BREAD",
+      "lexicon_words": [
+        "bread"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "HUNGRY",
+      "tier": 1,
+      "category": "food",
+      "english": [
+        "hungry"
+      ],
+      "recognizer_class": "hungry",
+      "asset": "HUNGRY",
+      "lexicon_words": [
+        "hungry"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "THIRSTY",
+      "tier": 2,
+      "category": "food",
+      "english": [
+        "thirsty"
+      ],
+      "recognizer_class": "thirsty",
+      "asset": "THIRSTY",
+      "lexicon_words": [
+        "thirsty"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "HOME",
+      "tier": 1,
+      "category": "place",
+      "english": [
+        "home",
+        "house",
+        "apartment"
+      ],
+      "recognizer_class": "home",
+      "asset": "HOME",
+      "lexicon_words": [
+        "apartment",
+        "home",
+        "house"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WORK",
+      "tier": 1,
+      "category": "place",
+      "english": [
+        "work",
+        "job"
+      ],
+      "recognizer_class": null,
+      "asset": "WORK",
+      "lexicon_words": [
+        "job",
+        "work",
+        "work_verb"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "OFFICE",
+      "tier": 2,
+      "category": "place",
+      "english": [
+        "office",
+        "workplace"
+      ],
+      "recognizer_class": null,
+      "asset": "OFFICE",
+      "lexicon_words": [
+        "office",
+        "workplace"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SCHOOL",
+      "tier": 1,
+      "category": "place",
+      "english": [
+        "school",
+        "college",
+        "university"
+      ],
+      "recognizer_class": null,
+      "asset": "SCHOOL",
+      "lexicon_words": [
+        "college",
+        "school",
+        "university"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "HOSPITAL",
+      "tier": 1,
+      "category": "place",
+      "english": [
+        "hospital",
+        "clinic"
+      ],
+      "recognizer_class": null,
+      "asset": "HOSPITAL",
+      "lexicon_words": [
+        "clinic",
+        "hospital"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "DOCTOR",
+      "tier": 1,
+      "category": "place",
+      "english": [
+        "doctor"
+      ],
+      "recognizer_class": null,
+      "asset": "DOCTOR",
+      "lexicon_words": [
+        "doctor"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "RESTAURANT",
+      "tier": 1,
+      "category": "place",
+      "english": [
+        "restaurant",
+        "cafe"
+      ],
+      "recognizer_class": null,
+      "asset": "RESTAURANT",
+      "lexicon_words": [
+        "cafe",
+        "restaurant"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "STORE",
+      "tier": 1,
+      "category": "place",
+      "english": [
+        "store",
+        "shop",
+        "supermarket"
+      ],
+      "recognizer_class": "store",
+      "asset": "STORE",
+      "lexicon_words": [
+        "shop",
+        "store",
+        "supermarket"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BANK",
+      "tier": 2,
+      "category": "place",
+      "english": [
+        "bank"
+      ],
+      "recognizer_class": null,
+      "asset": "BANK",
+      "lexicon_words": [
+        "bank"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BATHROOM",
+      "tier": 1,
+      "category": "place",
+      "english": [
+        "bathroom",
+        "toilet",
+        "restroom"
+      ],
+      "recognizer_class": null,
+      "asset": null,
+      "lexicon_words": [
+        "bathroom",
+        "restroom",
+        "toilet"
+      ],
+      "recog_status": "missing",
+      "synth_status": "fingerspell"
+    },
+    {
+      "gloss": "CITY",
+      "tier": 2,
+      "category": "place",
+      "english": [
+        "city"
+      ],
+      "recognizer_class": null,
+      "asset": "CITY",
+      "lexicon_words": [
+        "city"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "CAR",
+      "tier": 1,
+      "category": "transport",
+      "english": [
+        "car",
+        "vehicle"
+      ],
+      "recognizer_class": "car",
+      "asset": "CAR",
+      "lexicon_words": [
+        "car",
+        "vehicle"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BUS",
+      "tier": 1,
+      "category": "transport",
+      "english": [
+        "bus"
+      ],
+      "recognizer_class": null,
+      "asset": "BUS",
+      "lexicon_words": [
+        "bus"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "TRAIN",
+      "tier": 1,
+      "category": "transport",
+      "english": [
+        "train"
+      ],
+      "recognizer_class": null,
+      "asset": "TRAIN",
+      "lexicon_words": [
+        "train"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BIKE",
+      "tier": 2,
+      "category": "transport",
+      "english": [
+        "bike",
+        "bicycle"
+      ],
+      "recognizer_class": null,
+      "asset": "BIKE",
+      "lexicon_words": [
+        "bicycle",
+        "bike"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "AIRPORT",
+      "tier": 2,
+      "category": "transport",
+      "english": [
+        "airport"
+      ],
+      "recognizer_class": null,
+      "asset": "AIRPORT",
+      "lexicon_words": [
+        "airport"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "TICKET",
+      "tier": 2,
+      "category": "transport",
+      "english": [
+        "ticket"
+      ],
+      "recognizer_class": null,
+      "asset": "TICKET",
+      "lexicon_words": [
+        "ticket"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "MONEY",
+      "tier": 1,
+      "category": "object",
+      "english": [
+        "money",
+        "cash"
+      ],
+      "recognizer_class": null,
+      "asset": "MONEY",
+      "lexicon_words": [
+        "cash",
+        "money"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "PHONE",
+      "tier": 1,
+      "category": "object",
+      "english": [
+        "phone",
+        "cellphone",
+        "mobile"
+      ],
+      "recognizer_class": null,
+      "asset": "PHONE",
+      "lexicon_words": [
+        "cellphone",
+        "mobile",
+        "phone"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "COMPUTER",
+      "tier": 1,
+      "category": "object",
+      "english": [
+        "computer",
+        "pc",
+        "laptop"
+      ],
+      "recognizer_class": null,
+      "asset": "COMPUTER",
+      "lexicon_words": [
+        "computer",
+        "laptop",
+        "pc"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "KEY",
+      "tier": 2,
+      "category": "object",
+      "english": [
+        "key"
+      ],
+      "recognizer_class": null,
+      "asset": "KEY",
+      "lexicon_words": [
+        "key"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BOOK",
+      "tier": 2,
+      "category": "object",
+      "english": [
+        "book"
+      ],
+      "recognizer_class": "book",
+      "asset": "BOOK",
+      "lexicon_words": [
+        "book"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "PHOTO",
+      "tier": 2,
+      "category": "object",
+      "english": [
+        "photo",
+        "picture",
+        "image"
+      ],
+      "recognizer_class": null,
+      "asset": "PHOTO",
+      "lexicon_words": [
+        "image",
+        "photo",
+        "picture"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "HELP",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "help",
+        "assist"
+      ],
+      "recognizer_class": null,
+      "asset": "HELP",
+      "lexicon_words": [
+        "assist",
+        "help"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WANT",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "want"
+      ],
+      "recognizer_class": null,
+      "asset": "WANT",
+      "lexicon_words": [
+        "want"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "NEED",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "need"
+      ],
+      "recognizer_class": null,
+      "asset": "NEED",
+      "lexicon_words": [
+        "need"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "LIKE",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "like"
+      ],
+      "recognizer_class": "like",
+      "asset": "LIKE",
+      "lexicon_words": [
+        "like"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "LOVE",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "love"
+      ],
+      "recognizer_class": null,
+      "asset": "LOVE",
+      "lexicon_words": [
+        "love"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "GO",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "go"
+      ],
+      "recognizer_class": "go",
+      "asset": "GO",
+      "lexicon_words": [
+        "go"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "COME",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "come"
+      ],
+      "recognizer_class": null,
+      "asset": "COME",
+      "lexicon_words": [
+        "come"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "HAVE",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "have",
+        "has"
+      ],
+      "recognizer_class": "have",
+      "asset": "HAVE",
+      "lexicon_words": [
+        "has",
+        "have"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "KNOW",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "know"
+      ],
+      "recognizer_class": null,
+      "asset": "KNOW",
+      "lexicon_words": [
+        "know"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "UNDERSTAND",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "understand"
+      ],
+      "recognizer_class": null,
+      "asset": "UNDERSTAND",
+      "lexicon_words": [
+        "understand"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "THINK",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "think"
+      ],
+      "recognizer_class": "think",
+      "asset": "THINK",
+      "lexicon_words": [
+        "think"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SEE",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "see"
+      ],
+      "recognizer_class": "see",
+      "asset": "SEE",
+      "lexicon_words": [
+        "see"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "LOOK",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "look"
+      ],
+      "recognizer_class": "look",
+      "asset": "LOOK",
+      "lexicon_words": [
+        "look"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WATCH",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "watch"
+      ],
+      "recognizer_class": null,
+      "asset": "WATCH",
+      "lexicon_words": [
+        "watch"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "HEAR",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "hear",
+        "listen"
+      ],
+      "recognizer_class": "hear",
+      "asset": "HEAR",
+      "lexicon_words": [
+        "hear",
+        "listen"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SAY",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "say"
+      ],
+      "recognizer_class": "say",
+      "asset": "SAY",
+      "lexicon_words": [
+        "say"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "TELL",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "tell"
+      ],
+      "recognizer_class": null,
+      "asset": "TELL",
+      "lexicon_words": [
+        "tell"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "TALK",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "talk",
+        "speak"
+      ],
+      "recognizer_class": "talk",
+      "asset": "TALK",
+      "lexicon_words": [
+        "speak",
+        "talk"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "ASK",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "ask"
+      ],
+      "recognizer_class": null,
+      "asset": "ASK",
+      "lexicon_words": [
+        "ask"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "ANSWER",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "answer",
+        "reply",
+        "respond"
+      ],
+      "recognizer_class": null,
+      "asset": "ANSWER",
+      "lexicon_words": [
+        "answer",
+        "reply",
+        "respond"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SIGN",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "sign"
+      ],
+      "recognizer_class": null,
+      "asset": "SIGN",
+      "lexicon_words": [
+        "sign"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WRITE",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "write"
+      ],
+      "recognizer_class": null,
+      "asset": "WRITE",
+      "lexicon_words": [
+        "write"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "READ",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "read"
+      ],
+      "recognizer_class": "read",
+      "asset": "READ",
+      "lexicon_words": [
+        "read"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "LEARN",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "learn"
+      ],
+      "recognizer_class": null,
+      "asset": "LEARN",
+      "lexicon_words": [
+        "learn"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "TEACH",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "teach"
+      ],
+      "recognizer_class": null,
+      "asset": "TEACH",
+      "lexicon_words": [
+        "teach"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "STUDY",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "study"
+      ],
+      "recognizer_class": null,
+      "asset": "STUDY",
+      "lexicon_words": [
+        "study"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WORK-VERB",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "working"
+      ],
+      "recognizer_class": null,
+      "asset": null,
+      "lexicon_words": [
+        "working"
+      ],
+      "recog_status": "missing",
+      "synth_status": "fingerspell"
+    },
+    {
+      "gloss": "BUY",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "buy",
+        "purchase"
+      ],
+      "recognizer_class": null,
+      "asset": "BUY",
+      "lexicon_words": [
+        "buy",
+        "purchase"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "PAY",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "pay"
+      ],
+      "recognizer_class": null,
+      "asset": "PAY",
+      "lexicon_words": [
+        "pay"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SELL",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "sell"
+      ],
+      "recognizer_class": null,
+      "asset": "SELL",
+      "lexicon_words": [
+        "sell"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "GIVE",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "give"
+      ],
+      "recognizer_class": "give",
+      "asset": "GIVE",
+      "lexicon_words": [
+        "give"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "TAKE",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "take"
+      ],
+      "recognizer_class": null,
+      "asset": "TAKE",
+      "lexicon_words": [
+        "take"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "GET",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "get"
+      ],
+      "recognizer_class": null,
+      "asset": "GET",
+      "lexicon_words": [
+        "get"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BRING",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "bring"
+      ],
+      "recognizer_class": null,
+      "asset": "BRING",
+      "lexicon_words": [
+        "bring"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SEND",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "send"
+      ],
+      "recognizer_class": null,
+      "asset": "SEND",
+      "lexicon_words": [
+        "send"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "CALL",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "call"
+      ],
+      "recognizer_class": null,
+      "asset": "CALL",
+      "lexicon_words": [
+        "call"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "MEET",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "meet"
+      ],
+      "recognizer_class": null,
+      "asset": "MEET",
+      "lexicon_words": [
+        "meet"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WAIT",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "wait"
+      ],
+      "recognizer_class": "wait",
+      "asset": "WAIT",
+      "lexicon_words": [
+        "wait"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "STOP",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "stop"
+      ],
+      "recognizer_class": null,
+      "asset": "STOP",
+      "lexicon_words": [
+        "stop"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "START",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "start",
+        "begin"
+      ],
+      "recognizer_class": null,
+      "asset": "START",
+      "lexicon_words": [
+        "begin",
+        "start"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "FINISH",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "finish",
+        "end",
+        "done",
+        "already"
+      ],
+      "recognizer_class": "finish",
+      "asset": "FINISH",
+      "lexicon_words": [
+        "already",
+        "done",
+        "end",
+        "finish"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "OPEN",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "open"
+      ],
+      "recognizer_class": "open",
+      "asset": "OPEN",
+      "lexicon_words": [
+        "open"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "CLOSE",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "close"
+      ],
+      "recognizer_class": "close",
+      "asset": "CLOSE",
+      "lexicon_words": [],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "DRIVE",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "drive"
+      ],
+      "recognizer_class": null,
+      "asset": "DRIVE",
+      "lexicon_words": [
+        "drive"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WALK",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "walk"
+      ],
+      "recognizer_class": null,
+      "asset": "WALK",
+      "lexicon_words": [
+        "walk"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "RUN",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "run"
+      ],
+      "recognizer_class": null,
+      "asset": "RUN",
+      "lexicon_words": [
+        "run"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "PLAY",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "play"
+      ],
+      "recognizer_class": null,
+      "asset": "PLAY",
+      "lexicon_words": [
+        "play"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SLEEP",
+      "tier": 1,
+      "category": "verb",
+      "english": [
+        "sleep"
+      ],
+      "recognizer_class": "sleep",
+      "asset": "SLEEP",
+      "lexicon_words": [
+        "sleep"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "TRY",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "try"
+      ],
+      "recognizer_class": null,
+      "asset": "TRY",
+      "lexicon_words": [
+        "try"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "CHANGE",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "change"
+      ],
+      "recognizer_class": null,
+      "asset": "CHANGE",
+      "lexicon_words": [
+        "change"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "FIX",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "fix"
+      ],
+      "recognizer_class": null,
+      "asset": "FIX",
+      "lexicon_words": [
+        "fix"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "KEEP",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "keep"
+      ],
+      "recognizer_class": null,
+      "asset": "KEEP",
+      "lexicon_words": [
+        "keep"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "AGREE",
+      "tier": 2,
+      "category": "verb",
+      "english": [
+        "agree"
+      ],
+      "recognizer_class": null,
+      "asset": "AGREE",
+      "lexicon_words": [
+        "agree"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "GOOD",
+      "tier": 1,
+      "category": "adjective",
+      "english": [
+        "good"
+      ],
+      "recognizer_class": null,
+      "asset": "GOOD",
+      "lexicon_words": [
+        "good"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BAD",
+      "tier": 1,
+      "category": "adjective",
+      "english": [
+        "bad"
+      ],
+      "recognizer_class": "bad",
+      "asset": "BAD",
+      "lexicon_words": [
+        "bad"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BEST",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "best"
+      ],
+      "recognizer_class": null,
+      "asset": "BEST",
+      "lexicon_words": [
+        "best"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BETTER",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "better"
+      ],
+      "recognizer_class": "better",
+      "asset": "BETTER",
+      "lexicon_words": [
+        "better"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WORSE",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "worse"
+      ],
+      "recognizer_class": null,
+      "asset": "WORSE",
+      "lexicon_words": [
+        "worse"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BIG",
+      "tier": 1,
+      "category": "adjective",
+      "english": [
+        "big",
+        "large"
+      ],
+      "recognizer_class": null,
+      "asset": "BIG",
+      "lexicon_words": [
+        "big",
+        "large"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SMALL",
+      "tier": 1,
+      "category": "adjective",
+      "english": [
+        "small",
+        "little"
+      ],
+      "recognizer_class": null,
+      "asset": "SMALL",
+      "lexicon_words": [
+        "little",
+        "small"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "NEW",
+      "tier": 1,
+      "category": "adjective",
+      "english": [
+        "new"
+      ],
+      "recognizer_class": null,
+      "asset": "NEW",
+      "lexicon_words": [
+        "new"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "OLD",
+      "tier": 1,
+      "category": "adjective",
+      "english": [
+        "old"
+      ],
+      "recognizer_class": "old",
+      "asset": "OLD",
+      "lexicon_words": [
+        "old"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "HOT",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "hot"
+      ],
+      "recognizer_class": "hot",
+      "asset": "HOT",
+      "lexicon_words": [
+        "hot"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "COLD",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "cold"
+      ],
+      "recognizer_class": null,
+      "asset": "COLD",
+      "lexicon_words": [
+        "cold"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "HAPPY",
+      "tier": 1,
+      "category": "feeling",
+      "english": [
+        "happy"
+      ],
+      "recognizer_class": "happy",
+      "asset": "HAPPY",
+      "lexicon_words": [
+        "happy"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SAD",
+      "tier": 1,
+      "category": "feeling",
+      "english": [
+        "sad"
+      ],
+      "recognizer_class": "sad",
+      "asset": "SAD",
+      "lexicon_words": [
+        "sad"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SICK",
+      "tier": 1,
+      "category": "feeling",
+      "english": [
+        "sick"
+      ],
+      "recognizer_class": "sick",
+      "asset": "SICK",
+      "lexicon_words": [
+        "sick"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "TIRED",
+      "tier": 1,
+      "category": "feeling",
+      "english": [
+        "tired"
+      ],
+      "recognizer_class": null,
+      "asset": "TIRED",
+      "lexicon_words": [
+        "tired"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "EASY",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "easy"
+      ],
+      "recognizer_class": null,
+      "asset": "EASY",
+      "lexicon_words": [
+        "easy"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "DIFFICULT",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "difficult",
+        "hard"
+      ],
+      "recognizer_class": null,
+      "asset": "DIFFICULT",
+      "lexicon_words": [
+        "difficult",
+        "hard"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BEAUTIFUL",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "beautiful"
+      ],
+      "recognizer_class": null,
+      "asset": "BEAUTIFUL",
+      "lexicon_words": [
+        "beautiful"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "NICE",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "nice"
+      ],
+      "recognizer_class": null,
+      "asset": "NICE",
+      "lexicon_words": [
+        "nice"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "QUICK",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "quick",
+        "fast"
+      ],
+      "recognizer_class": "fast",
+      "asset": "QUICK",
+      "lexicon_words": [
+        "fast",
+        "quick"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SLOW",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "slow"
+      ],
+      "recognizer_class": null,
+      "asset": "SLOW",
+      "lexicon_words": [
+        "slow"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "QUIET",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "quiet"
+      ],
+      "recognizer_class": "quiet",
+      "asset": "QUIET",
+      "lexicon_words": [
+        "quiet"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "LOUD",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "loud"
+      ],
+      "recognizer_class": "loud",
+      "asset": "LOUD",
+      "lexicon_words": [
+        "loud"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SAME",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "same"
+      ],
+      "recognizer_class": "same",
+      "asset": "SAME",
+      "lexicon_words": [
+        "same"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "DIFFERENT",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "different"
+      ],
+      "recognizer_class": null,
+      "asset": "DIFFERENT",
+      "lexicon_words": [
+        "different"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "NEAR",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "near",
+        "close"
+      ],
+      "recognizer_class": "close",
+      "asset": "NEAR",
+      "lexicon_words": [
+        "close",
+        "near"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "FAR",
+      "tier": 2,
+      "category": "adjective",
+      "english": [
+        "far"
+      ],
+      "recognizer_class": null,
+      "asset": "FAR",
+      "lexicon_words": [
+        "far"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "RED",
+      "tier": 2,
+      "category": "colour",
+      "english": [
+        "red"
+      ],
+      "recognizer_class": "red",
+      "asset": "RED",
+      "lexicon_words": [
+        "red"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BLUE",
+      "tier": 2,
+      "category": "colour",
+      "english": [
+        "blue"
+      ],
+      "recognizer_class": "blue",
+      "asset": "BLUE",
+      "lexicon_words": [
+        "blue"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "GREEN",
+      "tier": 2,
+      "category": "colour",
+      "english": [
+        "green"
+      ],
+      "recognizer_class": "green",
+      "asset": "GREEN",
+      "lexicon_words": [
+        "green"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "YELLOW",
+      "tier": 2,
+      "category": "colour",
+      "english": [
+        "yellow"
+      ],
+      "recognizer_class": "yellow",
+      "asset": "YELLOW",
+      "lexicon_words": [
+        "yellow"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BLACK",
+      "tier": 2,
+      "category": "colour",
+      "english": [
+        "black"
+      ],
+      "recognizer_class": "black",
+      "asset": "BLACK",
+      "lexicon_words": [
+        "black"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WHITE",
+      "tier": 2,
+      "category": "colour",
+      "english": [
+        "white"
+      ],
+      "recognizer_class": "white",
+      "asset": "WHITE",
+      "lexicon_words": [
+        "white"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "ORANGE",
+      "tier": 2,
+      "category": "colour",
+      "english": [
+        "orange"
+      ],
+      "recognizer_class": "orange",
+      "asset": "ORANGE",
+      "lexicon_words": [
+        "orange"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "PURPLE",
+      "tier": 2,
+      "category": "colour",
+      "english": [
+        "purple"
+      ],
+      "recognizer_class": null,
+      "asset": "PURPLE",
+      "lexicon_words": [
+        "purple"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "PINK",
+      "tier": 2,
+      "category": "colour",
+      "english": [
+        "pink"
+      ],
+      "recognizer_class": null,
+      "asset": "PINK",
+      "lexicon_words": [
+        "pink"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "BROWN",
+      "tier": 2,
+      "category": "colour",
+      "english": [
+        "brown"
+      ],
+      "recognizer_class": "brown",
+      "asset": "BROWN",
+      "lexicon_words": [
+        "brown"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "COLOUR",
+      "tier": 2,
+      "category": "colour",
+      "english": [
+        "color",
+        "colour"
+      ],
+      "recognizer_class": null,
+      "asset": "COLOUR",
+      "lexicon_words": [
+        "color",
+        "colour"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "ALWAYS",
+      "tier": 2,
+      "category": "adverb",
+      "english": [
+        "always"
+      ],
+      "recognizer_class": null,
+      "asset": "ALWAYS",
+      "lexicon_words": [
+        "always"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "NEVER",
+      "tier": 2,
+      "category": "adverb",
+      "english": [
+        "never"
+      ],
+      "recognizer_class": null,
+      "asset": "NEVER",
+      "lexicon_words": [
+        "never",
+        "never_adv"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SOMETIMES",
+      "tier": 2,
+      "category": "adverb",
+      "english": [
+        "sometimes"
+      ],
+      "recognizer_class": null,
+      "asset": "SOMETIMES",
+      "lexicon_words": [
+        "sometimes"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "OFTEN",
+      "tier": 2,
+      "category": "adverb",
+      "english": [
+        "often"
+      ],
+      "recognizer_class": null,
+      "asset": "OFTEN",
+      "lexicon_words": [
+        "often"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "AGAIN",
+      "tier": 2,
+      "category": "adverb",
+      "english": [
+        "again"
+      ],
+      "recognizer_class": null,
+      "asset": "AGAIN",
+      "lexicon_words": [
+        "again"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "TOGETHER",
+      "tier": 2,
+      "category": "adverb",
+      "english": [
+        "together"
+      ],
+      "recognizer_class": null,
+      "asset": "TOGETHER",
+      "lexicon_words": [
+        "together"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "MANY",
+      "tier": 2,
+      "category": "quantifier",
+      "english": [
+        "many"
+      ],
+      "recognizer_class": "many",
+      "asset": "MANY",
+      "lexicon_words": [
+        "many"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "MORE",
+      "tier": 1,
+      "category": "quantifier",
+      "english": [
+        "more"
+      ],
+      "recognizer_class": null,
+      "asset": "MORE",
+      "lexicon_words": [
+        "more"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "ALL",
+      "tier": 2,
+      "category": "quantifier",
+      "english": [
+        "all"
+      ],
+      "recognizer_class": "all",
+      "asset": "ALL",
+      "lexicon_words": [
+        "all"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SOME",
+      "tier": 2,
+      "category": "quantifier",
+      "english": [
+        "some"
+      ],
+      "recognizer_class": null,
+      "asset": "SOME",
+      "lexicon_words": [
+        "some"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "EVERY",
+      "tier": 2,
+      "category": "quantifier",
+      "english": [
+        "every"
+      ],
+      "recognizer_class": "every",
+      "asset": "EVERY",
+      "lexicon_words": [
+        "every"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "ENOUGH",
+      "tier": 2,
+      "category": "quantifier",
+      "english": [
+        "enough"
+      ],
+      "recognizer_class": null,
+      "asset": "ENOUGH",
+      "lexicon_words": [
+        "enough"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "CAN",
+      "tier": 1,
+      "category": "modal",
+      "english": [
+        "can",
+        "could",
+        "able"
+      ],
+      "recognizer_class": "can",
+      "asset": "CAN",
+      "lexicon_words": [
+        "able",
+        "can",
+        "could"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "MUST",
+      "tier": 2,
+      "category": "modal",
+      "english": [
+        "must"
+      ],
+      "recognizer_class": null,
+      "asset": "MUST",
+      "lexicon_words": [
+        "must"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "SHOULD",
+      "tier": 2,
+      "category": "modal",
+      "english": [
+        "should",
+        "ought"
+      ],
+      "recognizer_class": null,
+      "asset": "SHOULD",
+      "lexicon_words": [
+        "ought",
+        "should"
+      ],
+      "recog_status": "missing",
+      "synth_status": "sign"
+    },
+    {
+      "gloss": "WILL",
+      "tier": 1,
+      "category": "modal",
+      "english": [
+        "will",
+        "shall"
+      ],
+      "recognizer_class": "will",
+      "asset": "WILL",
+      "lexicon_words": [
+        "shall",
+        "will"
+      ],
+      "recog_status": "covered",
+      "synth_status": "sign"
+    }
+  ]
+}

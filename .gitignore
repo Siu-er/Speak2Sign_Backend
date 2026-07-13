@@ -169,3 +169,9 @@ instance/*
 .env
 
 .idea/
+
+# Agent workspace
+.claude/
+
+# Retained recorded clips (contain camera footage - never commit)
+debug_clips/

@@ -40,10 +40,13 @@ class SiGMLGenerator:
     def _extract_sign_content(self, sigml_content):
         """Extract the hns_sign content from full SiGML"""
         import re
-        # Extract content between <hns_sign> tags
-        match = re.search(r'<hns_sign[^>]*>(.*?)</hns_sign>', sigml_content, re.DOTALL)
-        if match:
-            return f'<hns_sign{match.group(0)[9:]}'  # Include the full hns_sign tag
+        # Pull out the single sign element, dropping the xml/doctype/sigml
+        # wrapper, so signs concatenate cleanly. Sources use either HamNoSys
+        # (hns_sign) or gestural (hamgestural_sign) SiGML; both play on CWASA.
+        for tag in ("hns_sign", "hamgestural_sign"):
+            match = re.search(rf'<{tag}[^>]*>.*?</{tag}>', sigml_content, re.DOTALL)
+            if match:
+                return match.group(0)
         return sigml_content
 
     def gloss_to_tokens(self, gloss: str) -> List[str]:
@@ -51,6 +54,27 @@ class SiGMLGenerator:
         # Split on whitespace and forward slash, filter empty tokens
         tokens = [t for t in re.split(r"[\s/]+", gloss.strip()) if t]
         return tokens
+
+    def classify_token(self, token: str) -> str:
+        """Report how a token will render, without generating it.
+
+        Returns one of: "sign" (a real sign asset), "number", or "fingerspell"
+        (spelled letter by letter because no sign asset exists). Lets callers
+        signal fingerspelling to the user instead of it being silent.
+        """
+        clean = token.replace("++", "")
+        up = clean.upper()
+        if up in self.sigml_cache:
+            return "sign"
+        if clean.startswith("FS-"):
+            return "fingerspell"
+        if clean.isdigit():
+            return "number" if clean in self.sigml_cache else "fingerspell"
+        if "-" in clean:
+            parts = clean.split("-")
+            if all(p.upper() in self.sigml_cache for p in parts):
+                return "sign"
+        return "fingerspell"
 
     def generate_sigml_for_token(self, token: str) -> str:
         """Generate SiGML for a single token"""

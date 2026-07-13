@@ -1,0 +1,15 @@
+<sigml>
+	<hns_sign gloss="tired">
+		<hamnosys_manual>
+			<hamsymmlr/>
+			<hamflathand/>
+			<hamfingerbendmod/>
+			<hamextfingeru/>
+			<hampalml/>
+			<hamchest/>
+			<hamtouch/>
+			<hammoved/>
+			<hamsmallmod/>
+		</hamnosys_manual>
+	</hns_sign>
+</sigml>

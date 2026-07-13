@@ -1,0 +1,12 @@
+<sigml>
+	<hns_sign gloss="restaurant">
+		<hamnosys_manual>
+			<hamfinger23/>
+			<hamextfingeru/>
+			<hampalml/>
+			<hamlips/>
+			<hammover/>
+			<hamrepeatfromstart/>
+		</hamnosys_manual>
+	</hns_sign>
+</sigml>

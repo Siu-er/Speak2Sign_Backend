@@ -104,7 +104,7 @@ class ASLSignRecognizer:
             })
 
         best = top_predictions[0]
-        logger.info(
+        logger.debug(
             "Sign prediction: '%s' (%.3f) in %.0fms (%d frames)",
             best["sign"], best["confidence"], elapsed * 1000, num_frames
         )

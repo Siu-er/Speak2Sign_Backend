@@ -1,11 +1,16 @@
-from flask import Flask, request, jsonify, send_file
+from flask import Flask, request, jsonify
 from flask_cors import CORS
+from flask_socketio import SocketIO, join_room, leave_room, emit
+from dotenv import load_dotenv
+import secrets
 import tempfile
 import os
+import shutil
+
+load_dotenv()
+import numpy as np
 import torch
 from transformers import WhisperProcessor, WhisperForConditionalGeneration
-import base64
-import soundfile as sf
 import logging
 import time
 from asl_glosser import ASLGlosser, GlossResult
@@ -15,6 +20,7 @@ from asl_sign_recognizer import ASLSignRecognizer
 
 app = Flask(__name__)
 CORS(app)
+socketio = SocketIO(app, async_mode="threading", cors_allowed_origins="*")
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -33,8 +39,10 @@ sigml_generator = None
 asl_sign_recognizer = None
 models_initialized = False
 
-# Default Whisper model - optimized for speed (base is ~6x faster than large)
-WHISPER_MODEL_NAME = "openai/whisper-base"
+# Whisper model. Base is the fast default; override with WHISPER_MODEL for a
+# larger, more accurate model. The download helper reads the same variable so
+# the fetched and loaded models stay in sync.
+WHISPER_MODEL_NAME = os.environ.get("WHISPER_MODEL", "openai/whisper-base")
 
 def init_models():
     """Initialize all models at server startup"""
@@ -146,12 +154,10 @@ def root():
         'endpoints': {
             'health': '/health',
             'audio_to_text': '/audio-to-text',
-            'audio_to_text_base64': '/audio-to-text-base64',
             'text_to_gloss': '/text-to-gloss',
             'gloss_to_sigml': '/gloss-to-sigml',
-            'full_pipeline': '/full-pipeline',
-            'text_pipeline': '/text-pipeline',
-            'sign_to_text': '/sign-to-text',
+            'video_to_signs': '/video-to-signs',
+            'sign_to_sentence': '/sign-to-sentence',
         },
         'status': 'running'
     })
@@ -219,142 +225,56 @@ def audio_to_text():
 
         logger.info(f"Processing audio file: {file.filename}")
 
-        # Save uploaded file to temporary location
-        with tempfile.NamedTemporaryFile(delete=False, suffix='.wav') as tmp_file:
-            file.save(tmp_file.name)
-            logger.info(f"Audio file saved to: {tmp_file.name}")
-
-            # Load and process audio
-            try:
-                audio, sample_rate = sf.read(tmp_file.name)
-                logger.info(f"Audio loaded: sample_rate={sample_rate}, duration={len(audio)/sample_rate:.2f}s")
-            except Exception as e:
-                logger.error(f"Failed to load audio file: {e}")
-                os.unlink(tmp_file.name)
-                return jsonify({'error': f'Failed to load audio file: {str(e)}'}), 400
-
-            # Resample audio to 16kHz if needed (Whisper requirement) - optimized
-            if sample_rate != 16000:
-                logger.info(f"Resampling audio from {sample_rate}Hz to 16000Hz")
-                import librosa
-                # Use faster resampling with lower quality for speed
-                audio = librosa.resample(audio, orig_sr=sample_rate, target_sr=16000, res_type='kaiser_fast')
-                sample_rate = 16000
-
-            # Process audio with Whisper
-            logger.info(f"Processing audio with Whisper on device: {device}")
-            inputs = whisper_processor(audio, sampling_rate=sample_rate, return_tensors="pt", padding=True)
-            inputs = {k: v.to(device) for k, v in inputs.items()}
-            logger.info(f"Moved inputs to device: {device}, input_features shape: {inputs['input_features'].shape}")
-
-            # Generate transcription (force English language)
-            with torch.no_grad():
-                predicted_ids = whisper_model.generate(
-                    input_features=inputs["input_features"],
-                    attention_mask=inputs.get("attention_mask"),
-                    language="en",
-                    max_length=224,   # Reduced from 448 for faster generation
-                    min_length=1,     # Minimum length to avoid empty outputs
-                    num_beams=1,      # Greedy search (fastest)
-                    do_sample=False,  # Deterministic output
-                    temperature=0.0,  # Greedy decoding
-                    use_cache=True,   # Enable KV caching
-                    pad_token_id=whisper_processor.tokenizer.eos_token_id
-                )
-
-            # Decode transcription
-            text = whisper_processor.batch_decode(predicted_ids, skip_special_tokens=True)[0].strip()
-            logger.info(f"Transcription result: '{text}'")
-
-            # Clean up temp file
-            os.unlink(tmp_file.name)
-
-            # Clear GPU cache after processing
-            clear_gpu_cache()
-
-            if not text:
-                logger.warning("No speech detected in audio")
-                return jsonify({'error': 'No speech detected in audio'}), 400
-
-            return jsonify({
-                'text': text,
-                'language': 'auto-detected',
-                'success': True
-            })
-
-    except Exception as e:
-        logger.error(f"Audio processing failed: {e}")
-        return jsonify({'error': f'Audio processing failed: {str(e)}'}), 500
-
-@app.route('/audio-to-text-base64', methods=['POST'])
-def audio_to_text_base64():
-    """Convert base64 encoded audio to text"""
-    logger.info("Base64 audio-to-text request received")
-    try:
-
-        data = request.get_json()
-        if not data or 'audio' not in data:
-            logger.warning("No base64 audio data provided")
-            return jsonify({'error': 'No base64 audio data provided'}), 400
-
-        # Decode base64 audio
+        # Decode the upload in-memory. A temp file holds a Windows lock between
+        # write and read, so decode the bytes directly instead.
+        audio_bytes = file.read()
         try:
-            audio_data = base64.b64decode(data['audio'])
-            logger.info(f"Decoded base64 audio data: {len(audio_data)} bytes")
+            audio, sample_rate = load_audio_from_bytes(audio_bytes)
+            logger.info(f"Audio loaded: sample_rate={sample_rate}, duration={len(audio)/sample_rate:.2f}s")
         except Exception as e:
-            logger.error(f"Failed to decode base64 audio: {e}")
-            return jsonify({'error': 'Invalid base64 audio data'}), 400
-
-        # Load audio using multiple fallback methods
-        try:
-            audio, sample_rate = load_audio_from_bytes(audio_data)
-        except Exception as e:
-            logger.error(f"Failed to load audio data: {e}")
-            return jsonify({'error': 'Failed to process audio format'}), 400
+            logger.error(f"Failed to load audio file: {e}")
+            return jsonify({'error': f'Failed to load audio file: {str(e)}'}), 400
 
         # Resample audio to 16kHz if needed (Whisper requirement) - optimized
         if sample_rate != 16000:
             logger.info(f"Resampling audio from {sample_rate}Hz to 16000Hz")
             import librosa
-            # Use faster resampling with lower quality for speed
             audio = librosa.resample(audio, orig_sr=sample_rate, target_sr=16000, res_type='kaiser_fast')
             sample_rate = 16000
 
         # Process audio with Whisper
         logger.info(f"Processing audio with Whisper on device: {device}")
-        inputs = whisper_processor(audio, sampling_rate=sample_rate, return_tensors="pt", padding=True)
+        inputs = whisper_processor(audio, sampling_rate=sample_rate, return_tensors="pt", padding="max_length")
         inputs = {k: v.to(device) for k, v in inputs.items()}
         logger.info(f"Moved inputs to device: {device}, input_features shape: {inputs['input_features'].shape}")
 
-        # Generate transcription (force English language) - optimized for speed
-        log_gpu_memory_if_cuda("before generation")
-        generation_start = time.time()
+        # task="translate" makes Whisper output English from any spoken
+        # language (multilingual input); otherwise transcribe English.
+        task = (request.form.get("task") or "transcribe").lower()
+        gen_kwargs = dict(
+            input_features=inputs["input_features"],
+            attention_mask=inputs.get("attention_mask"),
+            max_length=224,
+            min_length=1,
+            num_beams=1,
+            do_sample=False,
+            temperature=0.0,
+            use_cache=True,
+            pad_token_id=whisper_processor.tokenizer.eos_token_id,
+        )
+        if task == "translate":
+            gen_kwargs["task"] = "translate"
+        else:
+            gen_kwargs["language"] = "en"
+            gen_kwargs["task"] = "transcribe"
 
         with torch.no_grad():
-            predicted_ids = whisper_model.generate(
-                input_features=inputs["input_features"],
-                attention_mask=inputs.get("attention_mask"),
-                language="en",
-                max_length=224,   # Reduced from 448 for faster generation
-                min_length=1,     # Minimum length to avoid empty outputs
-                num_beams=1,      # Greedy search (fastest)
-                do_sample=False,  # Deterministic output
-                temperature=0.0,  # Greedy decoding
-                use_cache=True,   # Enable KV caching
-                pad_token_id=whisper_processor.tokenizer.eos_token_id
-            )
+            predicted_ids = whisper_model.generate(**gen_kwargs)
 
-        generation_time = time.time() - generation_start
-        logger.info(f"Generation completed in {generation_time:.3f}s")
-
-        log_gpu_memory_if_cuda("after generation")
-
-        # Decode transcription
+        # Decode transcription (content not logged for privacy)
         text = whisper_processor.batch_decode(predicted_ids, skip_special_tokens=True)[0].strip()
-        logger.info(f"Transcription result: '{text}'")
+        logger.info(f"Transcription done ({len(text)} chars, task={task})")
 
-        # Clear GPU cache after processing
-        # Clear GPU cache after processing
         clear_gpu_cache()
 
         if not text:
@@ -368,7 +288,7 @@ def audio_to_text_base64():
         })
 
     except Exception as e:
-        logger.error(f"Base64 audio processing failed: {e}")
+        logger.error(f"Audio processing failed: {e}")
         return jsonify({'error': f'Audio processing failed: {str(e)}'}), 500
 
 @app.route('/text-to-gloss', methods=['POST'])
@@ -426,11 +346,15 @@ def gloss_to_sigml():
         # Convert to SiGML
         sigml_xml = sigml_generator.generate_sigml(gloss)
         tokens = sigml_generator.gloss_to_tokens(gloss)
-        logger.info(f"SiGML generated for {len(tokens)} tokens")
+        token_kinds = [sigml_generator.classify_token(t) for t in tokens]
+        fingerspelled = [t for t, k in zip(tokens, token_kinds) if k == "fingerspell"]
+        logger.info(f"SiGML generated for {len(tokens)} tokens, {len(fingerspelled)} fingerspelled")
 
         return jsonify({
             'gloss': gloss,
             'tokens': tokens,
+            'token_kinds': token_kinds,
+            'fingerspelled': fingerspelled,
             'sigml': sigml_xml,
             'success': True
         })
@@ -439,196 +363,332 @@ def gloss_to_sigml():
         logger.error(f"Gloss to SiGML conversion failed: {e}")
         return jsonify({'error': f'Gloss to SiGML conversion failed: {str(e)}'}), 500
 
-@app.route('/full-pipeline', methods=['POST'])
-def full_pipeline():
-    """Complete pipeline: audio -> text -> gloss -> SiGML"""
-    logger.info("Full pipeline request received")
-    try:
+# --- Video -> sign (hold-to-record) -------------------------------------------
+# The signer records one sign and sends the clip; landmarks are extracted here
+# with the same MediaPipe Holistic that produced the training data, so the input
+# distribution matches the recognizer (a client-side landmarker drifts from it).
+_holistic = None
 
-        # Check if audio file is provided
-        if 'audio' not in request.files:
-            return jsonify({'error': 'No audio file provided'}), 400
-
-        file = request.files['audio']
-        if file.filename == '' or not allowed_file(file.filename):
-            return jsonify({'error': 'Invalid audio file'}), 400
-
-        # Step 1: Audio to Text
-        with tempfile.NamedTemporaryFile(delete=False, suffix='.wav') as tmp_file:
-            file.save(tmp_file.name)
-
-            # Load and process audio
-            audio, sample_rate = sf.read(tmp_file.name)
-
-            # Resample audio to 16kHz if needed (Whisper requirement) - optimized
-            if sample_rate != 16000:
-                logger.info(f"Resampling audio from {sample_rate}Hz to 16000Hz")
-                import librosa
-                # Use faster resampling with lower quality for speed
-                audio = librosa.resample(audio, orig_sr=sample_rate, target_sr=16000, res_type='kaiser_fast')
-                sample_rate = 16000
-
-            # Process audio with Whisper
-            logger.info(f"Processing audio with Whisper on device: {device}")
-            inputs = whisper_processor(audio, sampling_rate=sample_rate, return_tensors="pt", padding=True)
-            inputs = {k: v.to(device) for k, v in inputs.items()}
-            logger.info(f"Moved inputs to device: {device}, input_features shape: {inputs['input_features'].shape}")
-
-            # Generate transcription (force English language)
-            with torch.no_grad():
-                predicted_ids = whisper_model.generate(
-                    input_features=inputs["input_features"],
-                    attention_mask=inputs.get("attention_mask"),
-                    language="en",
-                    max_length=224,   # Reduced from 448 for faster generation
-                    min_length=1,     # Minimum length to avoid empty outputs
-                    num_beams=1,      # Greedy search (fastest)
-                    do_sample=False,  # Deterministic output
-                    temperature=0.0,  # Greedy decoding
-                    use_cache=True,   # Enable KV caching
-                    pad_token_id=whisper_processor.tokenizer.eos_token_id
-                )
-
-            # Decode transcription
-            text = whisper_processor.batch_decode(predicted_ids, skip_special_tokens=True)[0].strip()
-
-            # Clean up temp file
-            os.unlink(tmp_file.name)
-
-            if not text:
-                return jsonify({'error': 'No speech detected in audio'}), 400
-
-        # Step 2: Text to Gloss
-        gloss_result = asl_glosser.gloss(text)
-
-        # Step 3: Gloss to SiGML
-        sigml_xml = sigml_generator.generate_sigml(gloss_result.gloss)
-        tokens = sigml_generator.gloss_to_tokens(gloss_result.gloss)
-
-        return jsonify({
-            'original_text': text,
-            'language': 'auto-detected',
-            'gloss': gloss_result.gloss,
-            'gloss_tokens': gloss_result.gloss_tokens,
-            'non_manual_markers': gloss_result.sentence_nmm,
-            'sigml_tokens': tokens,
-            'sigml': sigml_xml,
-            'success': True
-        })
-
-    except Exception as e:
-        return jsonify({'error': f'Pipeline processing failed: {str(e)}'}), 500
-
-@app.route('/text-pipeline', methods=['POST'])
-def text_pipeline():
-    """Text pipeline: text -> gloss -> SiGML"""
-    logger.info("Text pipeline request received")
-    try:
-
-        data = request.get_json()
-        if not data or 'text' not in data:
-            return jsonify({'error': 'No text provided'}), 400
-
-        text = data['text'].strip()
-        if not text:
-            return jsonify({'error': 'Empty text provided'}), 400
-
-        # Step 1: Text to Gloss
-        gloss_result = asl_glosser.gloss(text)
-
-        # Step 2: Gloss to SiGML
-        sigml_xml = sigml_generator.generate_sigml(gloss_result.gloss)
-        tokens = sigml_generator.gloss_to_tokens(gloss_result.gloss)
-
-        return jsonify({
-            'original_text': text,
-            'gloss': gloss_result.gloss,
-            'gloss_tokens': gloss_result.gloss_tokens,
-            'non_manual_markers': gloss_result.sentence_nmm,
-            'sigml_tokens': tokens,
-            'sigml': sigml_xml,
-            'success': True
-        })
-
-    except Exception as e:
-        return jsonify({'error': f'Text pipeline processing failed: {str(e)}'}), 500
-
-
-@app.route('/sign-to-text', methods=['POST'])
-def sign_to_text():
-    """Recognize ASL sign from MediaPipe landmark sequence.
-
-    Request body:
-        landmarks: array of shape [num_frames][543][3] - MediaPipe Holistic landmarks
-                   Ordering: face(468) + left_hand(21) + pose(33) + right_hand(21)
-        return_all_probs: bool, optional. If true, response includes the full
-                          250-class softmax for client-side EMA smoothing.
-
-    Returns:
-        sign: predicted sign label
-        confidence: prediction confidence (0-1)
-        top_5: list of top 5 predictions with labels, class_index, and confidences
-        all_probs: optional, full 250-element softmax vector
-    """
-    try:
-        if asl_sign_recognizer is None:
-            return jsonify({'error': 'ASL sign recognizer not initialized'}), 503
-
-        data = request.get_json()
-        if not data or 'landmarks' not in data:
-            return jsonify({'error': 'Missing landmarks in request body'}), 400
-
-        landmarks = data['landmarks']
-        if not isinstance(landmarks, list) or len(landmarks) == 0:
-            return jsonify({'error': 'Landmarks must be a non-empty array'}), 400
-
-        return_all_probs = bool(data.get('return_all_probs', False))
-
-        import numpy as np
-        # Replace JSON null (from JS NaN) with float('nan') before numpy conversion.
-        # This preserves NaN semantics that the model's internal preprocessing needs.
-        def nulls_to_nan(obj):
-            if isinstance(obj, list):
-                return [nulls_to_nan(v) for v in obj]
-            return float('nan') if obj is None else obj
-        landmarks = nulls_to_nan(landmarks)
-        landmarks_array = np.array(landmarks, dtype=np.float32)
-
-        if landmarks_array.ndim != 3 or landmarks_array.shape[1] != 543 or landmarks_array.shape[2] != 3:
-            return jsonify({
-                'error': f'Invalid landmarks shape: expected (N, 543, 3), got {landmarks_array.shape}'
-            }), 400
-
-        result = asl_sign_recognizer.predict(
-            landmarks_array, return_all_probs=return_all_probs
+def get_holistic():
+    global _holistic
+    if _holistic is None:
+        import mediapipe as mp
+        _holistic = mp.solutions.holistic.Holistic(
+            static_image_mode=False, model_complexity=1, refine_face_landmarks=False,
         )
+    return _holistic
 
-        response = {
-            'sign': result['sign'],
-            'confidence': result['confidence'],
-            'top_5': result['top_5'],
-            'num_frames': landmarks_array.shape[0],
-            'success': True,
-        }
-        if return_all_probs:
-            response['all_probs'] = result['all_probs']
-        return jsonify(response)
+_HFACE, _HLH, _HPOSE, _HRH = 468, 21, 33, 21
+_HTOTAL = _HFACE + _HLH + _HPOSE + _HRH
 
-    except Exception as e:
-        logger.error(f"Sign recognition error: {e}")
-        return jsonify({'error': f'Sign recognition failed: {str(e)}'}), 500
+def video_to_landmarks(path, max_frames=150):
+    import cv2
+    cap = cv2.VideoCapture(path)
+    if not cap.isOpened():
+        raise ValueError("could not open video")
+    hol = get_holistic()
+    frames = []
+    while True:
+        ok, img = cap.read()
+        if not ok:
+            break
+        res = hol.process(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
+        f = np.full((_HTOTAL, 3), np.nan, dtype=np.float32)
+        if res.face_landmarks:
+            for i, lm in enumerate(res.face_landmarks.landmark[:_HFACE]):
+                f[i] = [lm.x, lm.y, lm.z]
+        if res.left_hand_landmarks:
+            for i, lm in enumerate(res.left_hand_landmarks.landmark[:_HLH]):
+                f[_HFACE + i] = [lm.x, lm.y, lm.z]
+        if res.pose_landmarks:
+            off = _HFACE + _HLH
+            for i, lm in enumerate(res.pose_landmarks.landmark[:_HPOSE]):
+                f[off + i] = [lm.x, lm.y, lm.z]
+        if res.right_hand_landmarks:
+            off = _HFACE + _HLH + _HPOSE
+            for i, lm in enumerate(res.right_hand_landmarks.landmark[:_HRH]):
+                f[off + i] = [lm.x, lm.y, lm.z]
+        frames.append(f)
+        if max_frames and len(frames) >= max_frames:
+            break
+    cap.release()
+    if not frames:
+        raise ValueError("no frames decoded from clip")
+    return np.stack(frames, axis=0)
 
 
-@app.route('/sign-labels', methods=['GET'])
-def sign_labels():
-    """Return the full list of sign labels indexed by class index."""
+# A signed phrase is one continuous clip holding several signs back to back.
+# The isolated-sign recognizer classifies a window of frames. Signs vary in
+# length, so each window center is classified at several scales and the
+# posteriors averaged - this covers short and long signs and is the main
+# accuracy lever offline. A short temporal smooth removes single-window noise,
+# and windows with no hands present are blanked (no sign there). Consecutive
+# identical labels above the confidence floor collapse into runs; a run that
+# holds for at least _SEQ_MIN_RUN windows is emitted as one sign. The ordered
+# runs are the signs of the phrase.
+_SEQ_SCALES = (30, 45, 60)
+_SEQ_STRIDE = 4
+_SEQ_SMOOTH = 1
+_SEQ_CONF = 0.45
+_SEQ_MIN_RUN = 3
+_SEQ_HAND_PRESENCE = 0.3
+
+_LH0, _LH1 = _HFACE, _HFACE + _HLH
+_RH0, _RH1 = _HFACE + _HLH + _HPOSE, _HFACE + _HLH + _HPOSE + _HRH
+
+def _hand_presence(frames):
+    lh = (~np.isnan(frames[:, _LH0:_LH1, 0])).any(axis=1)
+    rh = (~np.isnan(frames[:, _RH0:_RH1, 0])).any(axis=1)
+    return float((lh | rh).mean())
+
+def landmarks_to_sequence(arr):
+    n = arr.shape[0]
+    big = max(_SEQ_SCALES)
+    probs, presence = [], []
+    for c in range(0, n, _SEQ_STRIDE):
+        acc, used = None, 0
+        for w in _SEQ_SCALES:
+            lo, hi = max(0, c - w // 2), min(n, c + w // 2)
+            if hi - lo < 10:
+                continue
+            p = np.asarray(
+                asl_sign_recognizer.predict(arr[lo:hi], return_all_probs=True)['all_probs']
+            )
+            acc = p if acc is None else acc + p
+            used += 1
+        probs.append(acc / used if used else np.zeros(asl_sign_recognizer.num_signs))
+        lo, hi = max(0, c - big // 2), min(n, c + big // 2)
+        presence.append(_hand_presence(arr[lo:hi]))
+    probs = np.stack(probs)
+
+    if _SEQ_SMOOTH > 0:
+        smoothed = np.zeros_like(probs)
+        for i in range(len(probs)):
+            lo, hi = max(0, i - _SEQ_SMOOTH), min(len(probs), i + _SEQ_SMOOTH + 1)
+            smoothed[i] = probs[lo:hi].mean(axis=0)
+        probs = smoothed
+
+    runs = []
+    window_labels = []
+    for i in range(len(probs)):
+        idx = int(np.argmax(probs[i]))
+        conf = float(probs[i][idx])
+        window_labels.append((asl_sign_recognizer.idx_to_sign[idx], round(conf, 2), round(presence[i], 2)))
+        if presence[i] < _SEQ_HAND_PRESENCE:
+            runs.append(None)
+            continue
+        if conf < _SEQ_CONF:
+            runs.append(None)
+            continue
+        sign = asl_sign_recognizer.idx_to_sign[idx]
+        if runs and runs[-1] is not None and runs[-1]['sign'] == sign:
+            runs[-1]['count'] += 1
+            runs[-1]['confidence'] = max(runs[-1]['confidence'], conf)
+        else:
+            runs.append({'sign': sign, 'confidence': conf, 'count': 1})
+
+    mean_presence = float(np.mean(presence)) if presence else 0.0
+    logger.info("seq diag: %d windows, mean_hand_presence=%.2f, window stream: %s",
+                len(window_labels), mean_presence, window_labels)
+
+    return [r for r in runs if r and r['count'] >= _SEQ_MIN_RUN]
+
+
+# The three most recent recorded clips are retained on disk so a recognition
+# result can be replayed against the original video while debugging.
+_DEBUG_CLIPS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "debug_clips")
+_DEBUG_CLIPS_KEEP = 3
+
+def retain_debug_clip(src_path, ext, signs):
+    os.makedirs(_DEBUG_CLIPS_DIR, exist_ok=True)
+    label = "-".join(signs) if signs else "none"
+    dest = os.path.join(_DEBUG_CLIPS_DIR, f"clip_{label}_{secrets.token_hex(4)}{ext}")
+    shutil.copyfile(src_path, dest)
+    clips = sorted(
+        (os.path.join(_DEBUG_CLIPS_DIR, f) for f in os.listdir(_DEBUG_CLIPS_DIR)),
+        key=os.path.getmtime, reverse=True,
+    )
+    for old in clips[_DEBUG_CLIPS_KEEP:]:
+        try:
+            os.remove(old)
+        except OSError:
+            pass
+
+
+@app.route('/video-to-signs', methods=['POST'])
+def video_to_signs():
     if asl_sign_recognizer is None:
-        return jsonify({'error': 'ASL sign recognizer not initialized'}), 503
-    return jsonify({
-        'labels': asl_sign_recognizer.get_label_map(),
-        'num_classes': asl_sign_recognizer.num_signs,
-        'success': True,
-    })
+        return jsonify({'error': 'recognizer not initialized'}), 503
+    if 'video' not in request.files:
+        return jsonify({'error': 'no video provided'}), 400
+    file = request.files['video']
+    suffix = os.path.splitext(file.filename or '')[1] or '.webm'
+    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=suffix)
+    try:
+        file.save(tmp.name)
+        tmp.close()
+        landmarks = video_to_landmarks(tmp.name, max_frames=600)
+        seq = landmarks_to_sequence(landmarks)
+        signs = [r['sign'] for r in seq]
+        logger.info(f"video-to-signs: {' '.join(signs) or '(none)'} "
+                    f"from {landmarks.shape[0]} frames")
+        retain_debug_clip(tmp.name, suffix, signs)
+        return jsonify({
+            'signs': signs,
+            'detail': seq,
+            'num_frames': int(landmarks.shape[0]),
+            'success': True,
+        })
+    except Exception as e:
+        logger.error(f"video-to-signs failed: {e}")
+        return jsonify({'error': str(e)}), 500
+    finally:
+        try:
+            os.unlink(tmp.name)
+        except OSError:
+            pass
+
+
+# ============================================================
+# ASL gloss sequence -> natural English sentence (Azure OpenAI)
+# ============================================================
+
+_llm_client = None
+
+
+def get_llm_client():
+    global _llm_client
+    if _llm_client is None:
+        from openai import AzureOpenAI
+        _llm_client = AzureOpenAI(
+            api_key=os.environ["OPENAI_API_KEY"],
+            azure_endpoint=os.environ["OPENAI_AZURE_ENDPOINT"],
+            api_version=os.getenv("OPENAI_API_VERSION", "2024-08-01-preview"),
+        )
+    return _llm_client
+
+
+@app.route('/sign-to-sentence', methods=['POST'])
+def sign_to_sentence():
+    """Turn a sequence of recognized ASL glosses into one English sentence."""
+    try:
+        data = request.get_json() or {}
+        signs = data.get('signs')
+        if not isinstance(signs, list) or not signs:
+            return jsonify({'error': 'signs must be a non-empty array'}), 400
+
+        gloss = " ".join(str(s).strip() for s in signs if str(s).strip())
+        deployment = os.environ.get("AZURE_OPENAI_GENERATOR_DEPLOYMENT")
+        if not deployment or not os.environ.get("OPENAI_API_KEY"):
+            return jsonify({'error': 'LLM not configured'}), 503
+
+        resp = get_llm_client().chat.completions.create(
+            model=deployment,
+            messages=[
+                {
+                    "role": "system",
+                    "content": (
+                        "You convert a sequence of recognized American Sign Language "
+                        "glosses into one natural, grammatical English sentence. ASL "
+                        "drops articles and tense markers and reorders words; restore "
+                        "them. Reply with ONLY the sentence, no quotes or notes."
+                    ),
+                },
+                {"role": "user", "content": gloss},
+            ],
+            temperature=0.2,
+            max_tokens=60,
+        )
+        sentence = (resp.choices[0].message.content or "").strip()
+        if not sentence:
+            return jsonify({'error': 'empty result'}), 502
+        return jsonify({'sentence': sentence, 'success': True})
+    except Exception as e:
+        # Log only the error type; never the content or any credential detail.
+        logger.error(f"sign-to-sentence failed: {type(e).__name__}")
+        return jsonify({'error': 'sign-to-sentence failed'}), 500
+
+
+# ============================================================
+# Two-device room relay (Socket.IO)
+#
+# The server holds no conversation state. It only relays messages between
+# the two members of a room. State is limited to room membership.
+# ============================================================
+
+# roomId -> { sid: role }
+rooms = {}
+
+
+def _new_room_id():
+    """Generate a room id, collision-checked against active rooms."""
+    while True:
+        room_id = secrets.token_hex(3).upper()  # 6 hex chars
+        if room_id not in rooms:
+            return room_id
+
+
+@socketio.on("create_room")
+def on_create_room():
+    room_id = _new_room_id()
+    rooms[room_id] = {}
+    logger.info(f"Room created: {room_id}")
+    return {"roomId": room_id}
+
+
+@socketio.on("join_room")
+def on_join_room(data):
+    data = data or {}
+    room_id = data.get("roomId")
+    role = data.get("role")
+
+    if room_id not in rooms:
+        return {"ok": False, "error": "room_not_found"}
+    if role not in ("speaker", "signer"):
+        return {"ok": False, "error": "invalid_role"}
+    if len(rooms[room_id]) >= 2:
+        return {"ok": False, "error": "room_full"}
+
+    join_room(room_id)
+    rooms[room_id][request.sid] = role
+    emit("peer_joined", {"role": role}, to=room_id, include_self=False)
+    logger.info(f"Join {room_id} as {role} (peers={len(rooms[room_id])})")
+    return {
+        "ok": True,
+        "result": {"roomId": room_id, "role": role, "peers": len(rooms[room_id])},
+    }
+
+
+@socketio.on("message")
+def on_message(data):
+    data = data or {}
+    room_id = data.get("roomId")
+    members = rooms.get(room_id)
+    if not members or request.sid not in members:
+        return
+    emit(
+        "message",
+        {
+            "kind": data.get("kind"),
+            "text": data.get("text"),
+            "fromRole": members[request.sid],
+        },
+        to=room_id,
+        include_self=False,
+    )
+
+
+@socketio.on("disconnect")
+def on_disconnect():
+    for room_id, members in list(rooms.items()):
+        if request.sid in members:
+            del members[request.sid]
+            leave_room(room_id)
+            emit("peer_left", to=room_id)
+            logger.info(f"Leave {room_id} (peers={len(members)})")
+            if not members:
+                rooms.pop(room_id, None)
+                logger.info(f"Room closed: {room_id}")
 
 
 def create_app():
@@ -679,7 +739,8 @@ if __name__ == '__main__':
         logger.info("Ready for inference requests!")
         logger.info("=" * 60)
 
-        app_instance.run(debug=True, host='0.0.0.0', port=5000)
+        socketio.run(app_instance, debug=True, host='0.0.0.0', port=5000,
+                     allow_unsafe_werkzeug=True)
 
     except Exception as e:
         logger.error("=" * 60)

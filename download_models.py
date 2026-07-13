@@ -10,7 +10,9 @@ from transformers import WhisperProcessor, WhisperForConditionalGeneration
 from huggingface_hub import snapshot_download
 from tqdm import tqdm
 
-WHISPER_MODEL_NAME = "openai/whisper-large-v3-turbo"
+# Matches the runtime default in app.py so the fetched and loaded models agree.
+# Override both with the WHISPER_MODEL environment variable.
+WHISPER_MODEL_NAME = os.environ.get("WHISPER_MODEL", "openai/whisper-base")
 
 def download_whisper_model():
     """Download Whisper model and processor with progress tracking"""

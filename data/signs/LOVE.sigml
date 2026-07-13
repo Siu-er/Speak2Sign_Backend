@@ -1,0 +1,11 @@
+<sigml>
+	<hns_sign gloss="love">
+		<hamnosys_manual>
+			<hamsymmlr/>
+			<hamfist/>
+			<hampalml/>
+			<hamchest/>
+			<hamtouch/>
+		</hamnosys_manual>
+	</hns_sign>
+</sigml>

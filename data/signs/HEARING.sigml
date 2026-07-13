@@ -1,0 +1,12 @@
+<sigml>
+	<hns_sign gloss="hearing">
+		<hamnosys_manual>
+			<hamfinger2/>
+			<hamthumbacrossmod/>
+			<hamextfingerl/>
+			<hampalmd/>
+			<hamchin/>
+			<hamcircleo/>
+		</hamnosys_manual>
+	</hns_sign>
+</sigml>

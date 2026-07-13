@@ -1,0 +1,12 @@
+<sigml>
+	<hns_sign gloss="school">
+		<hamnosys_manual>
+			<hamsymmlr/>
+			<hamflathand/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamchest/>
+			<hamtapping/>
+		</hamnosys_manual>
+	</hns_sign>
+</sigml>

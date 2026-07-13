@@ -1,0 +1,15 @@
+<sigml>
+	<hns_sign gloss="sorry">
+		<hamnosys_manual>
+			<hamfist/>
+			<hamthumbacrossmod/>
+			<hamextfingeru/>
+			<hampalml/>
+			<hamchest/>
+			<hamtouch/>
+			<hammoveu/>
+			<hammoved/>
+			<hamrepeatfromstart/>
+		</hamnosys_manual>
+	</hns_sign>
+</sigml>

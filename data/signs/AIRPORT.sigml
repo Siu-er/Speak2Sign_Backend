@@ -1,0 +1,13 @@
+<sigml>
+	<hns_sign gloss="airport">
+		<hamnosys_manual>
+			<hamfinger2/>
+			<hamthumboutmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamchest/>
+			<hamarcu/>
+			<hammoveo/>
+		</hamnosys_manual>
+	</hns_sign>
+</sigml>

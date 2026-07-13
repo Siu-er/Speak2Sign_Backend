@@ -38,13 +38,13 @@ RH_OFF = FACE + LH + POSE
 
 @dataclass
 class Config:
-    buffer_size: int = 48
+    buffer_size: int = 28
     # Sync test runs blocking inference; use larger interval to keep test fast
     # In live browser, engine drops ticks while inference in flight (effectively async)
-    inference_interval_frames: int = 15
+    inference_interval_frames: int = 5
     ema_alpha: float = 0.4
     confidence_threshold: float = 0.5
-    stability_ticks: int = 3
+    stability_ticks: int = 2
     early_break_confidence: float = 0.85
     hand_presence_ratio: float = 0.5
     idle_hands_gone_ms: int = 500
@@ -88,6 +88,8 @@ class ContinuousRecognitionEngine:
         self.last_emit_idx: Optional[int] = None
         self.last_emit_below_rearm_since: Optional[float] = None
         self.cooldown_start: float = 0
+        self.last_emitted_class = -1
+        self.hands_left_since_emit = True
 
         self.emissions: List[Emission] = []
         self.last_ts: float = 0
@@ -124,6 +126,7 @@ class ContinuousRecognitionEngine:
         self.current_argmax = -1
         self.stable_ticks = 0
         self.last_emit_idx = None
+        self.hands_left_since_emit = True
 
     def push_frame(self, frame: np.ndarray, has_hands: bool, ts: float):
         self.last_ts = ts
@@ -174,9 +177,12 @@ class ContinuousRecognitionEngine:
             self._set_state("COOLDOWN")
 
         elif self.state == "COOLDOWN":
-            # Cooldown is a minimum quiet period; transition out via re-arm
-            # signal in _run_inference, not auto-timer.
-            pass
+            # Re-arm on a timer so a held/repeated sign cannot wedge the machine.
+            if ts - self.cooldown_start >= self.config.cooldown_ms / 1000:
+                self.ema = None
+                self.current_argmax = -1
+                self.stable_ticks = 0
+                self._set_state("WATCHING")
 
     def _should_run_inference(self) -> bool:
         if self.state not in ("INFERRING", "COOLDOWN"):
@@ -221,27 +227,26 @@ class ContinuousRecognitionEngine:
                     and self.stable_ticks >= self.config.stability_ticks):
                 self._emit(idx, prob, ts)
         elif self.state == "COOLDOWN" and self.last_emit_idx is not None:
-            cooldown_elapsed = ts - self.cooldown_start >= self.config.cooldown_ms / 1000
+            # A clearly different sign with very high confidence fires immediately;
+            # otherwise the timer in _run_state_machine re-arms.
             same = idx == self.last_emit_idx
             if not same and prob >= self.config.early_break_confidence:
                 self._emit(idx, prob, ts)
-                return
-            if cooldown_elapsed:
-                last_prob = float(self.ema[self.last_emit_idx])
-                if last_prob < self.config.rearm_low_confidence:
-                    if self.last_emit_below_rearm_since is None:
-                        self.last_emit_below_rearm_since = ts
-                    elif ts - self.last_emit_below_rearm_since >= self.config.rearm_low_confidence_ms / 1000:
-                        self._set_state("WATCHING")
-                else:
-                    self.last_emit_below_rearm_since = None
 
     def _emit(self, idx: int, conf: float, ts: float):
+        # Suppress a still-held sign: same class only re-emits after hands leave.
+        if idx == self.last_emitted_class and not self.hands_left_since_emit:
+            self.cooldown_start = ts
+            self.stable_ticks = 0
+            self._set_state("COOLDOWN")
+            return
         sign = self.label_map.get(idx, f"class_{idx}")
         emission = Emission(sign=sign, confidence=conf, class_index=idx, timestamp=ts)
         self.emissions.append(emission)
         print(f"  >>> EMIT: {sign} ({conf*100:.1f}%) at t={ts:.2f}s")
         self.last_emit_idx = idx
+        self.last_emitted_class = idx
+        self.hands_left_since_emit = False
         self.last_emit_below_rearm_since = None
         self.cooldown_start = ts
         self.stable_ticks = 0
