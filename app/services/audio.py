@@ -1,12 +1,13 @@
+import logging
 import os
 import tempfile
-import logging
+
 import librosa
 
 logger = logging.getLogger(__name__)
 
 def load_audio_from_bytes(audio_data):
-    """Load audio from bytes data using librosa (ML standard)"""
+    """Decode audio bytes to a mono float waveform and its sample rate."""
     with tempfile.NamedTemporaryFile(delete=False) as tmp_file:
         tmp_file.write(audio_data)
         tmp_path = tmp_file.name
