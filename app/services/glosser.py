@@ -1,19 +1,18 @@
-# asl_glosser.py
-
 import json
 import os
 import re
+import unicodedata
 from dataclasses import dataclass, field
-from typing import List, Dict, Optional
+from typing import Dict, List, Optional
 
+import contractions
 import spacy
+import torch
 from spacy.matcher import Matcher
 from spacy.util import filter_spans
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 from wordfreq import zipf_frequency
-import unicodedata
-import contractions
-import torch
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+
 
 @dataclass
 class GlossResult:
@@ -36,7 +35,6 @@ class ASLGlosser:
         self.T5_MODEL_NAME = os.environ.get("S2S_T5_MODEL", "google/flan-t5-small")
         self.T5_MAX_NEW_TOKENS = 64
 
-        # Load configuration files
         with open(os.path.join(data_dir, "lexicon.json"), "r", encoding="utf-8") as f:
             self.LEXICON: Dict[str, Optional[str]] = json.load(f)
         with open(os.path.join(data_dir, "config.json"), "r", encoding="utf-8") as f:
@@ -51,7 +49,7 @@ class ASLGlosser:
         self.UNIT_MAP = cfg["units_map"]                       # lemma -> GLOSS, e.g., {"minute":"MINUTE"}
         self.FRONT_TIME = set(cfg["front_time"])               # tokens to front, e.g., {"TOMORROW", "TODAY"}
 
-        # Inline small language knobs (no phrases.json needed)
+        # inline language knobs
         self.AM_PM = set(cfg["am_pm"])
         self.PRE_INTENS = set(cfg["pre_intensifiers"])
         self.PRONOUNS = set(cfg["protected_pronouns"])
@@ -79,7 +77,7 @@ class ASLGlosser:
             self._matcher.add(name, [pattern])
             self._pattern_actions[name] = action
 
-        # --- T5 corrector (opt-in via S2S_ENABLE_T5) ---
+        # t5 corrector (opt-in via S2S_ENABLE_T5)
         self.t5_enabled = os.environ.get("S2S_ENABLE_T5", "").lower() in ("1", "true", "yes")
         self.t5_tokenizer = None
         self.t5_model = None
@@ -90,12 +88,10 @@ class ASLGlosser:
             self.t5_tokenizer = AutoTokenizer.from_pretrained(self.T5_MODEL_NAME)
             self.t5_model = AutoModelForSeq2SeqLM.from_pretrained(self.T5_MODEL_NAME).to(self.t5_device)
 
-    # ---------------------------
-    # Helpers
-    # ---------------------------
+    # helpers
 
-    # Turn on with: glosser.DEBUG = True
-    DEBUG = True
+    # Opt-in tracing: set glosser.DEBUG = True
+    DEBUG = False
 
     def _dbg(self, *args):
         if self.DEBUG:
@@ -139,10 +135,8 @@ class ASLGlosser:
             )
         txt = self.t5_tokenizer.decode(out_ids[0], skip_special_tokens=True)
 
-        # Sanitize: uppercase tokens, collapse whitespace, strip stray punctuation
         gloss = re.sub(r"\s+", " ", txt.strip()).upper()
 
-        # Ensure single trailing question mark for questions
         if qtype in {"WH", "YN"}:
             gloss = gloss.rstrip()
             if not gloss.endswith("?"):
@@ -232,7 +226,6 @@ class ASLGlosser:
         return ["NOT"] + tokens
 
     def front_time_topic(self, gloss_tokens: List[str]) -> List[str]:
-        """Front time/topic expressions."""
         front = [g for g in gloss_tokens if g in self.FRONT_TIME]
         rest = [g for g in gloss_tokens if g not in self.FRONT_TIME]
         return front + rest
@@ -250,7 +243,7 @@ class ASLGlosser:
         text = tok.text
         doc_ends_q = tok.doc.text.strip().endswith("?")
 
-        # --- WH handling: keep only in real questions ---
+        # wh handling: keep only in real questions
         if tok.lower_ in self.WH:
             if not doc_ends_q:
                 # Declaratives: drop WH (covers subordinators, relatives, embedded content WH)
@@ -270,7 +263,6 @@ class ASLGlosser:
         if lemma in self.FUNCTION_WORDS:
             return None
 
-        # Lexicon hit on lemma
         if lemma in self.LEXICON:
             val = self.LEXICON[lemma]
             return None if val is None else val
@@ -295,9 +287,7 @@ class ASLGlosser:
             return f"FS-{text.upper()}"
         return None
 
-    # ---------------------------
-    # Main pipeline
-    # ---------------------------
+    # main pipeline
 
     def gloss(self, text: str) -> GlossResult:
         """
@@ -313,22 +303,19 @@ class ASLGlosser:
           when the previous non-fronted token is the same pronoun (to avoid ME ME)
         - Apply ASL structure (time-fronting, YN inversion fix, neg placement, WH movement)
         """
-        # 1) Normalize & expand contractions
         expanded = self.expand_contractions(text)
 
-        # 2) Parse with spaCy
         doc = self._nlp(expanded)
 
-        # Optional debug
         self._dump_doc(doc, note="after expand_contractions")
         self._dbg("FUNCTION_WORDS has 'my'?", "my" in self.FUNCTION_WORDS)
         self._dbg("POSS_PRONOUN_MAP:", getattr(self, "POSS_PRONOUN_MAP", {}))
 
-        # 3) Question type + negation (reuse same doc; no double-parse)
+        # reuse same doc, no double-parse
         qtype = self.detect_qtype(doc, expanded)
         neg = self.detect_negation_doc(doc)
 
-        # 4) Run matcher; keep longest non-overlapping spans
+        # keep longest non-overlapping spans
         matches = self._matcher(doc)
         spans = filter_spans([doc[s:e] for (_, s, e) in matches])
 
@@ -348,10 +335,9 @@ class ASLGlosser:
                 if gloss:
                     span_action_by_start[s] = (e, gloss, emit_head)
             elif atype == "post_intens":
-                # amount currently unused (we just ++ once per match)
                 post_intens_by_start[s] = e
 
-        # 5) Token walk (+ adaptive possessive handling)
+        # token walk with adaptive possessive handling
         mapped: List[str] = []
         plus_next = False
 
@@ -369,13 +355,11 @@ class ASLGlosser:
         while i < N:
             tok = doc[i]
 
-            # Skip pure punctuation/space
             if tok.is_punct or tok.is_space:
                 i += 1
                 continue
 
-            # --- Possessive determiners ---
-            # Fire if spaCy flags possessive determiner (dep 'poss') OR PRP$ OR morph Poss=Yes
+            # possessive determiner: dep 'poss', PRP$, or morph Poss=Yes
             if (tok.dep_ == "poss") or (tok.tag_ == "PRP$") or ("Yes" in tok.morph.get("Poss")):
                 key = tok.lower_
                 poss = self.POSS_PRONOUN_MAP.get(key) or self.POSS_PRONOUN_MAP.get(tok.lemma_.lower())
@@ -392,11 +376,9 @@ class ASLGlosser:
                 i += 1
                 continue
 
-            # If a gloss span starts here -> emit gloss and skip span
             if i in span_action_by_start:
                 end, gloss, emit_head = span_action_by_start[i]
 
-                # apply any pending pre-intensifier to the gloss itself
                 if plus_next:
                     gloss = gloss + "++"
                     plus_next = False
@@ -412,14 +394,12 @@ class ASLGlosser:
                 i = end
                 continue
 
-            # If a post-intensifier span starts here -> boost previous and skip
             if i in post_intens_by_start:
                 if mapped:
                     mapped[-1] = mapped[-1] + "++"
                 i = post_intens_by_start[i]
                 continue
 
-            # Pre-intensifier word: flag next mapped token
             if tok.lemma_.lower() in self.PRE_INTENS:
                 plus_next = True
                 i += 1
@@ -454,7 +434,6 @@ class ASLGlosser:
                 i += 1
                 continue
 
-            # Regular mapping
             g = self.map_token_spacy(tok)
             if g:
                 if plus_next:
@@ -462,7 +441,6 @@ class ASLGlosser:
                     plus_next = False
                 mapped.append(g)
 
-            # Emit any possessives scheduled for this head token
             if i in pending_poss_after:
                 mapped.extend(pending_poss_after.pop(i))
 
@@ -474,7 +452,7 @@ class ASLGlosser:
                 mapped.extend(poss_list)
             pending_poss_after.clear()
 
-        # 6) ASL structure rules
+        # ASL structure rules
         mapped = self.front_time_topic(mapped)
 
         # Fix English inversion for YN questions (CAN you...? -> YOU CAN...?)

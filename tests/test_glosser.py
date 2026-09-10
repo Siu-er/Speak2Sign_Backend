@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-test_gloss_local.py — Direct tests for ASLGlosser (no API)
+Direct tests for ASLGlosser (no API).
 
-- Imports ASLGlosser from asl_glosser.py
+- Imports ASLGlosser from app.services.glosser
 - Loads lexicon/config from --data (default: ./data)
 - Compares returned gloss to regex expectations
 - Tolerates minor variations (optional BE/duplicate FINISH/etc.)
@@ -16,14 +16,15 @@ Usage:
 """
 
 import argparse
+import os
 import re
 import sys
 import textwrap
 from dataclasses import dataclass
-from typing import List, Optional, Pattern
+from typing import List, Pattern
 
-# Import your glosser locally
-from asl_glosser import ASLGlosser
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from app.services.glosser import ASLGlosser
 
 
 @dataclass
@@ -34,7 +35,7 @@ class Case:
     xfail: bool = False  # known issue; won't fail the run
 
 
-# ---------- Utilities ----------
+# utilities
 
 SPACE_RE = re.compile(r"\s+")
 TRAILING_SPACE_BEFORE_Q = re.compile(r"\s+\?")
@@ -60,7 +61,7 @@ def pretty_diff(text: str, expected_rx: str, got: str) -> str:
     """).strip()
 
 
-# ---------- Test Catalog ----------
+# test catalog
 # Patterns are anchored and allow minor variation where appropriate.
 
 RAW_CASES: List[Case] = [
@@ -89,7 +90,7 @@ RAW_CASES: List[Case] = [
         "I don’t want to go.",
         compile_pat(r'^ME NOT WANT GO$')
     ),
-    # Perfect aspect — allow duplicate FINISH depending on pipeline variants
+    # Perfect aspect - allow duplicate FINISH depending on pipeline variants
     Case(
         "Perfect aspect: has + VBN",
         "He has finished the report.",
@@ -272,7 +273,7 @@ RAW_CASES: List[Case] = [
 ]
 
 
-# ---------- Runner ----------
+# runner
 
 def run_case(glosser: ASLGlosser, case: Case, show_tokens: bool = False) -> (bool, str):
     try:

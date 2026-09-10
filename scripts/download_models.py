@@ -6,21 +6,20 @@ Downloads Whisper model with progress tracking
 
 import os
 import sys
-from transformers import WhisperProcessor, WhisperForConditionalGeneration
+
 from huggingface_hub import snapshot_download
 from tqdm import tqdm
+from transformers import WhisperForConditionalGeneration, WhisperProcessor
 
 # Matches the runtime default in app.py so the fetched and loaded models agree.
 # Override both with the WHISPER_MODEL environment variable.
 WHISPER_MODEL_NAME = os.environ.get("WHISPER_MODEL", "openai/whisper-base")
 
 def download_whisper_model():
-    """Download Whisper model and processor with progress tracking"""
     print(f"Downloading Whisper model: {WHISPER_MODEL_NAME}")
     print("This may take several minutes depending on your internet connection...")
 
     try:
-        # Download model files with progress bar
         print("\n1. Downloading model files...")
         snapshot_download(
             repo_id=WHISPER_MODEL_NAME,
@@ -29,18 +28,15 @@ def download_whisper_model():
             tqdm_class=tqdm
         )
 
-        # Load processor (this will use cached files)
         print("\n2. Loading processor...")
         processor = WhisperProcessor.from_pretrained(WHISPER_MODEL_NAME)
         print("✓ Processor loaded successfully")
 
-        # Load model (this will use cached files)
         print("\n3. Loading model...")
         model = WhisperForConditionalGeneration.from_pretrained(WHISPER_MODEL_NAME)
         print("✓ Model loaded successfully")
 
-        # Display model info
-        print(f"\nModel successfully downloaded and cached!")
+        print("\nModel successfully downloaded and cached!")
         print(f"Model name: {WHISPER_MODEL_NAME}")
         print(f"Model parameters: ~{sum(p.numel() for p in model.parameters()) / 1e6:.1f}M")
         print(f"Cache location: {processor.name_or_path}")
@@ -52,20 +48,17 @@ def download_whisper_model():
         return False
 
 def check_model_exists():
-    """Check if model is already downloaded"""
     try:
         from transformers import WhisperProcessor
         WhisperProcessor.from_pretrained(WHISPER_MODEL_NAME, local_files_only=True)
         return True
-    except:
+    except Exception:
         return False
 
 def main():
-    """Main function"""
     print("Speak2Sign Backend - Model Downloader")
     print("=" * 50)
 
-    # Check if model already exists
     if check_model_exists():
         print(f"✓ Model {WHISPER_MODEL_NAME} is already downloaded")
         response = input("Download again? (y/N): ").lower().strip()
@@ -73,7 +66,6 @@ def main():
             print("Skipping download")
             return
 
-    # Download model
     success = download_whisper_model()
 
     if success:
