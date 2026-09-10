@@ -19,7 +19,10 @@ def create_app():
     app.config["MAX_CONTENT_LENGTH"] = config.MAX_CONTENT_LENGTH
 
     cors.init_app(app)
-    socketio.init_app(app, async_mode="threading", cors_allowed_origins="*")
+    # manage_session=False bypasses Flask-SocketIO's session propagation, which
+    # sets ctx.session - a read-only property in Flask 3.x, causing AttributeError.
+    socketio.init_app(app, async_mode="threading", cors_allowed_origins="*",
+                      manage_session=False)
 
     from app.routes.health import health_bp
     from app.routes.pipeline import pipeline_bp
