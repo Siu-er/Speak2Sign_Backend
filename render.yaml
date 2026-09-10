@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: s2s-backend
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: pip install -r requirements.txt && python -m spacy download en_core_web_sm
+    startCommand: gunicorn --worker-class eventlet -w 1 --bind 0.0.0.0:$PORT run:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: WHISPER_MODEL
+        value: openai/whisper-tiny
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_AZURE_ENDPOINT
+        sync: false
+      - key: OPENAI_API_VERSION
+        sync: false
+      - key: AZURE_OPENAI_GENERATOR_DEPLOYMENT
+        sync: false
+      - key: MODAL_TOKEN_ID
+        sync: false
+      - key: MODAL_TOKEN_SECRET
+        sync: false
