@@ -7,10 +7,8 @@ from typing import Dict, List, Optional
 
 import contractions
 import spacy
-import torch
 from spacy.matcher import Matcher
 from spacy.util import filter_spans
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
 from wordfreq import zipf_frequency
 
 
@@ -77,14 +75,17 @@ class ASLGlosser:
             self._matcher.add(name, [pattern])
             self._pattern_actions[name] = action
 
-        # t5 corrector (opt-in via S2S_ENABLE_T5)
+        # t5 corrector (opt-in via S2S_ENABLE_T5; requires torch + transformers)
         self.t5_enabled = os.environ.get("S2S_ENABLE_T5", "").lower() in ("1", "true", "yes")
         self.t5_tokenizer = None
         self.t5_model = None
-        self.t5_device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.t5_device = None
         self.t5_max_new_tokens = self.T5_MAX_NEW_TOKENS
 
         if self.t5_enabled and self.T5_MODEL_NAME:
+            import torch
+            from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+            self.t5_device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
             self.t5_tokenizer = AutoTokenizer.from_pretrained(self.T5_MODEL_NAME)
             self.t5_model = AutoModelForSeq2SeqLM.from_pretrained(self.T5_MODEL_NAME).to(self.t5_device)
 
@@ -124,6 +125,7 @@ class ASLGlosser:
             "FINAL:"
         )
 
+        import torch
         enc = self.t5_tokenizer(prompt, return_tensors="pt", truncation=True).to(self.t5_device)
         with torch.no_grad():
             out_ids = self.t5_model.generate(
