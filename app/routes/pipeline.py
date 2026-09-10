@@ -1,95 +1,21 @@
-"""Translation pipeline endpoints: speech to text, text to gloss, gloss to SiGML,
-and signing video to English."""
+"""Translation pipeline endpoints: text to gloss, gloss to SiGML, and signing
+video to English. Speech-to-text is handled client-side via the browser Web
+Speech API."""
 
 import logging
 import os
 import tempfile
 
-import torch
 from flask import Blueprint, jsonify, request
 
 from app import config
 from app.models import models
-from app.services.audio import load_audio_from_bytes
 from app.services.llm import gloss_to_sentence
 from app.services.recognizer import clip_slug, get_wlasl, retain_debug_clip
 
 logger = logging.getLogger(__name__)
 
 pipeline_bp = Blueprint("pipeline", __name__)
-
-
-def _allowed_file(filename):
-    return "." in filename and filename.rsplit(".", 1)[1].lower() in config.ALLOWED_EXTENSIONS
-
-
-@pipeline_bp.post("/audio-to-text")
-def audio_to_text():
-    logger.info("Audio-to-text request received")
-    try:
-        if "audio" not in request.files:
-            return jsonify({"error": "No audio file provided"}), 400
-
-        file = request.files["audio"]
-        if file.filename == "":
-            return jsonify({"error": "No file selected"}), 400
-        if not _allowed_file(file.filename):
-            return jsonify({"error": "Invalid file format"}), 400
-
-        # Decode the upload in-memory. A temp file holds a Windows lock between
-        # write and read, so decode the bytes directly instead.
-        audio_bytes = file.read()
-        try:
-            audio, sample_rate = load_audio_from_bytes(audio_bytes)
-        except Exception as e:
-            logger.error(f"Failed to load audio file: {e}")
-            return jsonify({"error": f"Failed to load audio file: {e!s}"}), 400
-
-        if sample_rate != 16000:
-            import librosa
-            audio = librosa.resample(audio, orig_sr=sample_rate, target_sr=16000, res_type="kaiser_fast")
-            sample_rate = 16000
-
-        inputs = models.whisper_processor(
-            audio, sampling_rate=sample_rate, return_tensors="pt", padding="max_length"
-        )
-        inputs = {k: v.to(models.device) for k, v in inputs.items()}
-
-        # task="translate" makes Whisper output English from any spoken language
-        # (multilingual input); otherwise transcribe English.
-        task = (request.form.get("task") or "transcribe").lower()
-        gen_kwargs = dict(
-            input_features=inputs["input_features"],
-            attention_mask=inputs.get("attention_mask"),
-            max_length=224,
-            min_length=1,
-            num_beams=1,
-            do_sample=False,
-            temperature=0.0,
-            use_cache=True,
-            pad_token_id=models.whisper_processor.tokenizer.eos_token_id,
-        )
-        if task == "translate":
-            gen_kwargs["task"] = "translate"
-        else:
-            gen_kwargs["language"] = "en"
-            gen_kwargs["task"] = "transcribe"
-
-        with torch.no_grad():
-            predicted_ids = models.whisper_model.generate(**gen_kwargs)
-
-        # Content is not logged, for privacy.
-        text = models.whisper_processor.batch_decode(predicted_ids, skip_special_tokens=True)[0].strip()
-        logger.info(f"Transcription done ({len(text)} chars, task={task})")
-        models.clear_gpu_cache()
-
-        if not text:
-            return jsonify({"error": "No speech detected in audio"}), 400
-        return jsonify({"text": text, "language": "auto-detected", "success": True})
-
-    except Exception as e:
-        logger.error(f"Audio processing failed: {e}")
-        return jsonify({"error": f"Audio processing failed: {e!s}"}), 500
 
 
 @pipeline_bp.post("/text-to-gloss")

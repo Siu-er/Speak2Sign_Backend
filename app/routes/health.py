@@ -2,7 +2,6 @@
 
 import time
 
-import torch
 from flask import Blueprint, jsonify
 
 from app import config
@@ -27,7 +26,6 @@ def root():
         "description": "Speech to American Sign Language conversion API",
         "endpoints": {
             "health": "/health",
-            "audio_to_text": "/audio-to-text",
             "text_to_gloss": "/text-to-gloss",
             "gloss_to_sigml": "/gloss-to-sigml",
             "video_to_sentence": "/video-to-sentence",
@@ -46,8 +44,6 @@ def health_check():
         "service": "Speak2Sign API",
         "version": "1.0.0",
         "system": {
-            "device": models.device,
-            "cuda_available": torch.cuda.is_available(),
             "memory_usage": _memory_usage(),
         },
         "models": {
