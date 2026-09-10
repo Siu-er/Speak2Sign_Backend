@@ -5,7 +5,7 @@ services:
     region: singapore
     plan: free
     buildCommand: pip install -r requirements.txt && python -m spacy download en_core_web_sm
-    startCommand: gunicorn --worker-class geventwebsocket.gunicorn.workers.GeventWebSocketWorker -w 1 --bind 0.0.0.0:$PORT run:app
+    startCommand: gunicorn --worker-class gthread --threads 4 --bind 0.0.0.0:$PORT --timeout 120 run:app
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0

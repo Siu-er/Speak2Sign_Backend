@@ -19,7 +19,7 @@ def create_app():
     app.config["MAX_CONTENT_LENGTH"] = config.MAX_CONTENT_LENGTH
 
     cors.init_app(app)
-    socketio.init_app(app, async_mode="gevent", cors_allowed_origins="*")
+    socketio.init_app(app, async_mode="threading", cors_allowed_origins="*")
 
     from app.routes.health import health_bp
     from app.routes.pipeline import pipeline_bp
