@@ -48,8 +48,14 @@ class SiGMLGenerator:
         return sigml_content
 
     def gloss_to_tokens(self, gloss: str) -> List[str]:
+        """Split a gloss into renderable sign tokens.
+
+        Gloss notation carries sentence-level markers such as a trailing "?"
+        that record question type. Those are non-manual features, not signs,
+        and are dropped here so they never reach the avatar as a handshape.
+        """
         tokens = [t for t in re.split(r"[\s/]+", gloss.strip()) if t]
-        return tokens
+        return [t for t in tokens if any(ch.isalnum() for ch in t)]
 
     def classify_token(self, token: str) -> str:
         """Report how a token will render, without generating it.

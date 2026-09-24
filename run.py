@@ -14,5 +14,5 @@ if __name__ == "__main__":
     missing = [name for name, loaded in models.status().items() if not loaded]
     if missing:
         raise RuntimeError(f"Models not loaded: {missing}")
-    logger.info(f"Starting Speak2Sign API on http://localhost:5000 (device={models.device})")
+    logger.info("Starting Speak2Sign API on http://localhost:5000")
     socketio.run(app, debug=True, host="0.0.0.0", port=5000, allow_unsafe_werkzeug=True)
