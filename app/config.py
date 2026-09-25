@@ -4,11 +4,6 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Whisper base is the fast default; override with WHISPER_MODEL for a larger,
-# more accurate model. The download helper reads the same variable so the
-# fetched and loaded models stay in sync.
-WHISPER_MODEL_NAME = os.environ.get("WHISPER_MODEL", "openai/whisper-base")
-
 DATA_DIR = os.path.join(BASE_DIR, "data")
 SIGNS_DIR = os.path.join(DATA_DIR, "signs")
 
@@ -22,3 +17,9 @@ DEBUG_CLIPS_KEEP = 3
 
 WLASL_MODAL_APP = "wlasl-i3d"
 WLASL_MODAL_CLASS = "WLASL"
+
+# Ceilings on the routes that call a paid service, counted in a Modal Dict so
+# they hold across API restarts. The values are an operator allowance for this
+# deployment, not a property of the services, so both are overridable.
+BUDGET_DICT_NAME = "wlasl-budget"
+MAX_TRANSLATIONS = int(os.environ.get("MAX_TRANSLATIONS", "100"))

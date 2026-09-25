@@ -1,6 +1,6 @@
 """Model lifecycle: load the ASL glosser and SiGML generator once and hold
-them for the request handlers. Speech-to-text is handled client-side via the
-browser Web Speech API; Whisper is not loaded on the server."""
+them for the request handlers. Speech recognition runs in the browser, so no
+acoustic model is loaded here."""
 
 import logging
 import time

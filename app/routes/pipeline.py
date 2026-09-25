@@ -1,6 +1,6 @@
-"""Translation pipeline endpoints: text to gloss, gloss to SiGML, and signing
-video to English. Speech-to-text is handled client-side via the browser Web
-Speech API."""
+"""Translation pipeline endpoints: text to gloss, gloss to SiGML, signing video
+to English, and non-English speech to English. Speech recognition itself runs in
+the browser, so no audio reaches this service."""
 
 import logging
 import os
@@ -11,29 +11,36 @@ from flask import Blueprint, jsonify, request
 
 from app import config
 from app.models import models
-from app.services.llm import gloss_to_sentence
+from app.services import budget
+from app.services.llm import gloss_to_sentence, translate_to_english
 from app.services.recognizer import clip_slug, get_wlasl, retain_debug_clip
 
 logger = logging.getLogger(__name__)
 
 pipeline_bp = Blueprint("pipeline", __name__)
 
-# /video-to-sentence is the only billable route: it runs GPU inference on Modal
-# and then an LLM call. The durable spend ceiling lives in Modal so it survives
-# restarts; this throttle only stops one caller burning that budget in a burst.
+# /video-to-sentence and /translate-to-english are the billable routes: GPU
+# inference on Modal and an LLM call, and an LLM call respectively. The spend
+# ceilings are counted in a Modal Dict so they survive a restart of this service;
+# the throttle below only stops one caller burning a ceiling in a burst.
 _RECENT_CALLS: dict = {}
 RATE_LIMIT_CALLS = 5
 RATE_LIMIT_WINDOW_S = 60
 
 
-def _rate_limited(ip: str) -> bool:
+def _caller() -> str:
+    forwarded = request.headers.get("X-Forwarded-For", request.remote_addr or "?")
+    return forwarded.split(",")[0].strip()
+
+
+def _rate_limited(key: str) -> bool:
     now = time.time()
-    hits = [t for t in _RECENT_CALLS.get(ip, []) if now - t < RATE_LIMIT_WINDOW_S]
+    hits = [t for t in _RECENT_CALLS.get(key, []) if now - t < RATE_LIMIT_WINDOW_S]
     if len(hits) >= RATE_LIMIT_CALLS:
-        _RECENT_CALLS[ip] = hits
+        _RECENT_CALLS[key] = hits
         return True
     hits.append(now)
-    _RECENT_CALLS[ip] = hits
+    _RECENT_CALLS[key] = hits
     if len(_RECENT_CALLS) > 1000:
         for k in [k for k, v in _RECENT_CALLS.items() if not v or now - v[-1] > RATE_LIMIT_WINDOW_S]:
             _RECENT_CALLS.pop(k, None)
@@ -92,8 +99,7 @@ def gloss_to_sigml():
 
 @pipeline_bp.post("/video-to-sentence")
 def video_to_sentence():
-    caller = request.headers.get("X-Forwarded-For", request.remote_addr or "?").split(",")[0].strip()
-    if _rate_limited(caller):
+    if _rate_limited(f"video-to-sentence:{_caller()}"):
         return jsonify({"error": "too many requests, try again shortly"}), 429
     if "video" not in request.files:
         return jsonify({"error": "no video provided"}), 400
@@ -123,3 +129,26 @@ def video_to_sentence():
             os.unlink(tmp.name)
         except OSError:
             pass
+
+
+@pipeline_bp.post("/translate-to-english")
+def translate_speech():
+    if _rate_limited(f"translate-to-english:{_caller()}"):
+        return jsonify({"error": "too many requests, try again shortly"}), 429
+    data = request.get_json()
+    if not data or "text" not in data:
+        return jsonify({"error": "No text provided"}), 400
+    text = data["text"].strip()
+    if not text:
+        return jsonify({"error": "Empty text provided"}), 400
+    try:
+        budget.consume("translations", config.MAX_TRANSLATIONS)
+    except budget.BudgetExhausted as e:
+        logger.warning(f"translate-to-english refused: {e}")
+        return jsonify({"error": str(e)}), 429
+    try:
+        english = translate_to_english(text)
+    except Exception as e:
+        logger.error(f"translate-to-english failed: {e}")
+        return jsonify({"error": f"Translation failed: {e!s}"}), 500
+    return jsonify({"text": english, "success": True})

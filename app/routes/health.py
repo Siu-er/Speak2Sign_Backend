@@ -4,7 +4,6 @@ import time
 
 from flask import Blueprint, jsonify
 
-from app import config
 from app.models import models
 
 health_bp = Blueprint("health", __name__)
@@ -29,6 +28,7 @@ def root():
             "text_to_gloss": "/text-to-gloss",
             "gloss_to_sigml": "/gloss-to-sigml",
             "video_to_sentence": "/video-to-sentence",
+            "translate_to_english": "/translate-to-english",
         },
         "status": "running",
     })
@@ -48,7 +48,6 @@ def health_check():
         },
         "models": {
             "status": "ready" if ready else "not_ready",
-            "whisper_model": config.WHISPER_MODEL_NAME,
             "details": status,
         },
         "endpoints_available": ready,

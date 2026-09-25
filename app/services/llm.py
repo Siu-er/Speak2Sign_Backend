@@ -1,4 +1,5 @@
-"""Turn a recognized ASL gloss sequence into an English sentence via Azure OpenAI."""
+"""Azure OpenAI text stages: reconstructing English from a recognized gloss
+sequence, and translating a spoken utterance into English."""
 
 import os
 
@@ -15,6 +16,13 @@ _SYSTEM_PROMPT = (
     "everyday sentence. Reply with ONLY the sentence, no quotes or notes."
 )
 
+_TRANSLATE_PROMPT = (
+    "You translate a spoken utterance into English. The utterance may be in any "
+    "language and is conversational speech, so keep the register informal and the "
+    "meaning exact. Reply with ONLY the English translation, no quotes or notes. "
+    "If the utterance is already English, repeat it unchanged."
+)
+
 
 def _get_client():
     global _client
@@ -28,24 +36,35 @@ def _get_client():
     return _client
 
 
-def gloss_to_sentence(signs):
+def _complete(system_prompt, user_content, max_tokens):
     """Raises if the LLM is not configured or returns nothing (no silent fallback)."""
-    gloss = " ".join(str(s).strip() for s in signs if str(s).strip())
-    if not gloss:
-        raise ValueError("empty gloss sequence")
     deployment = os.environ.get("AZURE_OPENAI_GENERATOR_DEPLOYMENT")
     if not deployment or not os.environ.get("OPENAI_API_KEY"):
         raise RuntimeError("LLM not configured")
     resp = _get_client().chat.completions.create(
         model=deployment,
         messages=[
-            {"role": "system", "content": _SYSTEM_PROMPT},
-            {"role": "user", "content": gloss},
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_content},
         ],
         temperature=0.2,
-        max_tokens=60,
+        max_tokens=max_tokens,
     )
-    sentence = (resp.choices[0].message.content or "").strip()
-    if not sentence:
-        raise RuntimeError("LLM returned empty sentence")
-    return sentence
+    text = (resp.choices[0].message.content or "").strip()
+    if not text:
+        raise RuntimeError("LLM returned empty output")
+    return text
+
+
+def gloss_to_sentence(signs):
+    gloss = " ".join(str(s).strip() for s in signs if str(s).strip())
+    if not gloss:
+        raise ValueError("empty gloss sequence")
+    return _complete(_SYSTEM_PROMPT, gloss, 60)
+
+
+def translate_to_english(utterance):
+    text = utterance.strip()
+    if not text:
+        raise ValueError("empty utterance")
+    return _complete(_TRANSLATE_PROMPT, text, 80)
