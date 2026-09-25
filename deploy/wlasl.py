@@ -15,6 +15,12 @@ import modal
 
 WEIGHTS_GDRIVE = "1jALimVOB69ifYkeT0Pe297S1z4U3jC48"
 
+# Hard ceiling on billable GPU recognitions. Held in a modal.Dict so it survives
+# container restarts and redeploys; an in-process counter would reset on every
+# cold start and place no real bound on spend.
+MAX_RECOGNITIONS = 100
+BUDGET = modal.Dict.from_name("wlasl-budget", create_if_missing=True)
+
 # Conversational signs verified present in the WLASL-1000 label set. Recognition
 # is restricted to this set so co-articulated transition frames cannot resolve to
 # arbitrary out-of-domain glosses; the downstream LLM restores dropped pronouns,
@@ -66,7 +72,8 @@ def prepare():
     print("PT FILES:", pts)
 
 
-@app.cls(image=image, gpu="a10g", cpu=8.0, volumes={"/weights": vol}, scaledown_window=300, timeout=900, min_containers=1)
+@app.cls(image=image, gpu="a10g", cpu=8.0, volumes={"/weights": vol}, scaledown_window=120,
+         timeout=900, max_containers=2)
 class WLASL:
     @modal.enter()
     def load(self):
@@ -210,6 +217,14 @@ class WLASL:
         import tempfile
 
         import cv2
+
+        used = BUDGET.get("calls", 0)
+        if used >= MAX_RECOGNITIONS:
+            raise RuntimeError(
+                f"recognition budget exhausted ({used}/{MAX_RECOGNITIONS} used); "
+                "raise MAX_RECOGNITIONS and redeploy to continue"
+            )
+        BUDGET["calls"] = used + 1
         if vocab == "__supported__":
             vocab = SUPPORTED_VOCAB
         with tempfile.NamedTemporaryFile(suffix=".bin", delete=False) as f:
