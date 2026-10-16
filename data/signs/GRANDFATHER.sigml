@@ -1,14 +1,17 @@
 <sigml>
-	<hns_sign gloss="grandfather">
+	<hns_sign gloss="GRANDFATHER">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2345/>
 			<hamthumboutmod/>
 			<hamextfingeru/>
 			<hampalml/>
 			<hamforehead/>
+			<hamtouch/>
 			<hammoveo/>
-			<hamarcu/>
-			<hamrepeatfromstart/>
+			<hamarcd/>
+			<hamrepeatcontinue/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

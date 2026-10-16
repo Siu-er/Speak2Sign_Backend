@@ -1,12 +1,22 @@
 <sigml>
-	<hns_sign gloss="meet">
+	<hns_sign gloss="MEET">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
 			<hamfinger2/>
+			<hamthumbacrossmod/>
 			<hamextfingeru/>
 			<hampalml/>
-			<hamchest/>
-			<hammovei/>
+			<hamshoulders/>
+			<hamlrbeside/>
+			<hammovel/>
+			<hamparbegin/>
+			<hampalm/>
+			<hamplus/>
+			<hampalm/>
+			<hamparend/>
+			<hamtouch/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

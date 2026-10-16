@@ -1,17 +1,17 @@
 <sigml>
-
 	<hns_sign gloss="manage">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="mAn"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamflathand/>
-			<hamextfingeru/>
-			<hampalmd/>
+			<hamsymmpar/>
+			<hamalternatingmotion/>
+			<hampinch12/>
+			<hamextfingero/>
+			<hampalml/>
 			<hamchest/>
-			<hamalternating/>
 			<hammoveo/>
+			<hamsmallmod/>
+			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

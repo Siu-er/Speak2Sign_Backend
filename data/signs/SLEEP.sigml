@@ -1,12 +1,17 @@
 <sigml>
-	<hns_sign gloss="sleep">
+	<hns_sign gloss="SLEEP">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2345/>
+			<hamthumboutmod/>
 			<hamextfingeru/>
-			<hampalml/>
-			<hamforehead/>
+			<hampalmu/>
+			<hamnose/>
 			<hammoved/>
-			<hamclose/>
+			<hamsmallmod/>
+			<hamreplace/>
+			<hampinchall/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

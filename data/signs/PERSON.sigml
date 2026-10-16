@@ -1,11 +1,14 @@
 <sigml>
-	<hns_sign gloss="person">
+	<hns_sign gloss="PERSON">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
 			<hamflathand/>
-			<hamextfingeru/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
 			<hampalml/>
-			<hamchest/>
+			<hamshoulders/>
 			<hammoved/>
 		</hamnosys_manual>
 	</hns_sign>

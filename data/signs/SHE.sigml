@@ -1,12 +1,15 @@
 <sigml>
-	<hns_sign gloss="she">
+	<hns_sign gloss="SHE">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2/>
 			<hamthumbacrossmod/>
-			<hamextfingero/>
+			<hamextfingeror/>
 			<hampalmd/>
 			<hamshoulders/>
-			<hammoveo/>
+			<hamlrbeside/>
+			<hammoveor/>
 			<hamsmallmod/>
 		</hamnosys_manual>
 	</hns_sign>

@@ -1,5 +1,7 @@
 <sigml>
-	<hns_sign gloss="they">
+	<hns_sign gloss="THEY">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2/>
 			<hamthumbacrossmod/>

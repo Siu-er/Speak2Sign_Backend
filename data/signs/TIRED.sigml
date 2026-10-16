@@ -1,15 +1,22 @@
 <sigml>
-	<hns_sign gloss="tired">
+	<hns_sign gloss="TIRED">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
 			<hamflathand/>
 			<hamfingerbendmod/>
+			<hamthumbacrossmod/>
 			<hamextfingeru/>
-			<hampalml/>
+			<hampalmu/>
 			<hamchest/>
 			<hamtouch/>
-			<hammoved/>
-			<hamsmallmod/>
+			<hamreplace/>
+			<hamflathand/>
+			<hamfingerbendmod/>
+			<hamthumbacrossmod/>
+			<hamextfingerd/>
+			<hampalmu/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

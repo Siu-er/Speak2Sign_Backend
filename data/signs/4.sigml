@@ -1,19 +1,14 @@
 <sigml>
-
-	<hns_sign gloss="four">
+	<hns_sign gloss="4">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="fO:"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2345/>
 			<hamthumbacrossmod/>
 			<hamextfingeru/>
 			<hampalmu/>
-			<hamchest/>
-			<hamclose/>
-			<hammoveo/>
-			<hamsmallmod/>
+			<hamshoulders/>
+			<hamlrbeside/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

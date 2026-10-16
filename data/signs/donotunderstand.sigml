@@ -1,25 +1,28 @@
 <sigml>
-
-	<hns_sign gloss="understand (not)">
+	<hns_sign gloss="NOT">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="a_IdnVd@st{d"/>
-			<hnm_head tag="SH"/>
-			<hnm_eyebrows tag="FU"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfist/>
-			<hamthumbacrossmod/>
 			<hamextfingeru/>
-			<hampalmu/>
-			<hamforehead/>
-			<hamlrbeside/>
-			<hamparbegin/>
+			<hampalml/>
+			<hamunderchin/>
+			<hamtouch/>
 			<hammoveo/>
+		</hamnosys_manual>
+	</hns_sign>
+	<hns_sign gloss="UNDERSTAND">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hampinch12/>
+			<hamextfingeru/>
+			<hampalml/>
+			<hameyebrows/>
+			<hamlrat/>
 			<hamreplace/>
 			<hamfinger2/>
 			<hamthumbacrossmod/>
-			<hamparend/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

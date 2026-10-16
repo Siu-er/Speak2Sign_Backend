@@ -1,16 +1,17 @@
 <sigml>
-
 	<hns_sign gloss="would">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="wUd"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamflathand/>
+			<hamfinger2345/>
+			<hamthumbacrossmod/>
+			<hampinky/>
+			<hamfingerbendmod/>
 			<hamextfingeru/>
-			<hampalmu/>
-			<hamchest/>
-			<hammoveur/>
+			<hampalml/>
+			<hamcheek/>
+			<hamlrbeside/>
+			<hammoveo/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

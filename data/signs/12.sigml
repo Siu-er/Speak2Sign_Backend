@@ -1,26 +1,19 @@
 <sigml>
-
-	<hns_sign gloss="twelve">
+	<hns_sign gloss="12">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="twelv"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamcee12/>
-			<hamfingerstraightmod/>
-			<hammiddlefinger/>
-			<hamfingerstraightmod/>
+			<hamfinger23spread/>
+			<hamdoublebent/>
+			<hamthumbopenmod/>
 			<hamextfingeru/>
-			<hampalmd/>
+			<hampalmu/>
 			<hamshoulders/>
-			<hamparbegin/>
+			<hamlrbeside/>
 			<hamreplace/>
-			<hampinch12/>
-			<hamfingerstraightmod/>
-			<hammiddlefinger/>
-			<hamfingerstraightmod/>
-			<hamparend/>
+			<hamfinger23spread/>
+			<hamthumbopenmod/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

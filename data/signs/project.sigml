@@ -1,17 +1,18 @@
 <sigml>
-
 	<hns_sign gloss="project">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="prA"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamflathand/>
+			<hamfinger23spread/>
+			<hamthumbopenmod/>
+			<hammiddlefinger/>
+			<hamfingerbendmod/>
 			<hamextfingeru/>
-			<hampalmd/>
-			<hamchest/>
-			<hammoveur/>
-			<hamsmallmod/>
+			<hampalml/>
+			<hamshoulders/>
+			<hamlrbeside/>
+			<hammoved/>
+			<hamzigzag/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

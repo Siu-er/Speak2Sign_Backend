@@ -1,16 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sigml SYSTEM "http://www.visicast.cmp.uea.ac.uk/sigml/sigml.dtd">
 <sigml>
-
-<hamgestural_sign gloss="family1">
-  <sign_manual>
-    <handconfig handshape="finger2345" thumbpos="out"/>
-    <handconfig extfidir="o"/>
-    <handconfig palmor="d"/>
-    <rpt_motion repetition="fromstart">
-      <circularmotion axis="u" size="small"/>
-    </rpt_motion>
-  </sign_manual>
-</hamgestural_sign>
-
+	<hns_sign gloss="FAMILY">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamsymmlr/>
+			<hampinch12open/>
+			<hamextfingeru/>
+			<hampalmd/>
+			<hamparbegin/>
+			<hamfingertip/>
+			<hamplus/>
+			<hamfingertip/>
+			<hamparend/>
+			<hamtouch/>
+			<hamshoulders/>
+			<hamparbegin/>
+			<hammoveir/>
+			<hamarcr/>
+			<hamreplace/>
+			<hampinch12open/>
+			<hamextfingeru/>
+			<hampalmu/>
+			<hamparend/>
+			<hamparbegin/>
+			<hampinkyside/>
+			<hamplus/>
+			<hampinkyside/>
+			<hamparend/>
+			<hamtouch/>
+		</hamnosys_manual>
+	</hns_sign>
 </sigml>

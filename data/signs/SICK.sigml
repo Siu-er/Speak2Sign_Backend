@@ -1,13 +1,34 @@
 <sigml>
-	<hns_sign gloss="sick">
+	<hns_sign gloss="SICK">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
+			<hamparbegin/>
 			<hamfinger2345/>
+			<hamthumboutmod/>
 			<hammiddlefinger/>
 			<hamfingerbendmod/>
+			<hamplus/>
+			<hamfinger2345/>
+			<hamthumboutmod/>
+			<hammiddlefinger/>
+			<hamfingerbendmod/>
+			<hamparend/>
+			<hamparbegin/>
 			<hamextfingeru/>
+			<hamplus/>
+			<hamextfingerr/>
+			<hamparend/>
+			<hamparbegin/>
 			<hampalml/>
+			<hamplus/>
+			<hampalmu/>
+			<hamparend/>
+			<hamparbegin/>
 			<hamforehead/>
-			<hamtouch/>
+			<hamplus/>
+			<hamstomach/>
+			<hamparend/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

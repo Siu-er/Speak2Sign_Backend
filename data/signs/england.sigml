@@ -1,33 +1,29 @@
 <sigml>
-
-	<hns_sign gloss="England">
+	<hns_sign gloss="england">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="INglVnd"/>
-			<hnm_eyegaze tag="FR"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfinger2/>
+			<hamparbegin/>
+			<hamflathand/>
+			<hamfingerbendmod/>
 			<hamthumbacrossmod/>
-			<hamparbegin/>
-			<hamextfingerol/>
-			<hampalml/>
 			<hamplus/>
-			<hamextfingeror/>
+			<hamfist/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamextfingero/>
+			<hamplus/>
+			<hamextfingero/>
+			<hamparend/>
+			<hamparbegin/>
 			<hampalmd/>
-			<hambetween/>
-			<hampalmdr/>
-			<hamparend/>
-			<hamparbegin/>
-			<hamfingerside/>
-			<hamindexfinger/>
 			<hamplus/>
-			<hamfingerside/>
-			<hamindexfinger/>
+			<hampalml/>
 			<hamparend/>
-			<hamtouch/>
-			<hammoveor/>
+			<hamchest/>
+			<hammoveo/>
+			<hamsmallmod/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

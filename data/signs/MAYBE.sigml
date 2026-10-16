@@ -1,13 +1,17 @@
 <sigml>
-	<hns_sign gloss="maybe">
+	<hns_sign gloss="MAYBE">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
+			<hamalternatingmotion/>
 			<hamflathand/>
+			<hamthumbacrossmod/>
 			<hamextfingero/>
 			<hampalmu/>
-			<hamchest/>
+			<hamshoulders/>
 			<hammoveu/>
-			<hammoved/>
+			<hamsmallmod/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>

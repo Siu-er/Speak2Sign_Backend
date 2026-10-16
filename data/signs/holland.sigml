@@ -1,30 +1,17 @@
 <sigml>
-
-	<hns_sign gloss="Holland">
+	<hns_sign gloss="holland">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="holan"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamsymmlr/>
-			<hamceeall/>
-			<hamfingerstraightmod/>
-			<hamthumbopenmod/>
-			<hamextfingerul/>
-			<hampalmd/>
+			<hamfinger2/>
+			<hamthumboutmod/>
+			<hampinky/>
+			<hamextfingeru/>
+			<hampalml/>
 			<hamforehead/>
-			<hamlrat/>
-			<hamseqbegin/>
-			<hamtouch/>
-			<hamthumb/>
-			<hamseqend/>
-			<hamparbegin/>
-			<hamreplace/>
-			<hampinchall/>
-			<hamextfingerul/>
-			<hampalmd/>
-			<hammover/>
-			<hamparend/>
+			<hamlrbeside/>
+			<hammoved/>
+			<hamarcl/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

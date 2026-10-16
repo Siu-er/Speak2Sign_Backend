@@ -1,40 +1,18 @@
 <sigml>
-
 	<hns_sign gloss="grey">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="gre_I"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamparbegin/>
-			<hamfist/>
-			<hampinky/>
-			<hamfingerstraightmod/>
-			<hamplus/>
-			<hamfist/>
-			<hampinky/>
-			<hamfingerstraightmod/>
-			<hamparend/>
-			<hamparbegin/>
+			<hamsymmlr/>
+			<hamalternatingmotion/>
+			<hamfinger2345/>
+			<hamthumboutmod/>
 			<hamextfingero/>
-			<hampalml/>
-			<hamplus/>
-			<hamextfingero/>
-			<hampalmr/>
-			<hamparend/>
-			<hamparbegin/>
-			<hamfingerpad/>
-			<hamthumb/>
-			<hamplus/>
-			<hamfingerpad/>
-			<hampinky/>
-			<hamparend/>
-			<hamtouch/>
-			<hamcircleu/>
+			<hampalmd/>
+			<hamchest/>
+			<hammoveo/>
 			<hamsmallmod/>
-			<hamclockur/>
-			<hamclockur/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

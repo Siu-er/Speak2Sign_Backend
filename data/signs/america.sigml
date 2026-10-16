@@ -1,41 +1,15 @@
 <sigml>
-
-	<hns_sign gloss="America">
+	<hns_sign gloss="america">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="VmerkV"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
 			<hamfinger2345/>
 			<hamthumboutmod/>
-			<hamextfingerol/>
-			<hampalml/>
-			<hamparbegin/>
-			<hamindexfinger/>
-			<hammiddlefinger/>
-			<hamringfinger/>
-			<hamfingerside/>
-			<hamplus/>
-			<hamindexfinger/>
-			<hammiddlefinger/>
-			<hamringfinger/>
-			<hamfingerside/>
-			<hamparend/>
-			<hamclose/>
+			<hamextfingeru/>
+			<hampalmu/>
 			<hamchest/>
-			<hamlrat/>
-			<hamparbegin/>
-			<hamcircleu/>
-			<hamlargemod/>
-			<hamclocku/>
-			<hamclocku/>
-			<hamplus/>
-			<hamcircleu/>
-			<hamlargemod/>
-			<hamclocku/>
-			<hamclocku/>
-			<hamparend/>
+			<hamcircleo/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

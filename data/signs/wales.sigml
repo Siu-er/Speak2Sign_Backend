@@ -1,36 +1,23 @@
 <sigml>
-
-	<hns_sign gloss="Wales">
+	<hns_sign gloss="wales">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="we_Ilz"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2345/>
 			<hamthumbacrossmod/>
 			<hampinky/>
-			<hamfingerhookmod/>
+			<hamfingerbendmod/>
 			<hamextfingeru/>
-			<hampalmd/>
-			<hameyes/>
+			<hampalml/>
+			<hamshoulders/>
 			<hamlrbeside/>
-			<hamclose/>
-			<hamparbegin/>
-			<hammoved/>
-			<hamlargemod/>
 			<hamreplace/>
 			<hamfinger2345/>
-			<hampinky/>
 			<hamdoublebent/>
-			<hamringfinger/>
+			<hamthumbacrossmod/>
+			<hampinky/>
 			<hamfingerbendmod/>
-			<hammiddlefinger/>
-			<hamfingerbendmod/>
-			<hamindexfinger/>
-			<hamfingerbendmod/>
-			<hamparend/>
-			<hammoveu/>
-			<hamsmallmod/>
+			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

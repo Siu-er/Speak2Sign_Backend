@@ -1,98 +1,43 @@
 <sigml>
-
-	<hns_sign gloss="can">
+	<hns_sign gloss="CAN">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="k{n"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamcee12/>
-			<hamextfingeru/>
-			<hampalmu/>
-			<hamcheek/>
-			<hamtouch/>
-			<hamparbegin/>
-			<hammovedo/>
+			<hamsymmpar/>
+			<hamfist/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamshoulders/>
+			<hammoved/>
 			<hamsmallmod/>
-			<hamreplace/>
-			<hamfinger2/>
-			<hamthumboutmod/>
-			<hamfingerstraightmod/>
-			<hambetween/>
-			<hamfinger2/>
-			<hamthumbacrossmod/>
-			<hamfingerstraightmod/>
-			<hamextfingeru/>
-			<hambetween/>
-			<hamextfingero/>
-			<hampalmu/>
-			<hamparend/>
 		</hamnosys_manual>
 	</hns_sign>
-
-	<hns_sign gloss="you">
+	<hns_sign gloss="YOU">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="j@"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2/>
 			<hamthumbacrossmod/>
 			<hamextfingero/>
-			<hambetween/>
-			<hamextfingerol/>
-			<hampalml/>
-			<hambetween/>
-			<hampalmul/>
-			<hamchest/>
+			<hampalmd/>
+			<hamshoulders/>
+			<hammoveo/>
+			<hamsmallmod/>
 		</hamnosys_manual>
 	</hns_sign>
-
-	<hns_sign gloss="sign">
+	<hns_sign gloss="SIGN">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="sa_n"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
-			<hamfingerstraightmod/>
-			<hamlargemod/>
-			<hamfinger2345/>
-			<hambetween/>
-			<hamflathand/>
-			<hamthumboutmod/>
-			<hamextfingero/>
+			<hamalternatingmotion/>
+			<hamfinger2/>
+			<hamthumbacrossmod/>
+			<hamextfingerui/>
 			<hampalml/>
-			<hamparbegin/>
-			<hampalm/>
-			<hamplus/>
-			<hamhandback/>
-			<hamparend/>
-			<hamclose/>
-			<hamchest/>
-			<hambetween/>
 			<hamshoulders/>
-			<hamcirclel/>
-			<hamsmallmod/>
-			<hamrepeatfromstart/>
-			<hamparbegin/>
-			<hamreplace/>
-			<hamfinger2345/>
-			<hamthumboutmod/>
-			<hambetween/>
-			<hamflathand/>
-			<hamthumbopenmod/>
-			<hamextfingero/>
-			<hambetween/>
-			<hamextfingeruo/>
-			<hampalmu/>
-			<hamparend/>
-			<hamparbegin/>
-			<hampinky/>
-			<hamfingertip/>
-			<hamplus/>
-			<hampinky/>
-			<hamfingertip/>
-			<hamparend/>
-			<hamclose/>
+			<hamcirclei/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

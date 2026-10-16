@@ -1,40 +1,17 @@
 <sigml>
-
 	<hns_sign gloss="Z">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="zed"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamparbegin/>
-			<hamflathand/>
-			<hamthumboutmod/>
-			<hamfingerstraightmod/>
-			<hamplus/>
-			<hamflathand/>
-			<hamthumboutmod/>
-			<hamparend/>
-			<hamparbegin/>
+			<hamfinger2/>
+			<hamthumbacrossmod/>
 			<hamextfingeru/>
-			<hampalml/>
-			<hamplus/>
-			<hamextfingeru/>
-			<hambetween/>
-			<hamextfingeruo/>
-			<hampalmr/>
-			<hamparend/>
-			<hamparbegin/>
-			<hampalm/>
-			<hamplus/>
-			<hamfingertip/>
-			<hamindexfinger/>
-			<hammiddlefinger/>
-			<hamringfinger/>
-			<hampinky/>
-			<hamparend/>
-			<hamtouch/>
-			<hamchest/>
-			<hamclose/>
+			<hampalmd/>
+			<hamshoulders/>
+			<hamlrbeside/>
+			<hammover/>
+			<hammovedl/>
+			<hammover/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

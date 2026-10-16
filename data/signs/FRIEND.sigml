@@ -1,14 +1,57 @@
 <sigml>
-	<hns_sign gloss="friend">
+	<hns_sign gloss="FRIEND">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamsymmlr/>
+			<hamparbegin/>
 			<hamfinger2/>
-			<hamfingerhookmod/>
-			<hamextfingero/>
+			<hamfingerhookedmod/>
+			<hamplus/>
+			<hamfinger2/>
+			<hamfingerhookedmod/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamextfingerol/>
+			<hamplus/>
+			<hamextfingeror/>
+			<hamparend/>
+			<hamparbegin/>
 			<hampalmd/>
-			<hamchest/>
-			<hammovei/>
-			<hamtouch/>
+			<hamplus/>
+			<hampalmu/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamfingertip/>
+			<hamplus/>
+			<hamfingertip/>
+			<hamparend/>
+			<haminterlock/>
+			<hamshoulders/>
+			<hamplus/>
+			<hamparbegin/>
+			<hamfinger2/>
+			<hamfingerhookedmod/>
+			<hamplus/>
+			<hamfinger2/>
+			<hamfingerhookedmod/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamextfingerol/>
+			<hamplus/>
+			<hamextfingeror/>
+			<hamparend/>
+			<hamparbegin/>
+			<hampalmu/>
+			<hamplus/>
+			<hampalmd/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamfingertip/>
+			<hamplus/>
+			<hamfingertip/>
+			<hamparend/>
+			<haminterlock/>
+			<hamshoulders/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

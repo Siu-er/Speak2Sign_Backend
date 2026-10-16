@@ -1,12 +1,16 @@
 <sigml>
-	<hns_sign gloss="office">
+	<hns_sign gloss="OFFICE">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamsymmlr/>
-			<hampinchall/>
-			<hamextfingeru/>
+			<hamsymmpar/>
+			<hamflathand/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
 			<hampalml/>
 			<hamchest/>
-			<hammoveo/>
+			<hammover/>
+			<hamsmallmod/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

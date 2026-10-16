@@ -1,41 +1,17 @@
 <sigml>
-
 	<hns_sign gloss="M">
 		<hamnosys_nonmanual>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamparbegin/>
-			<hamfinger23/>
-			<hamthumbacrossmod/>
-			<hamindexfinger/>
-			<hammiddlefinger/>
-			<hamringfinger/>
-			<hamplus/>
 			<hamflathand/>
-			<hamthumboutmod/>
-			<hamparend/>
-			<hamparbegin/>
-			<hamextfingerol/>
+			<hamfingerbendmod/>
+			<hamthumbacrossmod/>
+			<hampinky/>
+			<hamdoublebent/>
+			<hamextfingeru/>
 			<hampalmd/>
-			<hamplus/>
-			<hamextfingeror/>
-			<hampalmu/>
-			<hambetween/>
-			<hampalmur/>
-			<hamparend/>
-			<hamparbegin/>
-			<hampalm/>
-			<hamplus/>
-			<hamfingerpad/>
-			<hamindexfinger/>
-			<hamparend/>
-			<hamtouch/>
-			<hamlrat/>
-			<hamchest/>
-			<hambetween/>
-			<hamchest/>
-			<hamclose/>
+			<hamshoulders/>
+			<hamlrbeside/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

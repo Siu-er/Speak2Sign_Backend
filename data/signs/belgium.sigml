@@ -1,29 +1,18 @@
 <sigml>
-
-	<hns_sign gloss="Belgium">
+	<hns_sign gloss="belgium">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="beld_ZVm"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamflathand/>
+			<hamfinger2/>
+			<hamfingerhookedmod/>
 			<hamthumbacrossmod/>
-			<hamextfingeru/>
-			<hampalml/>
-			<hamlips/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamshoulders/>
 			<hamlrat/>
-			<hamclose/>
-			<hamreplace/>
-			<hamflathand/>
-			<hamthumbacrossmod/>
-			<hamextfingeru/>
-			<hampalml/>
-			<hamcheek/>
-			<hamseqbegin/>
 			<hamtouch/>
-			<hamindexfinger/>
-			<hamseqend/>
-			<hamrepeatfromstart/>
+			<hammoved/>
+			<hamsmallmod/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

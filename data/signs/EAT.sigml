@@ -1,11 +1,16 @@
 <sigml>
-	<hns_sign gloss="eat">
+	<hns_sign gloss="EAT">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hampinchall/>
-			<hamextfingero/>
-			<hampalmd/>
+			<hamextfingeru/>
+			<hampalmu/>
 			<hamlips/>
-			<hamtapping/>
+			<hamtouch/>
+			<hammoveo/>
+			<hamsmallmod/>
+			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

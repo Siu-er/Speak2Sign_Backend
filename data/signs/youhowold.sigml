@@ -1,47 +1,28 @@
 <sigml>
-
-	<hns_sign gloss="you">
+	<hns_sign gloss="YOU">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="j@"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2/>
 			<hamthumbacrossmod/>
 			<hamextfingero/>
-			<hambetween/>
-			<hamextfingerol/>
-			<hampalml/>
-			<hambetween/>
-			<hampalmul/>
-			<hamchest/>
+			<hampalmd/>
+			<hamshoulders/>
 			<hammoveo/>
 			<hamsmallmod/>
-			<hamrest/>
 		</hamnosys_manual>
 	</hns_sign>
-
-	<hns_sign gloss="age">
+	<hns_sign gloss="OLD">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="ha_UwUld"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfinger2345/>
-			<hamthumboutmod/>
-			<hambetween/>
-			<hamflathand/>
+			<hamceeall/>
 			<hamextfingeru/>
-			<hampalmu/>
-			<hamnose/>
-			<hamseqbegin/>
-			<hamtouch/>
-			<hammiddlefinger/>
-			<hamseqend/>
-			<hamparbegin/>
-			<hammoveo/>
-			<hamsmallmod/>
-			<hamfingerplay/>
-			<hamparend/>
+			<hampalml/>
+			<hamchin/>
+			<hammoved/>
+			<hamreplace/>
+			<hamfist/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

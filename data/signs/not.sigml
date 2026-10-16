@@ -1,18 +1,14 @@
 <sigml>
-
 	<hns_sign gloss="not">
 		<hamnosys_nonmanual>
-			<hnm_mouthgesture tag="L01"/>
-			<hnm_head movement="sh"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamflathand/>
-			<hamthumboutmod/>
+			<hamfist/>
 			<hamextfingeru/>
 			<hampalml/>
-			<hamchest/>
-			<hammoveol/>
+			<hamunderchin/>
+			<hamtouch/>
+			<hammoveo/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

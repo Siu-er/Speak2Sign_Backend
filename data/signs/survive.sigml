@@ -1,18 +1,16 @@
 <sigml>
-
 	<hns_sign gloss="survive">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="s3r"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
+			<hamsymmpar/>
 			<hamfist/>
-			<hamthumboutmod/>
-			<hamextfingero/>
+			<hamthumbacrossmod/>
+			<hamextfingeru/>
 			<hampalmu/>
 			<hamchest/>
+			<hamtouch/>
 			<hammoveu/>
-			<hamstraightmod/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

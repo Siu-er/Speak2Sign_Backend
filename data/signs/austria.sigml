@@ -1,32 +1,15 @@
 <sigml>
-
-	<hns_sign gloss="Austria">
+	<hns_sign gloss="austria">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="O:stri:_H"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
-			<hamfinger23/>
+			<hamfinger23spread/>
 			<hamthumbacrossmod/>
-			<hamextfingerul/>
-			<hambetween/>
 			<hamextfingeru/>
-			<hampalmd/>
-			<hamparbegin/>
+			<hampalmu/>
+			<hamcross/>
 			<hamchest/>
-			<hamclose/>
-			<hamplus/>
-			<hamchest/>
-			<hamparend/>
-			<hamreplace/>
-			<hamfinger23/>
-			<hamthumbacrossmod/>
-			<hamindexfinger/>
-			<hamfingerbendmod/>
-			<hammiddlefinger/>
-			<hamfingerbendmod/>
-			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

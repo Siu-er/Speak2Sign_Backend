@@ -1,11 +1,15 @@
 <sigml>
-	<hns_sign gloss="sad">
+	<hns_sign gloss="SAD">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
 			<hamfinger2345/>
+			<hamthumboutmod/>
 			<hamextfingeru/>
-			<hampalml/>
-			<hamforehead/>
+			<hampalmu/>
+			<hamnose/>
+			<hamlrbeside/>
 			<hammoved/>
 		</hamnosys_manual>
 	</hns_sign>

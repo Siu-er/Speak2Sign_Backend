@@ -1,12 +1,19 @@
 <sigml>
-	<hns_sign gloss="deaf">
+	<hns_sign gloss="DEAF">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2/>
 			<hamthumbacrossmod/>
-			<hamextfingeru/>
+			<hamextfingerui/>
 			<hampalml/>
 			<hamcheek/>
+			<hamtouch/>
 			<hammoved/>
+			<hamsmallmod/>
+			<hamlips/>
+			<hamlrat/>
+			<hamtouch/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

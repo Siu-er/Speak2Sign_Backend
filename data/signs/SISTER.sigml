@@ -1,12 +1,32 @@
 <sigml>
-	<hns_sign gloss="sister">
+	<hns_sign gloss="SISTER">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
+			<hamparbegin/>
 			<hamfinger2/>
 			<hamthumboutmod/>
+			<hamplus/>
+			<hamfinger2/>
+			<hamthumboutmod/>
+			<hamparend/>
 			<hamextfingero/>
-			<hampalmd/>
-			<hamcheek/>
+			<hamparbegin/>
+			<hampalml/>
+			<hamplus/>
+			<hampalmr/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamchin/>
+			<hamplus/>
+			<hamchest/>
+			<hamparend/>
 			<hammoved/>
+			<hamparbegin/>
+			<hampinkyside/>
+			<hamplus/>
+			<hamthumbside/>
+			<hamparend/>
 			<hamtouch/>
 		</hamnosys_manual>
 	</hns_sign>

@@ -1,19 +1,15 @@
 <sigml>
-
 	<hns_sign gloss="absolutely">
 		<hamnosys_nonmanual>
-			<hnm_mouthgesture tag="L05"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfist/>
-			<hamthumboutmod/>
+			<hamsymmpar/>
+			<hamflathand/>
+			<hamthumbacrossmod/>
 			<hamextfingero/>
-			<hampalmd/>
+			<hampalml/>
 			<hamchest/>
-			<hamstraightmod/>
-			<hammovedo/>
-			<hamrepeatfromstart/>
+			<hammoveo/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

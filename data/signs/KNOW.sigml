@@ -1,11 +1,19 @@
 <sigml>
-	<hns_sign gloss="know">
+	<hns_sign gloss="KNOW">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamflathand/>
+			<hamfingerbendmod/>
+			<hamthumbacrossmod/>
 			<hamextfingeru/>
-			<hampalmd/>
-			<hamforehead/>
-			<hamtapping/>
+			<hampalml/>
+			<hameyebrows/>
+			<hamlrat/>
+			<hamtouch/>
+			<hammoveo/>
+			<hamsmallmod/>
+			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

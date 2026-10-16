@@ -1,10 +1,13 @@
 <sigml>
-	<hns_sign gloss="see">
+	<hns_sign gloss="SEE">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfinger23/>
+			<hamfinger23spread/>
+			<hamthumbacrossmod/>
 			<hamextfingeru/>
-			<hampalml/>
-			<hamcheek/>
+			<hampalmu/>
+			<hamnose/>
 			<hammoveo/>
 		</hamnosys_manual>
 	</hns_sign>

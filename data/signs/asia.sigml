@@ -1,34 +1,16 @@
 <sigml>
-
-	<hns_sign gloss="Asia">
+	<hns_sign gloss="asia">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="e_IZV"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamparbegin/>
-			<hamflathand/>
-			<hamextfingerul/>
-			<hampalml/>
-			<hamplus/>
-			<hamfist/>
+			<hamfinger2/>
 			<hamthumbacrossmod/>
-			<hamextfingerur/>
-			<hampalmr/>
-			<hamparend/>
-			<hamparbegin/>
-			<hamhandback/>
-			<hamplus/>
-			<hampalm/>
-			<hamparend/>
-			<hamtouch/>
-			<hamlrat/>
-			<hamshouldertop/>
-			<hamclose/>
-			<hammovedr/>
-			<hamsmallmod/>
-			<hamcirclei/>
-			<hamsmallmod/>
+			<hamextfingeru/>
+			<hampalmd/>
+			<hameyes/>
+			<hamlrbeside/>
+			<hamtwisting/>
+			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

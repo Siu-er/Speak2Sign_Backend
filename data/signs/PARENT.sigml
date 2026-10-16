@@ -1,12 +1,19 @@
 <sigml>
-	<hns_sign gloss="parent">
+	<hns_sign gloss="PARENT">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfinger2345/>
-			<hamthumboutmod/>
+			<hamfinger23spread/>
+			<hamthumbopenmod/>
+			<hammiddlefinger/>
+			<hamfingerbendmod/>
 			<hamextfingeru/>
 			<hampalml/>
 			<hamforehead/>
+			<hamtouch/>
 			<hammoved/>
+			<hamchin/>
+			<hamtouch/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

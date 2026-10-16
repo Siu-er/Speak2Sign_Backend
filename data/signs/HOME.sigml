@@ -1,11 +1,21 @@
 <sigml>
-	<hns_sign gloss="home">
+	<hns_sign gloss="HOME">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hampinchall/>
 			<hamextfingeru/>
-			<hampalml/>
+			<hampalmu/>
 			<hamcheek/>
-			<hamtapping/>
+			<hamlrat/>
+			<hamtouch/>
+			<hammoveu/>
+			<hamsmallmod/>
+			<hammover/>
+			<hamsmallmod/>
+			<hamcheek/>
+			<hamlrat/>
+			<hamtouch/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

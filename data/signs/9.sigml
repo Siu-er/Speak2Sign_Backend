@@ -1,17 +1,13 @@
 <sigml>
-
-	<hns_sign gloss="nine">
+	<hns_sign gloss="9">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="na_In"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamflathand/>
-			<hamthumbacrossmod/>
-			<hamextfingerl/>
-			<hampalml/>
-			<hamchest/>
-			<hamclose/>
+			<hampinch12open/>
+			<hamextfingeru/>
+			<hampalmd/>
+			<hamshoulders/>
+			<hamlrbeside/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

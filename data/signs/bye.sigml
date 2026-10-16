@@ -1,23 +1,19 @@
 <sigml>
-
 	<hns_sign gloss="bye">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="ba_I"/>
-			<hnm_eyegaze tag="NO"/>
-			<hnm_eyelids tag="BB"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamflathand/>
-			<hamthumboutmod/>
-			<hambetween/>
-			<hamfinger2345/>
+			<hamthumbacrossmod/>
 			<hamextfingeru/>
 			<hampalmd/>
-			<hamshouldertop/>
-			<hamlrat/>
-			<hamarmextended/>
-			<hamswinging/>
+			<hamshoulders/>
+			<hamlrbeside/>
+			<hamreplace/>
+			<hamflathand/>
+			<hamthumbacrossmod/>
+			<hamfingerbendmod/>
+			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

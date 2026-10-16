@@ -1,12 +1,23 @@
 <sigml>
-	<hns_sign gloss="hot">
+	<hns_sign gloss="HOT">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2345/>
-			<hamfingerbendmod/>
+			<hamthumboutmod/>
+			<hamfingerhookedmod/>
 			<hamextfingeru/>
-			<hampalml/>
+			<hampalmu/>
 			<hamlips/>
-			<hammoveo/>
+			<hamparbegin/>
+			<hammovedo/>
+			<hamreplace/>
+			<hamfinger2345/>
+			<hamthumboutmod/>
+			<hamfingerhookedmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamparend/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

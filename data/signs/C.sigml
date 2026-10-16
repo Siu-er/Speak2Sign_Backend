@@ -1,18 +1,13 @@
 <sigml>
-
 	<hns_sign gloss="C">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="si:"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamcee12/>
+			<hamceeall/>
 			<hamextfingeru/>
 			<hampalml/>
-			<hamchest/>
-			<hambetween/>
-			<hamchest/>
-			<hamlrat/>
+			<hamshoulders/>
+			<hamlrbeside/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

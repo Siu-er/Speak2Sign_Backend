@@ -1,16 +1,35 @@
 <sigml>
-
 	<hns_sign gloss="work">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="w3rk"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
+			<hamparbegin/>
 			<hamfist/>
+			<hamthumbacrossmod/>
+			<hamplus/>
+			<hamfist/>
+			<hamthumbacrossmod/>
+			<hamparend/>
+			<hamparbegin/>
 			<hamextfingero/>
+			<hamplus/>
+			<hamextfingero/>
+			<hamparend/>
+			<hamparbegin/>
 			<hampalmd/>
+			<hamplus/>
+			<hampalmd/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamthumbside/>
+			<hamplus/>
+			<hamhandback/>
+			<hamparend/>
+			<hamtouch/>
 			<hamchest/>
-			<hamhammering/>
+			<hammoveu/>
+			<hamsmallmod/>
+			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

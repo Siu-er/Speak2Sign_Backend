@@ -1,19 +1,17 @@
 <sigml>
-
 	<hns_sign gloss="barely">
 		<hamnosys_nonmanual>
-			<hnm_mouthgesture tag="L03"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2/>
 			<hamthumbacrossmod/>
+			<hampinky/>
 			<hamextfingero/>
-			<hambetween/>
-			<hamextfingerol/>
 			<hampalml/>
-			<hamchest/>
-			<hamclose/>
+			<hamshoulders/>
+			<hamlrbeside/>
+			<hammoveo/>
+			<hamsmallmod/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

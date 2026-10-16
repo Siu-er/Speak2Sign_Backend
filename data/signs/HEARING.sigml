@@ -1,12 +1,15 @@
 <sigml>
-	<hns_sign gloss="hearing">
+	<hns_sign gloss="HEARING">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2/>
 			<hamthumbacrossmod/>
 			<hamextfingerl/>
 			<hampalmd/>
 			<hamchin/>
-			<hamcircleo/>
+			<hamcirclel/>
+			<hamsmallmod/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

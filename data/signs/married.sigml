@@ -1,41 +1,26 @@
 <sigml>
-
-	<hns_sign gloss="marriage">
+	<hns_sign gloss="married">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="m{rId_Z"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamparbegin/>
-			<hampinchall/>
+			<hamceeall/>
 			<hamplus/>
-			<hamfinger2345/>
+			<hamflathand/>
+			<hamthumbacrossmod/>
 			<hamparend/>
 			<hamparbegin/>
-			<hamextfingerl/>
-			<hampalmd/>
+			<hamextfingero/>
 			<hamplus/>
 			<hamextfingero/>
-			<hambetween/>
-			<hamextfingerur/>
+			<hamparend/>
+			<hamparbegin/>
 			<hampalmd/>
-			<hamparend/>
-			<hamparbegin/>
-			<hamchest/>
-			<hambetween/>
-			<hamshoulders/>
-			<hamarmextended/>
 			<hamplus/>
+			<hampalmu/>
+			<hamparend/>
 			<hamchest/>
-			<hamparend/>
-			<hamparbegin/>
-			<hammovei/>
-			<hamarcu/>
-			<hamreplace/>
-			<hamflathand/>
 			<hammoved/>
-			<hamsmallmod/>
-			<hamparend/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

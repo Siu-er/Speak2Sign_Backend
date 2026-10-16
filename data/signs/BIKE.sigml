@@ -1,13 +1,16 @@
 <sigml>
-	<hns_sign gloss="bike">
+	<hns_sign gloss="BIKE">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
+			<hamalternatingmotion/>
 			<hamfist/>
 			<hamthumbacrossmod/>
 			<hamextfingero/>
 			<hampalmd/>
-			<hamstomach/>
-			<hamcircled/>
+			<hamchest/>
+			<hamcircleo/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

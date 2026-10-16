@@ -1,25 +1,16 @@
 <sigml>
-
-	<hns_sign gloss="seven">
+	<hns_sign gloss="7">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="seVan"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamflathand/>
-			<hamthumboutmod/>
-			<hammiddlefinger/>
-			<hamfingerhookmod/>
+			<hamfinger2345/>
+			<hamthumbacrossmod/>
 			<hamringfinger/>
-			<hamfingerhookmod/>
-			<hampinky/>
-			<hamfingerhookmod/>
-			<hamextfingerl/>
-			<hampalml/>
-			<hamchest/>
-			<hamclose/>
-			<hammoveo/>
-			<hamsmallmod/>
+			<hamfingerbendmod/>
+			<hamextfingeru/>
+			<hampalmd/>
+			<hamshoulders/>
+			<hamlrbeside/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

@@ -1,17 +1,23 @@
 <sigml>
-
 	<hns_sign gloss="go">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="goU"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
+			<hamsymmpar/>
+			<hamfinger2/>
+			<hamthumbacrossmod/>
+			<hamextfingeru/>
+			<hampalml/>
+			<hamshoulders/>
+			<hamparbegin/>
+			<hammoveo/>
+			<hamarcd/>
+			<hamreplace/>
 			<hamfinger2/>
 			<hamthumbacrossmod/>
 			<hamextfingero/>
 			<hampalml/>
-			<hamchest/>
-			<hammoveo/>
+			<hamparend/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

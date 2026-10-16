@@ -1,17 +1,16 @@
 <sigml>
-
 	<hns_sign gloss="problem">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="prAb"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfinger2/>
+			<hamsymmlr/>
+			<hamfinger23spread/>
+			<hamfingerhookedmod/>
 			<hamthumbacrossmod/>
 			<hamextfingero/>
-			<hampalmd/>
+			<hampalmu/>
 			<hamchest/>
-			<hamknocking/>
+			<hamtwisting/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

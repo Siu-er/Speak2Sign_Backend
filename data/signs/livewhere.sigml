@@ -1,50 +1,30 @@
 <sigml>
-
-	<hns_sign gloss="live">
+	<hns_sign gloss="LIVE">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="la_Iv"/>
-		</hamnosys_nonmanual>
-		<hamnosys_manual>
-			<hamfinger2345/>
-			<hamthumboutmod/>
-			<hammiddlefinger/>
-			<hamfingerstraightmod/>
-			<hamextfingerl/>
-			<hambetween/>
-			<hamextfingerol/>
-			<hampalml/>
-			<hamshoulders/>
-			<hamlrat/>
-			<hamseqbegin/>
-			<hamtouch/>
-			<hammiddlefinger/>
-			<hamseqend/>
-			<hammoved/>
-			<hamsmallmod/>
-			<hamrepeatfromstart/>
-		</hamnosys_manual>
-	</hns_sign>
-
-	<hns_sign gloss="where">
-		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="hwer"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
-			<hamfinger2345/>
+			<hamfinger2/>
 			<hamthumboutmod/>
-			<hambetween/>
-			<hamflathand/>
-			<hamthumbopenmod/>
-			<hamextfingero/>
-			<hambetween/>
-			<hamextfingeruo/>
+			<hamextfingeru/>
 			<hampalmu/>
+			<hamstomach/>
+			<hammoveu/>
 			<hamchest/>
-			<hamclose/>
-			<hamcircled/>
+		</hamnosys_manual>
+	</hns_sign>
+	<hns_sign gloss="WHERE">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfinger2/>
+			<hamthumbacrossmod/>
+			<hamextfingeru/>
+			<hampalmd/>
+			<hamshoulders/>
+			<hamlrbeside/>
+			<hamswinging/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

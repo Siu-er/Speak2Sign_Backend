@@ -1,5 +1,4 @@
 <sigml>
-
 	<hns_sign gloss="different">
 		<hamnosys_nonmanual>
 		</hamnosys_nonmanual>
@@ -7,29 +6,11 @@
 			<hamsymmlr/>
 			<hamfinger2/>
 			<hamthumbacrossmod/>
-			<hamparbegin/>
-			<hamextfingerol/>
-			<hampalmd/>
-			<hamplus/>
-			<hamextfingeror/>
-			<hampalmd/>
-			<hamparend/>
-			<hamparbegin/>
-			<hamindexfinger/>
-			<hamfingertip/>
-			<hamplus/>
-			<hamindexfinger/>
-			<hamfingertip/>
-			<hamparend/>
-			<hamtouch/>
-			<hamparbegin/>
-			<hamreplace/>
-			<hamextfingero/>
-			<hambetween/>
 			<hamextfingeru/>
-			<hampalmu/>
-			<hamparend/>
+			<hampalmd/>
+			<hamcross/>
+			<hamshoulders/>
+			<hammover/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

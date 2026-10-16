@@ -1,18 +1,17 @@
 <sigml>
-
 	<hns_sign gloss="explain++">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="Ik"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamflathand/>
-			<hamextfingeru/>
-			<hampalmd/>
+			<hamsymmlr/>
+			<hamalternatingmotion/>
+			<hampinch12open/>
+			<hamextfingero/>
+			<hampalml/>
 			<hamchest/>
-			<hamalternating/>
 			<hammoveo/>
+			<hamsmallmod/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

@@ -1,21 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sigml SYSTEM "http://www.visicast.cmp.uea.ac.uk/sigml/sigml.dtd">
 <sigml>
-
-<hamgestural_sign gloss="name1">
-  <sign_manual>
-    <handconfig handshape="finger23" mainbend="bent" thumbpos="across"/>
-    <handconfig extfidir="u"/>
-    <handconfig palmor="l"/>
-    <location_bodyarm contact="touch" location="forehead" side="right_at"/>
-    <par_motion>
-      <directedmotion curve="l" direction="o"/>
-      <tgt_motion>
-        <changeposture/>
-        <handconfig palmor="d"/>
-      </tgt_motion>
-    </par_motion>
-  </sign_manual>
-</hamgestural_sign>
-
+	<hns_sign gloss="NAME">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamparbegin/>
+			<hamfinger23/>
+			<hamthumbacrossmod/>
+			<hamplus/>
+			<hamfinger23/>
+			<hamthumbacrossmod/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamextfingerol/>
+			<hamplus/>
+			<hamextfingeror/>
+			<hamparend/>
+			<hamparbegin/>
+			<hampalml/>
+			<hamplus/>
+			<hampalmr/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamfingerside/>
+			<hamplus/>
+			<hamfingerside/>
+			<hamparend/>
+			<hamtouch/>
+			<hamshoulders/>
+			<hammoveu/>
+			<hamsmallmod/>
+			<hamrepeatfromstart/>
+		</hamnosys_manual>
+	</hns_sign>
 </sigml>

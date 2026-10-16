@@ -1,47 +1,34 @@
 <sigml>
-
 	<hns_sign gloss="evening">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="i:vnIN"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamsymmlr/>
-			<hamflathand/>
-			<hamextfingeru/>
-			<hampalmu/>
-			<hamshouldertop/>
-			<hamlrbeside/>
 			<hamparbegin/>
-			<hamreplace/>
 			<hamflathand/>
-			<hamextfingerl/>
-			<hambetween/>
-			<hamextfingerul/>
-			<hampalml/>
-			<hammovel/>
-			<hamsmallmod/>
-			<hamparend/>
-			<hamreplace/>
-			<hamflathand/>
-			<hamextfingerul/>
-			<hampalml/>
-			<hamparbegin/>
-			<hamreplace/>
-			<hamflathand/>
-			<hamextfingerl/>
-			<hampalml/>
-			<hammoved/>
-			<hamsmallmod/>
-			<hamparbegin/>
-			<hammiddlefinger/>
-			<hamfingertip/>
+			<hamfingerbendmod/>
+			<hamthumbacrossmod/>
 			<hamplus/>
-			<hammiddlefinger/>
-			<hamfingertip/>
+			<hamflathand/>
+			<hamthumbacrossmod/>
 			<hamparend/>
-			<hamtouch/>
+			<hamparbegin/>
+			<hamextfingero/>
+			<hamplus/>
+			<hamextfingerr/>
 			<hamparend/>
+			<hamparbegin/>
+			<hampalmd/>
+			<hamplus/>
+			<hampalmd/>
+			<hamparend/>
+			<hamparbegin/>
+			<hampalm/>
+			<hamplus/>
+			<hamwristback/>
+			<hamparend/>
+			<hamclose/>
+			<hammovedo/>
+			<hamarcd/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

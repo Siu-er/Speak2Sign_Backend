@@ -1,22 +1,19 @@
 <sigml>
-
 	<hns_sign gloss="loud">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="la_Ud"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2/>
 			<hamthumbacrossmod/>
-			<hamextfingerul/>
-			<hambetween/>
-			<hamextfingerl/>
+			<hamextfingerui/>
+			<hampalml/>
+			<hamear/>
+			<hamtouch/>
+			<hamreplace/>
+			<hamfinger2345/>
+			<hamthumboutmod/>
+			<hamextfingeru/>
 			<hampalmd/>
-			<hamearlobe/>
-			<hamlrbeside/>
-			<hamcirclel/>
-			<hamrepeatcontinue/>
-			<hamincreasing/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

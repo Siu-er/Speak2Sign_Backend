@@ -1,13 +1,22 @@
 <sigml>
-	<hns_sign gloss="like">
+	<hns_sign gloss="LIKE">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hampinch12/>
+			<hamfinger2345/>
+			<hamthumboutmod/>
+			<hammiddlefinger/>
+			<hamfingerbendmod/>
 			<hamextfingeru/>
-			<hampalml/>
+			<hampalmu/>
 			<hamchest/>
 			<hamtouch/>
 			<hammoveo/>
-			<hamclose/>
+			<hamreplace/>
+			<hamfinger2345/>
+			<hamthumbopenmod/>
+			<hammiddlefinger/>
+			<hamdoublebent/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

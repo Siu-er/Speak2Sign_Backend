@@ -1,13 +1,18 @@
 <sigml>
-	<hns_sign gloss="ask">
+	<hns_sign gloss="ASK">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamsymmlr/>
-			<hamflathand/>
+			<hamfinger2/>
+			<hamthumbacrossmod/>
 			<hamextfingeru/>
 			<hampalml/>
-			<hamchest/>
-			<hamtouch/>
+			<hamchin/>
 			<hammoveo/>
+			<hamreplace/>
+			<hamfinger2/>
+			<hamfingerhookedmod/>
+			<hamthumbacrossmod/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

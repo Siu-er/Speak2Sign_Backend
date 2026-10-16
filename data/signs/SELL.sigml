@@ -1,12 +1,14 @@
 <sigml>
-	<hns_sign gloss="sell">
+	<hns_sign gloss="SELL">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
 			<hampinchall/>
 			<hamextfingerd/>
-			<hampalmd/>
-			<hamchest/>
-			<hammoveo/>
+			<hampalmu/>
+			<hamshoulders/>
+			<hamswinging/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>

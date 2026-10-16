@@ -1,24 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE sigml SYSTEM "http://www.visicast.cmp.uea.ac.uk/sigml/sigml.dtd">
 <sigml>
-
-<hamgestural_sign gloss="write1">
-  <sign_manual>
-    <split_handconfig>
-      <handconfig handshape="finger2" mainbend="hooked"/>
-      <handconfig handshape="flat" thumbpos="out"/>
-    </split_handconfig>
-    <split_handconfig>
-      <handconfig extfidir="ol" palmor="d"/>
-      <handconfig extfidir="or" palmor="ur"/>
-    </split_handconfig>
-    <location_hand contact="touch" location="palm"/>
-    <rpt_motion repetition="fromstart_several">
-      <circularmotion axis="ui">
-        <location_hand contact="touch" location="palm"/>
-      </circularmotion>
-    </rpt_motion>
-  </sign_manual>
-</hamgestural_sign>
-
+	<hns_sign gloss="WRITE">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamparbegin/>
+			<hampinch12/>
+			<hamplus/>
+			<hamflathand/>
+			<hamthumbacrossmod/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamextfingerd/>
+			<hamplus/>
+			<hamextfingero/>
+			<hamparend/>
+			<hamparbegin/>
+			<hampalml/>
+			<hamplus/>
+			<hampalmu/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamfingertip/>
+			<hamplus/>
+			<hampalm/>
+			<hamparend/>
+			<hamtouch/>
+			<hamchest/>
+			<hammover/>
+			<hamzigzag/>
+		</hamnosys_manual>
+	</hns_sign>
 </sigml>

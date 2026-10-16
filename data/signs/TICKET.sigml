@@ -1,12 +1,36 @@
 <sigml>
-	<hns_sign gloss="ticket">
+	<hns_sign gloss="TICKET">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hampinch12/>
-			<hamfingerbendmod/>
+			<hamparbegin/>
+			<hamfinger23spread/>
+			<hamfingerhookedmod/>
+			<hamthumbacrossmod/>
+			<hamplus/>
+			<hamflathand/>
+			<hamthumbacrossmod/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamextfingeril/>
+			<hamplus/>
 			<hamextfingero/>
-			<hampalml/>
+			<hamparend/>
+			<hamparbegin/>
+			<hampalmd/>
+			<hamplus/>
+			<hampalmr/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamfingertip/>
+			<hamplus/>
+			<hampinkyside/>
+			<hamparend/>
+			<hamtouch/>
 			<hamchest/>
-			<hamtapping/>
+			<hammoveo/>
+			<hamsmallmod/>
+			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

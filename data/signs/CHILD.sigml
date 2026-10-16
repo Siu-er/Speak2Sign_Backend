@@ -1,10 +1,14 @@
 <sigml>
-	<hns_sign gloss="child">
+	<hns_sign gloss="CHILD">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamflathand/>
+			<hamthumbacrossmod/>
 			<hamextfingero/>
 			<hampalmd/>
 			<hamstomach/>
+			<hamlrbeside/>
 			<hammoved/>
 			<hamsmallmod/>
 			<hamrepeatfromstart/>

@@ -1,11 +1,26 @@
 <sigml>
-	<hns_sign gloss="tea">
+	<hns_sign gloss="TEA">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hampinch12/>
+			<hamparbegin/>
+			<hampinch12open/>
+			<hamplus/>
+			<hampinchall/>
+			<hamparend/>
+			<hamparbegin/>
 			<hamextfingerd/>
-			<hampalmd/>
+			<hamplus/>
+			<hamextfingero/>
+			<hamparend/>
+			<hamparbegin/>
+			<hampalml/>
+			<hamplus/>
+			<hampalmr/>
+			<hamparend/>
 			<hamchest/>
-			<hamcircled/>
+			<hamcircleu/>
+			<hamsmallmod/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

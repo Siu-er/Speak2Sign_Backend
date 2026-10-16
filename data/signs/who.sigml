@@ -1,20 +1,19 @@
 <sigml>
-
 	<hns_sign gloss="who">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="hu:"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2/>
-			<hamthumbacrossmod/>
+			<hamthumboutmod/>
 			<hamextfingeru/>
-			<hampalmu/>
-			<hamlips/>
-			<hamclose/>
-			<hamcircleu/>
-			<hamsmallmod/>
+			<hampalml/>
+			<hamchin/>
+			<hamtouch/>
+			<hamreplace/>
+			<hamfinger2/>
+			<hamthumboutmod/>
+			<hamfingerbendmod/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

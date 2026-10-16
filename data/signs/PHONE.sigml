@@ -1,8 +1,11 @@
 <sigml>
-	<hns_sign gloss="phone">
+	<hns_sign gloss="PHONE">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfist/>
+			<hamfinger2/>
 			<hamthumboutmod/>
+			<hampinky/>
 			<hamextfingeru/>
 			<hampalml/>
 			<hamcheek/>

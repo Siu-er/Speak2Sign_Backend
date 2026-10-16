@@ -1,12 +1,16 @@
 <sigml>
-	<hns_sign gloss="thirsty">
+	<hns_sign gloss="THIRSTY">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger2/>
 			<hamthumbacrossmod/>
-			<hamextfingerd/>
-			<hampalml/>
-			<hamunderchin/>
+			<hamextfingerui/>
+			<hampalmu/>
+			<hamneck/>
+			<hamtouch/>
 			<hammoved/>
+			<hamsmallmod/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

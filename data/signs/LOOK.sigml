@@ -1,11 +1,14 @@
 <sigml>
-	<hns_sign gloss="look">
+	<hns_sign gloss="LOOK">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfinger23/>
+			<hamfinger23spread/>
+			<hamthumbacrossmod/>
 			<hamextfingero/>
 			<hampalmd/>
-			<hamcheek/>
-			<hammovedo/>
+			<hameyes/>
+			<hammoveo/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

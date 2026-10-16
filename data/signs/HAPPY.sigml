@@ -1,12 +1,16 @@
 <sigml>
-	<hns_sign gloss="happy">
+	<hns_sign gloss="HAPPY">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamflathand/>
-			<hamextfingerul/>
-			<hampalml/>
+			<hamthumbacrossmod/>
+			<hamextfingerl/>
+			<hampalmu/>
 			<hamchest/>
 			<hamtouch/>
 			<hammoveu/>
+			<hamsmallmod/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>

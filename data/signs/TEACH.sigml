@@ -1,12 +1,15 @@
 <sigml>
-	<hns_sign gloss="teach">
+	<hns_sign gloss="TEACH">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
 			<hampinchall/>
 			<hamextfingero/>
-			<hampalmd/>
-			<hamforehead/>
+			<hampalml/>
+			<hamcheek/>
 			<hammoveo/>
+			<hamsmallmod/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>

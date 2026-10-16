@@ -1,25 +1,14 @@
 <sigml>
-
-	<hns_sign gloss="France">
+	<hns_sign gloss="france">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="frA:ns"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamsymmlr/>
-			<hamcee12/>
+			<hampinch12open/>
 			<hamextfingeru/>
-			<hampalml/>
-			<hamnostrils/>
-			<hamtouch/>
-			<hamparbegin/>
-			<hammover/>
-			<hamsmallmod/>
-			<hamarcd/>
-			<hamslow/>
-			<hamreplace/>
-			<hampinch12/>
-			<hamparend/>
+			<hampalmu/>
+			<hamshoulders/>
+			<hamlrbeside/>
+			<hamtwisting/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

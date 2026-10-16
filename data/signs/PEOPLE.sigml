@@ -1,14 +1,18 @@
 <sigml>
-	<hns_sign gloss="people">
+	<hns_sign gloss="PEOPLE">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
-			<hamfinger2/>
-			<hamthumboutmod/>
-			<hamextfingeru/>
+			<hamalternatingmotion/>
+			<hamfinger23spread/>
+			<hamthumbopenmod/>
+			<hammiddlefinger/>
+			<hamfingerbendmod/>
+			<hamextfingerdo/>
 			<hampalml/>
-			<hamchest/>
-			<hammoved/>
-			<hamrepeatfromstart/>
+			<hamshoulders/>
+			<hamcircleo/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

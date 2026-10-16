@@ -1,13 +1,16 @@
 <sigml>
-	<hns_sign gloss="can">
+	<hns_sign gloss="CAN">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamsymmlr/>
+			<hamsymmpar/>
 			<hamfist/>
 			<hamthumbacrossmod/>
 			<hamextfingero/>
 			<hampalmd/>
-			<hamchest/>
+			<hamshoulders/>
 			<hammoved/>
+			<hamsmallmod/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

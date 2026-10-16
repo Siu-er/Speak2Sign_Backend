@@ -1,9 +1,11 @@
 <sigml>
-	<hns_sign gloss="hungry">
+	<hns_sign gloss="HUNGRY">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamcee12/>
-			<hamextfingeru/>
-			<hampalml/>
+			<hamceeall/>
+			<hamextfingerl/>
+			<hampalmu/>
 			<hamchest/>
 			<hamtouch/>
 			<hammoved/>

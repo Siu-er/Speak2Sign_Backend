@@ -1,24 +1,16 @@
 <sigml>
-
-	<hns_sign gloss="Germany">
+	<hns_sign gloss="germany">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="d_Z3:mVni:"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfinger2/>
+			<hamsymmlr/>
+			<hamfinger2345/>
 			<hamthumboutmod/>
-			<hamextfingeru/>
-			<hampalml/>
-			<hamforehead/>
-			<hamseqbegin/>
-			<hamtouch/>
-			<hamthumb/>
-			<hamseqend/>
-			<hammoveo/>
-			<hamsmallmod/>
-			<hammovei/>
-			<hamsmallmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamcross/>
+			<hamchest/>
+			<hamfingerplay/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

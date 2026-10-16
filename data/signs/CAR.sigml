@@ -1,14 +1,17 @@
 <sigml>
-	<hns_sign gloss="car">
+	<hns_sign gloss="CAR">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
+			<hamalternatingmotion/>
 			<hamfist/>
 			<hamthumbacrossmod/>
-			<hamextfingeru/>
-			<hampalml/>
-			<hamchest/>
+			<hamextfingero/>
+			<hampalmr/>
+			<hamshoulders/>
 			<hammoveu/>
-			<hammoved/>
+			<hamsmallmod/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>

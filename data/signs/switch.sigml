@@ -1,18 +1,15 @@
 <sigml>
-
 	<hns_sign gloss="switch">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="swI"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfinger2/>
+			<hamfinger23spread/>
 			<hamthumbacrossmod/>
-			<hamextfingero/>
-			<hampalmd/>
-			<hamchest/>
-			<hamalternating/>
+			<hamextfingerd/>
+			<hampalml/>
+			<hamshoulders/>
+			<hamlrbeside/>
 			<hamtwisting/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

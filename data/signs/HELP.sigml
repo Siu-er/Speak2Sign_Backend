@@ -1,11 +1,32 @@
 <sigml>
-	<hns_sign gloss="help">
+	<hns_sign gloss="HELP">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
+			<hamsymmpar/>
+			<hamparbegin/>
 			<hamfist/>
-			<hamthumboutmod/>
-			<hamextfingeru/>
+			<hamplus/>
+			<hamflathand/>
+			<hamthumbacrossmod/>
+			<hamparend/>
+			<hamparbegin/>
+			<hamextfingero/>
+			<hamplus/>
+			<hamextfingero/>
+			<hamparend/>
+			<hamparbegin/>
 			<hampalml/>
-			<hamstomach/>
+			<hamplus/>
+			<hampalmu/>
+			<hamparend/>
+			<hamparbegin/>
+			<hampinkyside/>
+			<hamplus/>
+			<hampalm/>
+			<hamparend/>
+			<hamtouch/>
+			<hamchest/>
 			<hammoveu/>
 		</hamnosys_manual>
 	</hns_sign>

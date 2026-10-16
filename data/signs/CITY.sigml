@@ -1,13 +1,18 @@
 <sigml>
-	<hns_sign gloss="city">
+	<hns_sign gloss="CITY">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
+			<hamalternatingmotion/>
 			<hamflathand/>
+			<hamfingerbendmod/>
+			<hamthumbacrossmod/>
 			<hamextfingeru/>
 			<hampalml/>
 			<hamchest/>
-			<hamtouch/>
 			<hammoveu/>
+			<hamsmallmod/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>

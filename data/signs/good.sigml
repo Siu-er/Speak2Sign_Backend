@@ -1,24 +1,21 @@
 <sigml>
-
 	<hns_sign gloss="good">
 		<hamnosys_nonmanual>
-			<hnm_mouthgesture tag="L05"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfist/>
-			<hamthumboutmod/>
-			<hamextfingero/>
-			<hambetween/>
-			<hamextfingerol/>
-			<hampalml/>
-			<hamchest/>
-			<hambetween/>
-			<hamshoulders/>
-			<hamclose/>
+			<hamflathand/>
+			<hamthumbacrossmod/>
+			<hamextfingeru/>
+			<hampalmu/>
+			<hamchin/>
+			<hamtouch/>
 			<hammovedo/>
 			<hamsmallmod/>
-			<hamrepeatfromstart/>
+			<hamreplace/>
+			<hamflathand/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
+			<hampalmu/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

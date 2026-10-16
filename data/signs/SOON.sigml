@@ -1,11 +1,14 @@
 <sigml>
-	<hns_sign gloss="soon">
+	<hns_sign gloss="SOON">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hampinch12/>
-			<hamextfingerl/>
+			<hampinch12open/>
+			<hamextfingeru/>
 			<hampalml/>
 			<hamchin/>
 			<hamtouch/>
+			<hammovedo/>
 			<hamsmallmod/>
 		</hamnosys_manual>
 	</hns_sign>

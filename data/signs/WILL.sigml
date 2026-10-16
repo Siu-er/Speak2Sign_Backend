@@ -1,10 +1,14 @@
 <sigml>
-	<hns_sign gloss="will">
+	<hns_sign gloss="WILL">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamflathand/>
+			<hamthumbacrossmod/>
 			<hamextfingeru/>
 			<hampalml/>
 			<hamcheek/>
+			<hamlrbeside/>
 			<hammoveo/>
 		</hamnosys_manual>
 	</hns_sign>

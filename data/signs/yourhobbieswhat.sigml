@@ -1,61 +1,50 @@
 <sigml>
-
-	<hns_sign gloss="your">
+	<hns_sign gloss="YOUR">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="jO:"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfist/>
+			<hamflathand/>
 			<hamthumbacrossmod/>
 			<hamextfingeru/>
 			<hampalmd/>
-			<hamchest/>
-			<hamclose/>
+			<hamshoulders/>
 			<hammoveo/>
 			<hamsmallmod/>
-			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
-	<hns_sign gloss="interesting">
+	<hns_sign gloss="HOBBY">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="hobe:s"/>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfinger2345/>
+			<hamthumboutmod/>
+			<hammiddlefinger/>
+			<hamfingerbendmod/>
+			<hamextfingeru/>
+			<hampalmu/>
+			<hamchest/>
+			<hamtouch/>
+			<hammoveo/>
+			<hamreplace/>
+			<hamfinger2345/>
+			<hamthumbopenmod/>
+			<hammiddlefinger/>
+			<hamdoublebent/>
+		</hamnosys_manual>
+	</hns_sign>
+	<hns_sign gloss="WHAT">
+		<hamnosys_nonmanual>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
-			<hamfingerstraightmod/>
-			<hamlargemod/>
 			<hamfinger2345/>
 			<hamthumboutmod/>
-			<hamfingerbendmod/>
-			<hamextfingerl/>
-			<hampalml/>
+			<hamextfingero/>
+			<hampalmu/>
 			<hamshoulders/>
-			<hamclose/>
-			<hamseqbegin/>
-			<hammoveu/>
+			<hammover/>
 			<hamsmallmod/>
-			<hammoved/>
-			<hamseqend/>
-			<hamrepeatreverse/>
-		</hamnosys_manual>
-	</hns_sign>
-
-	<hns_sign gloss="what">
-		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="wt"/>
-			<hnm_eyebrows tag="RB"/>
-		</hamnosys_nonmanual>
-		<hamnosys_manual>
-			<hamfinger2/>
-			<hamthumbacrossmod/>
-			<hamextfingeru/>
-			<hampalmd/>
-			<hamchest/>
-			<hamlrat/>
-			<hamswinging/>
 			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

@@ -1,18 +1,30 @@
 <sigml>
-
 	<hns_sign gloss="run">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="r2n"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
+			<hamparbegin/>
 			<hamfinger2/>
-			<hamthumbacrossmod/>
+			<hamthumboutmod/>
+			<hamfingerhookedmod/>
+			<hamplus/>
+			<hamfinger2/>
+			<hamthumboutmod/>
+			<hamfingerhookedmod/>
+			<hamparend/>
+			<hamparbegin/>
 			<hamextfingero/>
-			<hampalmd/>
+			<hamplus/>
+			<hamextfingero/>
+			<hamparend/>
+			<hamparbegin/>
+			<hampalml/>
+			<hamplus/>
+			<hampalmr/>
+			<hamparend/>
 			<hamchest/>
-			<hamalternating/>
 			<hammoveo/>
+			<hamfingerplay/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

@@ -1,29 +1,17 @@
 <sigml>
-
 	<hns_sign gloss="man">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="m{n"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfinger2/>
+			<hamfinger2345/>
 			<hamthumboutmod/>
-			<hamextfingerul/>
+			<hamextfingeru/>
 			<hampalml/>
-			<hamlrat/>
-			<hamlips/>
+			<hamforehead/>
 			<hamtouch/>
-			<hamparbegin/>
 			<hammoved/>
-			<hamsmallmod/>
-			<hamreplace/>
-			<hamfinger2/>
-			<hamthumboutmod/>
-			<hamthumb/>
-			<hamfingerbendmod/>
-			<hamindexfinger/>
-			<hamfingerbendmod/>
-			<hamparend/>
+			<hamchest/>
+			<hamtouch/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

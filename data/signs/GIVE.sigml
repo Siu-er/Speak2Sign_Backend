@@ -1,12 +1,15 @@
 <sigml>
-	<hns_sign gloss="give">
+	<hns_sign gloss="GIVE">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamsymmlr/>
 			<hampinchall/>
 			<hamextfingero/>
 			<hampalmu/>
-			<hamchest/>
+			<hamshoulders/>
+			<hamlrbeside/>
 			<hammoveo/>
+			<hamarcu/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

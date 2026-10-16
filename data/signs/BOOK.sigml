@@ -1,13 +1,25 @@
 <sigml>
-	<hns_sign gloss="book">
+	<hns_sign gloss="BOOK">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
 			<hamflathand/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
+			<hampalml/>
+			<hamparbegin/>
+			<hampalm/>
+			<hamplus/>
+			<hampalm/>
+			<hamparend/>
+			<hamtouch/>
+			<hamchest/>
+			<hamreplace/>
+			<hamflathand/>
+			<hamthumbacrossmod/>
 			<hamextfingero/>
 			<hampalmu/>
-			<hamchest/>
-			<hamtouch/>
-			<hammoveu/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

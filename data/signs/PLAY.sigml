@@ -1,13 +1,17 @@
 <sigml>
-	<hns_sign gloss="play">
+	<hns_sign gloss="PLAY">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamsymmlr/>
-			<hamfist/>
+			<hamfinger2/>
 			<hamthumboutmod/>
+			<hampinky/>
 			<hamextfingeru/>
-			<hampalml/>
-			<hamchest/>
-			<hamswinging/>
+			<hampalmu/>
+			<hamshoulders/>
+			<hamtwisting/>
+			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

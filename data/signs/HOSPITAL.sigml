@@ -1,11 +1,19 @@
 <sigml>
-	<hns_sign gloss="hospital">
+	<hns_sign gloss="HOSPITAL">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
 			<hamfinger23/>
+			<hamthumbacrossmod/>
 			<hamextfingero/>
-			<hampalml/>
+			<hampalmd/>
 			<hamshoulders/>
-			<hammovecross/>
+			<hamlrat/>
+			<hamtouch/>
+			<hammoved/>
+			<hamsmallmod/>
+			<hammover/>
+			<hamsmallmod/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

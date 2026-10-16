@@ -1,21 +1,17 @@
 <sigml>
-
 	<hns_sign gloss="beautiful">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="buitVfl"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hampinchall/>
+			<hamfinger2345/>
+			<hamthumboutmod/>
 			<hamextfingeru/>
 			<hampalmu/>
-			<hamlips/>
-			<hamparbegin/>
-			<hammoveo/>
+			<hamnose/>
+			<hamcirclel/>
+			<hamsmallmod/>
 			<hamreplace/>
-			<hamfinger2345/>
-			<hamthumbopenmod/>
-			<hamparend/>
+			<hampinchall/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>

@@ -1,18 +1,17 @@
 <sigml>
-
-<hamgestural_sign gloss="table">
-  <sign_manual both_hands="true" lr_symm="true">
-    <handconfig handshape="flat" thumbpos="across"/>
-    <handconfig extfidir="o"/>
-    <handconfig palmor="d"/>
-    <handconstellation contact="touch"/>
-    <directedmotion direction="r"/>
-    <tgt_motion>
-      <changeposture/>
-      <handconfig palmor="l"/>
-    </tgt_motion>
-    <directedmotion direction="d"/>
-  </sign_manual>
-</hamgestural_sign>
-
+	<hns_sign gloss="Table.AUS">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamsymmpar/>
+			<hamflathand/>
+			<hamthumbacrossmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamchest/>
+			<hammoved/>
+			<hamsmallmod/>
+			<hamrepeatfromstart/>
+		</hamnosys_manual>
+	</hns_sign>
 </sigml>

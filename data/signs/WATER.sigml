@@ -1,11 +1,19 @@
 <sigml>
-	<hns_sign gloss="water">
+	<hns_sign gloss="WATER">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamfinger23/>
+			<hamfinger2345/>
+			<hamthumbacrossmod/>
+			<hampinky/>
+			<hamfingerbendmod/>
 			<hamextfingeru/>
 			<hampalml/>
 			<hamchin/>
-			<hamtapping/>
+			<hamtouch/>
+			<hammoveo/>
+			<hamsmallmod/>
+			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
 </sigml>

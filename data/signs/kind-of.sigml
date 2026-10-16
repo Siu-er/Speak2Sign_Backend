@@ -1,16 +1,18 @@
 <sigml>
-
 	<hns_sign gloss="kind-of">
 		<hamnosys_nonmanual>
-			<hnm_mouthpicture picture="kaI"/>
 		</hamnosys_nonmanual>
 		<hamnosys_manual>
-			<hamflathand/>
-			<hamextfingeru/>
+			<hamsymmpar/>
+			<hamalternatingmotion/>
+			<hamfinger2345/>
+			<hamthumboutmod/>
+			<hamextfingero/>
 			<hampalmd/>
 			<hamchest/>
-			<hamswinging/>
+			<hammoveu/>
+			<hamsmallmod/>
+			<hamrepeatfromstart/>
 		</hamnosys_manual>
 	</hns_sign>
-
 </sigml>
