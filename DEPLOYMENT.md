@@ -1,6 +1,6 @@
 # Deployment
 
-Speak2Sign runs as four hosted parts. Each part deploys separately, and a release that changes more than one part deploys each of them.
+Speak2Sign runs as four hosted parts and a browser extension. Each part deploys separately, and a release that changes more than one part deploys each of them.
 
 | Part | Host | Identifier | Source | Deploys on |
 |---|---|---|---|---|
@@ -8,6 +8,7 @@ Speak2Sign runs as four hosted parts. Each part deploys separately, and a releas
 | API | Render, free plan, Singapore | web service `s2s-backend`, `srv-dah2qopt0dsc73ebk8r0`, https://s2s-backend-b718.onrender.com | `Speak2Sign_Backend`, branch `main` of `github.com/Siu-er/Speak2Sign_Backend` | every push to `main` (auto-deploy is on) |
 | Sign recognition | Modal | app `wlasl-i3d`, class `WLASL` (A10G GPU), volume `wlasl-weights`, budget dict `wlasl-budget` | `deploy/wlasl.py` in this repository | `modal deploy deploy/wlasl.py` |
 | Signing avatar | Cloudflare R2 public bucket | `https://pub-233bfe19474b4be58fb4a245b6800823.r2.dev/jas/loc2025/` | JASigning CWASA build | uploaded by hand; the app only reads it |
+| Google Meet extension | Chrome or Edge, loaded unpacked on each machine | `S2S for Google Meet` | `Speak2Sign_MeetExtension` | reload on the browser's extensions page; the side panel loads the web app's `/meet` page, so a web app deploy reaches it without a reload |
 
 The sign dictionary (`data/signs/*.sigml`) is part of the API and goes live with an API deploy.
 
@@ -126,6 +127,16 @@ cd Speak2Sign_Backend
 With `--hold`, the script repeats the round every 60 s, half the Modal idle limit, until the hold time ends. A single run without `--hold` keeps the GPU warm for only 120 s.
 
 Keeping the parts warm at all times is a billing decision. Only free Render instances spin down, and moving `s2s-backend` to a paid instance type (Starter or above) in the Render dashboard removes the API cold start; Render sets the instance type per service. On Modal, `min_containers=1` on the `WLASL` class keeps one A10G container running continuously, billed for every second it runs whether or not anyone signs. The class scales to zero.
+
+## Installing the Google Meet extension
+
+The extension holds no S2S logic of its own: its side panel embeds `https://s2s-app-alpha.vercel.app/meet?code=<meeting code>`, and the rooms are relayed by the API. Each machine in a demonstration installs it once:
+
+1. Open `chrome://extensions` or `edge://extensions` and turn on Developer mode.
+2. Choose **Load unpacked** and select the `Speak2Sign_MeetExtension` folder.
+3. In a Meet call, select the S2S toolbar icon, choose **Allow access** once, then choose a role.
+
+`APP_ORIGIN` in the extension's `config.js` selects the web app the panel embeds. `Speak2Sign_MeetExtension/README.md` describes the extension in full.
 
 ## Running locally
 
