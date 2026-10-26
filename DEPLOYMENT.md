@@ -6,7 +6,7 @@ Speak2Sign runs as four hosted parts and a browser extension. Each part deploys 
 |---|---|---|---|---|
 | Web app | Vercel, team `nguyen-vu-nguyens-projects` | project `s2s-app`, production alias https://s2s-app-alpha.vercel.app | `Speak2Sign_Frontend` | `vercel deploy --prod` from the CLI; the project has no Git integration |
 | API | Render, free plan, Singapore | web service `s2s-backend`, `srv-dah2qopt0dsc73ebk8r0`, https://s2s-backend-b718.onrender.com | `Speak2Sign_Backend`, branch `main` of `github.com/Siu-er/Speak2Sign_Backend` | every push to `main` (auto-deploy is on) |
-| Sign recognition | Modal | app `wlasl-i3d`, class `WLASL` (A10G GPU), volume `wlasl-weights`, budget dict `wlasl-budget` | `deploy/wlasl.py` in this repository | `modal deploy deploy/wlasl.py` |
+| Sign recognition | Modal | app `wlasl-i3d`, class `WLASL` (A10G GPU), volume `wlasl-weights` | `deploy/wlasl.py` in this repository | `modal deploy deploy/wlasl.py` |
 | Signing avatar | Cloudflare R2 public bucket | `https://pub-233bfe19474b4be58fb4a245b6800823.r2.dev/jas/loc2025/` | JASigning CWASA build | uploaded by hand; the app only reads it |
 | Google Meet extension | Chrome or Edge, loaded unpacked on each machine | `S2S for Google Meet` | `Speak2Sign_MeetExtension` | reload on the browser's extensions page; the side panel loads the web app's `/meet` page, so a web app deploy reaches it without a reload |
 
@@ -99,19 +99,21 @@ cd Speak2Sign_Backend
 
 The I3D weights live on the `wlasl-weights` volume. A new Modal workspace fills the volume once with `modal run deploy/wlasl.py::prepare`.
 
-Paid recognitions are capped at `MAX_RECOGNITIONS = 100` in `deploy/wlasl.py`, counted under `calls` in the `wlasl-budget` dict across restarts and redeploys. Usage so far:
-
-```bash
-.venv/Scripts/modal.exe dict get wlasl-budget calls
-```
-
-Raising the cap means editing `MAX_RECOGNITIONS` and redeploying. The `ping` method used for warm-up is not counted.
-
 Every recording gets a reply. Signs the classifier ranks above the 0.40 gate are the recognition; when none clears it, the best-ranked sign of each segment is sent to the sentence stage as a guess, and a clip in which the segmenter finds no sign is classified as a whole. `/video-to-sentence` reports which case applied in `confident`. The API requires `confident` in the recognition result, and a release that changes both deploys the Modal app first.
 
 ## Request limits
 
-The API limits requests per client address in process memory (Flask-Limiter; the service runs as one gunicorn process). The paid routes, `/video-to-sentence` and `/translate-to-english`, allow `RATE_LIMIT_PAID` (5 per minute); every other route allows `RATE_LIMIT_DEFAULT` (60 per minute). A refused request receives HTTP 429 with an `error` message, and the API logs the address it refused. The limits are settings in the Render service environment; where many visitors reach the API from one network address, as on a venue network, raising them there takes effect on the next restart. The Socket.IO relay is not limited.
+Spending on recognition and translation has no ceiling; the request limits below are what bound it.
+
+The API limits requests per client in process memory (Flask-Limiter; the service runs as one gunicorn process). The paid routes, `/video-to-sentence` and `/translate-to-english`, allow `RATE_LIMIT_PAID` (5 per minute); every other route allows `RATE_LIMIT_DEFAULT` (60 per minute). A refused request receives HTTP 429 with an `error` message, and the API logs the client it refused. The two limits are settings in the Render service environment and take effect on the next restart. The Socket.IO relay is not limited.
+
+Visitors at a venue share one network address, and the API therefore counts each browser separately. The web app creates a random device ID once per browser, keeps it in local storage and sends it as `X-S2S-Device-Id`. A request without a well-formed ID is counted by network address. A caller can send a new ID with every request; the device count stops a visitor pressing the button repeatedly, not a script written to evade it.
+
+The team's own devices are not limited. `RATE_LIMIT_EXEMPT_KEYS` in the Render service environment holds a comma-separated list of keys, and a device enters one under Settings, Team device; the app then sends it as `X-S2S-Device-Key`. A new key is generated with:
+
+```bash
+python -c "import secrets; print(secrets.token_urlsafe(24))"
+```
 
 Render's proxy appends the caller to `X-Forwarded-For` and keeps any entries the client sent. The API therefore reads the client address `TRUSTED_PROXY_HOPS` entries from the right, and the Render service environment sets it to 1. After a deploy, the setting is checked by sending six requests with a forged leading entry and reading the refusal in the service log:
 
@@ -123,7 +125,7 @@ for i in 1 2 3 4 5 6; do
 done; curl -s https://api.ipify.org
 ```
 
-The sixth request returns 429, and the log line `rate limit ... reached by <address>` names the public address `api.ipify.org` printed. A Render address in that line means every client shares one allowance and the hop count is too low.
+The sixth request returns 429, and the log line `rate limit ... reached by address:<address>` names the public address `api.ipify.org` printed. A Render address in that line means every client shares one allowance and the hop count is too low.
 
 ## Starting without a cold delay
 
@@ -168,4 +170,4 @@ cd Speak2Sign_Frontend
 npm run dev
 ```
 
-The local API reads the same `.env` and calls the deployed Modal app and Azure OpenAI, counting against the same budgets.
+The local API reads the same `.env` and calls the deployed Modal app and Azure OpenAI.

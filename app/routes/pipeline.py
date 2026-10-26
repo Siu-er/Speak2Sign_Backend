@@ -11,7 +11,6 @@ from flask import Blueprint, jsonify, request
 from app import config
 from app.extensions import limiter
 from app.models import models
-from app.services import budget
 from app.services.llm import gloss_to_sentence, translate_to_english
 from app.services.recognizer import clip_slug, get_wlasl, retain_debug_clip
 
@@ -108,11 +107,6 @@ def translate_speech():
     text = data["text"].strip()
     if not text:
         return jsonify({"error": "Empty text provided"}), 400
-    try:
-        budget.consume("translations", config.MAX_TRANSLATIONS)
-    except budget.BudgetExhausted as e:
-        logger.warning(f"translate-to-english refused: {e}")
-        return jsonify({"error": str(e)}), 429
     try:
         english = translate_to_english(text)
     except Exception as e:

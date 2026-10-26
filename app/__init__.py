@@ -10,7 +10,7 @@ from flask import Flask, jsonify, request
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 from app import config
-from app.extensions import cors, limiter, socketio
+from app.extensions import client_key, cors, limiter, socketio
 
 logging.basicConfig(level=logging.INFO)
 
@@ -26,7 +26,7 @@ def create_app():
 
     @app.errorhandler(429)
     def too_many_requests(e):
-        logging.getLogger(__name__).warning(f"rate limit {e.description} reached by {request.remote_addr} on {request.path}")
+        logging.getLogger(__name__).warning(f"rate limit {e.description} reached by {client_key()} from {request.remote_addr} on {request.path}")
         return jsonify({"error": f"Too many requests ({e.description}), try again shortly"}), 429
 
     # manage_session=False bypasses Flask-SocketIO's session propagation, which

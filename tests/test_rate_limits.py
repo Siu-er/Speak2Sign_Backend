@@ -51,6 +51,32 @@ class RateLimitTest(unittest.TestCase):
             self.translate("203.0.113.5")
         self.assertEqual(self.translate("203.0.113.6").status_code, 400)
 
+    def device(self, device_id):
+        return self.client.post("/translate-to-english", json={"text": ""}, headers={
+            "X-Forwarded-For": "203.0.113.5", "X-S2S-Device-Id": device_id}).status_code
+
+    def test_devices_on_one_network_have_their_own_allowances(self):
+        first, second = "6f1c2b9e-3d4a-4c5b-8e7f-0a1b2c3d4e5f", "0d9e8f7a-6b5c-4d3e-9f2a-1b0c9d8e7f6a"
+        self.assertEqual([self.device(first) for _ in range(PAID + 1)][-1], 429)
+        self.assertEqual(self.device(second), 400)
+
+    def test_a_malformed_device_id_is_counted_by_network_address(self):
+        for i in range(PAID):
+            self.device(f"not-a-uuid-{i}")
+        self.assertEqual(self.translate("203.0.113.5").status_code, 429)
+
+    def test_a_team_device_key_lifts_the_limit(self):
+        with mock.patch.object(config, "RATE_LIMIT_EXEMPT_KEYS", frozenset({"team-booth-key"})):
+            post = lambda key: self.client.post("/translate-to-english", json={"text": ""}, headers={
+                "X-Forwarded-For": "203.0.113.5", "X-S2S-Device-Key": key}).status_code
+            self.assertEqual([post("team-booth-key") for _ in range(PAID * 3)], [400] * PAID * 3)
+            self.assertEqual([post("guessed-key") for _ in range(PAID + 1)][-1], 429)
+
+    def test_the_key_header_is_ignored_when_no_keys_are_set(self):
+        post = lambda: self.client.post("/translate-to-english", json={"text": ""}, headers={
+            "X-Forwarded-For": "203.0.113.5", "X-S2S-Device-Key": ""}).status_code
+        self.assertEqual([post() for _ in range(PAID + 1)][-1], 429)
+
     def test_free_routes_are_limited_by_the_default(self):
         get = lambda: self.client.get("/", headers={"X-Forwarded-For": "203.0.113.7"}).status_code
         codes = [get() for _ in range(DEFAULT + 1)]

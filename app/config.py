@@ -15,12 +15,16 @@ ALLOWED_EXTENSIONS = {"wav", "mp3", "flac", "ogg", "m4a", "webm"}
 DEBUG_CLIPS_DIR = os.path.join(BASE_DIR, "debug_clips")
 DEBUG_CLIPS_KEEP = 3
 
-# Request limits per client address, in the notation of the `limits` package. A
+# Request limits per client (see extensions.client_key), in the notation of the `limits` package. A
 # paid call (GPU recognition or an LLM translation) follows a recording of
 # several seconds, so a person signing or speaking without pause stays under the
 # paid limit; the default covers the two text calls each spoken utterance makes.
 RATE_LIMIT_DEFAULT = os.environ.get("RATE_LIMIT_DEFAULT", "60 per minute")
 RATE_LIMIT_PAID = os.environ.get("RATE_LIMIT_PAID", "5 per minute")
+# The team's own devices send one of these comma-separated keys in the
+# X-S2S-Device-Key header and are not limited. Set in the service environment.
+RATE_LIMIT_EXEMPT_KEYS = frozenset(
+    k.strip() for k in os.environ.get("RATE_LIMIT_EXEMPT_KEYS", "").split(",") if k.strip())
 # Proxies in front of the service that append the caller to X-Forwarded-For. The
 # client address is read this many entries from the right, since entries further
 # left are whatever the client sent. 0 when the service is reached directly.
@@ -28,9 +32,3 @@ TRUSTED_PROXY_HOPS = int(os.environ.get("TRUSTED_PROXY_HOPS", "0"))
 
 WLASL_MODAL_APP = "wlasl-i3d"
 WLASL_MODAL_CLASS = "WLASL"
-
-# Ceilings on the routes that call a paid service, counted in a Modal Dict so
-# they hold across API restarts. The values are an operator allowance for this
-# deployment, not a property of the services, so both are overridable.
-BUDGET_DICT_NAME = "wlasl-budget"
-MAX_TRANSLATIONS = int(os.environ.get("MAX_TRANSLATIONS", "100"))
