@@ -1,0 +1,18 @@
+<sigml>
+	<hns_sign gloss="GRAB">
+		<hamnosys_nonmanual>
+		</hamnosys_nonmanual>
+		<hamnosys_manual>
+			<hamfinger2345/>
+			<hamthumboutmod/>
+			<hamfingerhookedmod/>
+			<hamextfingero/>
+			<hampalmd/>
+			<hamshoulders/>
+			<hammovei/>
+			<hamreplace/>
+			<hamfist/>
+			<hamthumbacrossmod/>
+		</hamnosys_manual>
+	</hns_sign>
+</sigml>

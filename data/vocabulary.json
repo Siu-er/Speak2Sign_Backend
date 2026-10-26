@@ -132,6 +132,7 @@
     { "gloss": "SELL", "tier": 2, "category": "verb", "english": ["sell"] },
     { "gloss": "GIVE", "tier": 1, "category": "verb", "english": ["give"] },
     { "gloss": "TAKE", "tier": 2, "category": "verb", "english": ["take"] },
+    { "gloss": "GRAB", "tier": 2, "category": "verb", "english": ["grab"] },
     { "gloss": "GET", "tier": 1, "category": "verb", "english": ["get"] },
     { "gloss": "BRING", "tier": 2, "category": "verb", "english": ["bring"] },
     { "gloss": "SEND", "tier": 2, "category": "verb", "english": ["send"] },
