@@ -115,7 +115,7 @@ The team's own devices are not limited. `RATE_LIMIT_EXEMPT_KEYS` in the Render s
 python -c "import secrets; print(secrets.token_urlsafe(24))"
 ```
 
-Render's proxy appends the caller to `X-Forwarded-For` and keeps any entries the client sent. The API therefore reads the client address `TRUSTED_PROXY_HOPS` entries from the right, and the Render service environment sets it to 1. After a deploy, the setting is checked by sending six requests with a forged leading entry and reading the refusal in the service log:
+Render's proxies keep any `X-Forwarded-For` entries the client sent and append their own. On this service the caller's address is the third entry from the right; the two after it are proxy addresses that change from request to request. The API reads the client address `TRUSTED_PROXY_HOPS` entries from the right, and the Render service environment sets it to 3. A change to Render's proxy chain changes that position, and the setting is checked after a deploy by sending six requests with a forged leading entry and reading the refusal in the service log:
 
 ```bash
 for i in 1 2 3 4 5 6; do
@@ -125,7 +125,7 @@ for i in 1 2 3 4 5 6; do
 done; curl -s https://api.ipify.org
 ```
 
-The sixth request returns 429, and the log line `rate limit ... reached by address:<address>` names the public address `api.ipify.org` printed. A Render address in that line means every client shares one allowance and the hop count is too low.
+The sixth request returns 429, and the log line `rate limit ... reached by address:<address>` names the public address `api.ipify.org` printed. An internal `10.x` address in that line, or six responses without a 429, means the hop count no longer matches the proxy chain.
 
 ## Starting without a cold delay
 
