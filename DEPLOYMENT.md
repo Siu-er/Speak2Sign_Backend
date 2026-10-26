@@ -107,6 +107,24 @@ Paid recognitions are capped at `MAX_RECOGNITIONS = 100` in `deploy/wlasl.py`, c
 
 Raising the cap means editing `MAX_RECOGNITIONS` and redeploying. The `ping` method used for warm-up is not counted.
 
+Every recording gets a reply. Signs the classifier ranks above the 0.40 gate are the recognition; when none clears it, the best-ranked sign of each segment is sent to the sentence stage as a guess, and a clip in which the segmenter finds no sign is classified as a whole. `/video-to-sentence` reports which case applied in `confident`. The API requires `confident` in the recognition result, and a release that changes both deploys the Modal app first.
+
+## Request limits
+
+The API limits requests per client address in process memory (Flask-Limiter; the service runs as one gunicorn process). The paid routes, `/video-to-sentence` and `/translate-to-english`, allow `RATE_LIMIT_PAID` (5 per minute); every other route allows `RATE_LIMIT_DEFAULT` (60 per minute). A refused request receives HTTP 429 with an `error` message, and the API logs the address it refused. The limits are settings in the Render service environment; where many visitors reach the API from one network address, as on a venue network, raising them there takes effect on the next restart. The Socket.IO relay is not limited.
+
+Render's proxy appends the caller to `X-Forwarded-For` and keeps any entries the client sent. The API therefore reads the client address `TRUSTED_PROXY_HOPS` entries from the right, and the Render service environment sets it to 1. After a deploy, the setting is checked by sending six requests with a forged leading entry and reading the refusal in the service log:
+
+```bash
+for i in 1 2 3 4 5 6; do
+  curl -s -o /dev/null -w "%{http_code} " -X POST -H "Content-Type: application/json" \
+    -H "X-Forwarded-For: 192.0.2.$i" -d '{"text":""}' \
+    https://s2s-backend-b718.onrender.com/translate-to-english
+done; curl -s https://api.ipify.org
+```
+
+The sixth request returns 429, and the log line `rate limit ... reached by <address>` names the public address `api.ipify.org` printed. A Render address in that line means every client shares one allowance and the hop count is too low.
+
 ## Starting without a cold delay
 
 Two parts scale to zero when idle, and the first request after idling waits for them to start. Measured start times:

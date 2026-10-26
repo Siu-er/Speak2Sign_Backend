@@ -42,6 +42,24 @@ MIN_LEN = 6       # drop windows shorter than this - transition, not a sign nucl
 MIN_NUCLEUS = 24  # widen windows shorter than this to a full sign nucleus
 GATE = 0.40       # keep a window's gloss only above this closed-set probability
 
+def collapse_repeats(glosses):
+    """Merges a sign held across neighbouring windows into one gloss."""
+    return [g for i, g in enumerate(glosses) if i == 0 or glosses[i - 1] != g]
+
+
+def reply_gloss(tops):
+    """The gloss to reply with, from the best-ranked (gloss, probability) of each
+    window in order, and whether it cleared the gate. Signs above the gate are the
+    recognition; when none clears it, every window's best sign is returned as a
+    guess, so a signer always gets a reply."""
+    if not tops:
+        raise ValueError("no classified window to reply from")
+    kept = collapse_repeats([g for g, p in tops if p >= GATE])
+    if kept:
+        return kept, True
+    return collapse_repeats([g for g, _ in tops]), False
+
+
 image = (
     modal.Image.debian_slim(python_version="3.11")
     .apt_install("git", "ffmpeg", "libgl1-mesa-glx", "libglib2.0-0", "unzip")
@@ -247,8 +265,10 @@ class WLASL:
             frames.append(img)
         cap.release()
 
+        if not frames:
+            raise ValueError("the clip has no decodable video frames")
         windows = self._clean_windows(self._segment(frames, 25), len(frames))
-        gloss, detail = [], []
+        detail = []
         for (a, b) in windows:
             # A short window is usually a boundary the segmenter cut through the
             # middle of a sign; widen it toward its centre so the classifier sees
@@ -260,13 +280,14 @@ class WLASL:
             else:
                 a2, b2 = a, b
             top = self._classify(frames[a2:b2], vocab=vocab)
-            g, p = top[0]
-            kept = p >= GATE
-            if kept and (not gloss or gloss[-1] != g):
-                gloss.append(g)
-            detail.append({"seg": [a, b], "kept": kept, "top5": top[:5]})
+            detail.append({"seg": [a, b], "kept": top[0][1] >= GATE, "top5": top[:5]})
+        # A clip the segmenter found no sign in is classified whole, so it still
+        # gets a reply.
+        tops = [d["top5"][0] for d in detail] or [self._classify(frames, vocab=vocab)[0]]
+        gloss, confident = reply_gloss(tops)
         return {
             "gloss": gloss,
+            "confident": confident,
             "num_windows": len(windows),
             "detail": detail,
             "num_frames": len(frames),

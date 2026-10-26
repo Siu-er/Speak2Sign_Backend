@@ -5,11 +5,11 @@ the browser, so no audio reaches this service."""
 import logging
 import os
 import tempfile
-import time
 
 from flask import Blueprint, jsonify, request
 
 from app import config
+from app.extensions import limiter
 from app.models import models
 from app.services import budget
 from app.services.llm import gloss_to_sentence, translate_to_english
@@ -18,34 +18,6 @@ from app.services.recognizer import clip_slug, get_wlasl, retain_debug_clip
 logger = logging.getLogger(__name__)
 
 pipeline_bp = Blueprint("pipeline", __name__)
-
-# /video-to-sentence and /translate-to-english are the billable routes: GPU
-# inference on Modal and an LLM call, and an LLM call respectively. The spend
-# ceilings are counted in a Modal Dict so they survive a restart of this service;
-# the throttle below only stops one caller burning a ceiling in a burst.
-_RECENT_CALLS: dict = {}
-RATE_LIMIT_CALLS = 5
-RATE_LIMIT_WINDOW_S = 60
-
-
-def _caller() -> str:
-    forwarded = request.headers.get("X-Forwarded-For", request.remote_addr or "?")
-    return forwarded.split(",")[0].strip()
-
-
-def _rate_limited(key: str) -> bool:
-    now = time.time()
-    hits = [t for t in _RECENT_CALLS.get(key, []) if now - t < RATE_LIMIT_WINDOW_S]
-    if len(hits) >= RATE_LIMIT_CALLS:
-        _RECENT_CALLS[key] = hits
-        return True
-    hits.append(now)
-    _RECENT_CALLS[key] = hits
-    if len(_RECENT_CALLS) > 1000:
-        for k in [k for k, v in _RECENT_CALLS.items() if not v or now - v[-1] > RATE_LIMIT_WINDOW_S]:
-            _RECENT_CALLS.pop(k, None)
-    return False
-
 
 @pipeline_bp.post("/text-to-gloss")
 def text_to_gloss():
@@ -98,9 +70,8 @@ def gloss_to_sigml():
 
 
 @pipeline_bp.post("/video-to-sentence")
+@limiter.limit(config.RATE_LIMIT_PAID)
 def video_to_sentence():
-    if _rate_limited(f"video-to-sentence:{_caller()}"):
-        return jsonify({"error": "too many requests, try again shortly"}), 429
     if "video" not in request.files:
         return jsonify({"error": "no video provided"}), 400
     file = request.files["video"]
@@ -111,16 +82,13 @@ def video_to_sentence():
         tmp.write(data)
         tmp.close()
         result = get_wlasl().recognize.remote(data)
-        gloss = result.get("gloss", [])
-        logger.info(f"video-to-sentence gloss: {gloss} ({len(data)} bytes)")
-        if not gloss:
-            retain_debug_clip(tmp.name, suffix, ["none"], meta={"gloss": [], "sentence": "", **result})
-            return jsonify({"sentence": "", "gloss": [], "success": True})
+        gloss, confident = result["gloss"], result["confident"]
+        logger.info(f"video-to-sentence gloss: {gloss} confident={confident} ({len(data)} bytes)")
         sentence = gloss_to_sentence(gloss)
         logger.info(f"video-to-sentence: {sentence!r}")
         retain_debug_clip(tmp.name, suffix, [clip_slug(sentence)],
                           meta={"gloss": gloss, "sentence": sentence, **result})
-        return jsonify({"sentence": sentence, "gloss": gloss, "success": True})
+        return jsonify({"sentence": sentence, "gloss": gloss, "confident": confident, "success": True})
     except Exception as e:
         logger.error(f"video-to-sentence failed: {e}")
         return jsonify({"error": str(e)}), 500
@@ -132,9 +100,8 @@ def video_to_sentence():
 
 
 @pipeline_bp.post("/translate-to-english")
+@limiter.limit(config.RATE_LIMIT_PAID)
 def translate_speech():
-    if _rate_limited(f"translate-to-english:{_caller()}"):
-        return jsonify({"error": "too many requests, try again shortly"}), 429
     data = request.get_json()
     if not data or "text" not in data:
         return jsonify({"error": "No text provided"}), 400

@@ -11,6 +11,8 @@ services:
         value: 3.11.0
       - key: WHISPER_MODEL
         value: openai/whisper-tiny
+      - key: TRUSTED_PROXY_HOPS
+        value: "1"
       - key: OPENAI_API_KEY
         sync: false
       - key: OPENAI_AZURE_ENDPOINT
